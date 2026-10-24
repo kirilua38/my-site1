@@ -1,0 +1,404 @@
+/*
+  Общие компоненты всех страниц.
+  Mobile-first: базовые стили — для телефона, @media (min-width: 980px) — для компьютера.
+*/
+
+/* ===== Шапка ===== */
+
+/* Телефон и планшет: логотип лежит поверх первого экрана, меню спрятано в выезжающей панели */
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  padding-block: 12px;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--color-text-on-dark);
+  text-decoration: none;
+}
+
+.header__logo-img {
+  width: 52px;
+}
+
+.header__tagline {
+  max-width: 130px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* Бургер: белый круг, закреплён справа сверху и виден при прокрутке */
+
+.header__burger {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: var(--color-bg);
+  cursor: pointer;
+}
+
+.header__burger-lines,
+.header__burger-lines::before,
+.header__burger-lines::after {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--color-primary);
+}
+
+.header__burger-lines {
+  position: relative;
+}
+
+.header__burger-lines::before,
+.header__burger-lines::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.header__burger-lines::before {
+  top: -6px;
+}
+
+.header__burger-lines::after {
+  top: 6px;
+}
+
+/* Панель: спрятана за правым краем, класс .is-open на шапке (ставит menu.js) выдвигает её */
+
+.header__panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  max-width: 100%;
+  padding: 40px 20px 25px 25px;
+  overflow-y: auto;
+  background-color: var(--color-bg);
+  transform: translateX(100%);
+  visibility: hidden;
+  /* При закрытии панель прячется только после того, как уехала */
+  transition: transform 0.3s ease-in-out, visibility 0s 0.3s;
+}
+
+/* При открытии видна сразу, иначе в неё нельзя поставить фокус */
+.header.is-open .header__panel {
+  transform: none;
+  visibility: visible;
+  transition: transform 0.3s ease-in-out, visibility 0s;
+}
+
+.header__close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.header__close::before,
+.header__close::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-heading);
+}
+
+.header__close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.header__close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.header__panel-logo {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.header__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 25;
+  background-color: var(--color-backdrop);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.header.is-open .header__backdrop {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Пока панель открыта, страница под ней не прокручивается */
+.is-menu-open {
+  overflow: hidden;
+}
+
+/* Меню */
+
+.nav__list,
+.nav__sub {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  border: 0;
+  background: none;
+  /* В оригинале 20px, но Manrope шире Circe: на 18px пункты занимают ту же ширину и не переносятся */
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-heading);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav__link[aria-current="page"] {
+  color: var(--color-primary);
+  text-decoration: underline 2px;
+  text-underline-offset: 6px;
+}
+
+/* Стрелка у раскрывающегося пункта */
+.nav__toggle::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.2s;
+}
+
+.nav__toggle[aria-expanded="true"]::after {
+  transform: translateY(2px) rotate(-135deg);
+}
+
+.nav__sub {
+  display: none;
+  padding-bottom: 6px;
+}
+
+.nav__toggle[aria-expanded="true"] + .nav__sub {
+  display: block;
+}
+
+.nav__sublink {
+  display: block;
+  padding: 8px 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.nav__sublink:hover {
+  color: var(--color-primary);
+}
+
+/* Мессенджеры, телефоны и кнопка: в панели прижаты к низу */
+
+.header__contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 25px;
+  margin-top: auto;
+  padding-top: 30px;
+}
+
+.header__phones {
+  display: none;
+}
+
+.header__phones a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.header__callback {
+  min-height: 50px;
+}
+
+.social {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social__link {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+}
+
+.social__link img {
+  width: 60%;
+  height: 60%;
+}
+
+/* Компьютер: белая шапка в два ряда — логотип и контакты сверху, меню снизу */
+
+@media (min-width: 980px) {
+  .header {
+    position: static;
+    background-color: var(--color-bg);
+  }
+
+  .header__inner {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 100px 60px;
+    grid-template-areas:
+      "logo contacts"
+      "nav nav";
+    align-items: center;
+    padding-block: 0;
+  }
+
+  .header__logo {
+    grid-area: logo;
+  }
+
+  .header__logo-img {
+    width: 90px;
+  }
+
+  .header__tagline,
+  .header__burger,
+  .header__close,
+  .header__panel-logo,
+  .header__backdrop {
+    display: none;
+  }
+
+  /* Панель исчезает как коробка: её дети встают прямо в сетку шапки */
+  .header__panel {
+    display: contents;
+    visibility: visible;
+  }
+
+  .nav {
+    grid-area: nav;
+  }
+
+  .nav__list {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .nav__link {
+    padding: 0;
+    color: var(--color-text);
+  }
+
+  .nav__link[aria-current="page"] {
+    color: var(--color-primary);
+  }
+
+  /* Выпадающий список: по наведению мыши или по нажатию */
+  .nav__item-dropdown {
+    position: relative;
+  }
+
+  .nav__sub {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    z-index: 5;
+    min-width: 180px;
+    padding: 10px 0;
+    border-radius: var(--radius-button);
+    background-color: var(--color-bg);
+    box-shadow: var(--shadow-dropdown);
+    transform: translateX(-50%);
+  }
+
+  .nav__item-dropdown:hover .nav__sub {
+    display: block;
+  }
+
+  .nav__sublink {
+    padding: 8px 20px;
+  }
+
+  .header__contacts {
+    grid-area: contacts;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .header__phones {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--color-text);
+  }
+
+  .header__callback {
+    min-height: 45px;
+  }
+
+  .social {
+    gap: 14px;
+  }
+
+  .social__link {
+    width: 25px;
+    height: 25px;
+  }
+}

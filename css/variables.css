@@ -13,6 +13,7 @@
   --color-primary: #254995;
   --color-accent: #3f93ff;
   --gradient-primary: linear-gradient(90deg, var(--color-accent) 0%, var(--color-primary) 100%);
+  --gradient-primary-hover: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
   --color-heading: #242424;
   --color-text: #363636;
   --color-text-on-dark: #ffffff;
@@ -20,6 +21,7 @@
   --color-bg: #ffffff;
   --color-bg-light: #f7f7f9;
   --color-overlay: rgba(0, 15, 46, 0.9);
+  --color-backdrop: rgba(0, 0, 0, 0.4);
 
   /* Шрифты */
   --font-main: "Manrope", Arial, sans-serif;
@@ -28,6 +30,9 @@
   /* Радиусы */
   --radius-button: 8px;
   --radius-card: 15px;
+
+  /* Тени */
+  --shadow-dropdown: 0 8px 24px rgba(0, 0, 0, 0.12);
 
   /* Сетка */
   --container-width: 1200px;

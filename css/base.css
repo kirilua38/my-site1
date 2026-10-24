@@ -59,6 +59,29 @@ h4 {
   color: var(--color-heading);
 }
 
+/* Кнопка: градиент фирменных цветов, при наведении градиент разворачивается */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 45px;
+  padding: 10px 30px;
+  border: 0;
+  border-radius: var(--radius-button);
+  background-image: var(--gradient-primary);
+  color: var(--color-text-on-dark);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-image: var(--gradient-primary-hover);
+}
+
 /* Контейнер: центральная колонка шириной до 1200px с отступами по бокам */
 
 .container {
