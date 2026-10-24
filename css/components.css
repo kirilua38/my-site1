@@ -247,7 +247,13 @@ a.nav__link:not([href]) {
   text-decoration: none;
 }
 
-.nav__sublink:hover {
+.nav__sublink:hover,
+.nav__sublink[aria-current="page"] {
+  color: var(--color-primary);
+}
+
+/* Текущая страница во вложенном меню — подсвечиваем и сам пункт «Документи водія» */
+.nav__item-dropdown:has([aria-current="page"]) > .nav__toggle {
   color: var(--color-primary);
 }
 

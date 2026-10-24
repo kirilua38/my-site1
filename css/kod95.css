@@ -1,0 +1,191 @@
+/*
+  Секции страницы «Код 95».
+  Mobile-first: база — телефон, @media (min-width: 640px) — планшет, (min-width: 980px) — компьютер.
+*/
+
+/* ===== Первый экран ===== */
+
+/* Фото команды под тёмной подложкой на всех ширинах; на телефоне шапка с логотипом лежит сверху */
+.kod-hero {
+  position: relative;
+  background-color: var(--color-hero-bg);
+  background-image: var(--gradient-hero), url("../img/common/hero.webp");
+  background-position: center;
+  background-size: cover;
+  color: var(--color-text-on-dark);
+  text-align: center;
+}
+
+.kod-hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 700px;
+  padding-block: 70px 80px;
+}
+
+/* «Код 95» крупно, подзаголовок — часть того же <h1>, но отдельной строкой и мельче */
+.kod-hero__title {
+  margin-bottom: 18px;
+  font-size: 76px;
+  line-height: 1.4;
+  color: var(--color-text-muted-on-dark);
+}
+
+.kod-hero__subtitle {
+  display: block;
+  max-width: 360px;
+  margin: -10px auto 0;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.kod-hero__text {
+  max-width: 370px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+.kod-hero__features {
+  display: grid;
+  gap: 14px;
+  margin: 0 0 30px;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+/* Текст пункта обёрнут в <span>: иначе каждое выделенное слово стало бы отдельным элементом строки */
+.kod-hero__features li {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+/* Синяя галочка перед каждым преимуществом */
+.kod-hero__features li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 31px;
+  height: 31px;
+  background: url("../img/common/check.svg") center / contain no-repeat;
+}
+
+/* Жёлтое выделение («при отриманні»); у <mark> по умолчанию жёлтый фон — убираем */
+.kod-hero__features mark {
+  background: none;
+  color: var(--color-highlight);
+}
+
+.kod-hero__button {
+  min-width: 260px;
+  min-height: 50px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* Стрелка «листайте вниз»: картинка служит маской (трафаретом), цвет берётся из переменной */
+.kod-hero__scroll {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-text-on-dark);
+  transform: translateX(-50%);
+  -webkit-mask: url("../img/common/chevron-down.svg") center / contain no-repeat;
+  mask: url("../img/common/chevron-down.svg") center / contain no-repeat;
+}
+
+/* Планшет: преимущества сеткой 2×2 */
+@media (min-width: 640px) {
+  .kod-hero__inner {
+    min-height: 610px;
+    padding-block: 100px 110px;
+  }
+
+  .kod-hero__title {
+    margin-bottom: 14px;
+    font-size: 69px;
+  }
+
+  .kod-hero__subtitle {
+    max-width: none;
+    font-size: 20px;
+  }
+
+  .kod-hero__text {
+    max-width: none;
+    margin-bottom: 40px;
+    font-size: 14px;
+  }
+
+  .kod-hero__features {
+    grid-template-columns: repeat(2, 230px);
+    column-gap: 40px;
+    row-gap: 28px;
+  }
+
+  .kod-hero__features li {
+    gap: 14px;
+    font-size: 16px;
+  }
+
+  .kod-hero__button {
+    font-size: 18px;
+  }
+}
+
+/* Компьютер: преимущества в ряд, кнопка крупнее */
+@media (min-width: 980px) {
+  .kod-hero__inner {
+    min-height: 710px;
+    padding-block: 80px 150px;
+  }
+
+  .kod-hero__title {
+    margin-bottom: 8px;
+    font-size: 100px;
+  }
+
+  .kod-hero__subtitle {
+    margin-top: -15px;
+    font-size: 27px;
+  }
+
+  .kod-hero__text {
+    margin-bottom: 60px;
+  }
+
+  .kod-hero__features {
+    grid-template-columns: repeat(4, auto);
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1075px;
+    column-gap: 30px;
+    margin-bottom: 43px;
+  }
+
+  .kod-hero__features li {
+    gap: 16px;
+    font-size: 18px;
+  }
+
+  .kod-hero__features li::before {
+    width: 40px;
+    height: 40px;
+  }
+
+  .kod-hero__button {
+    min-width: 280px;
+    min-height: 60px;
+  }
+
+  .kod-hero__scroll {
+    width: 60px;
+    height: 60px;
+  }
+}
