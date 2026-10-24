@@ -4,6 +4,11 @@
 // Разметка: внутри [data-slider] лежат трек [data-slider-track] со слайдами-детьми,
 // кнопки [data-slider-prev] и [data-slider-next] и пустой [data-slider-dots] — точки скрипт создаёт сам.
 // Как слайд «прилипает» (к началу или по центру), задаёт CSS: scroll-snap-align у слайдов.
+// Плавность прокрутки тоже задаёт CSS (scroll-behavior), с учётом настройки «меньше анимаций».
+//
+// Необязательно:
+// - в [data-slider-dots] можно заранее положить свои кнопки (например, миниатюры) — тогда скрипт берёт их;
+// - data-slider-loop="false" на [data-slider] выключает листание по кругу: на краях стрелки выключаются.
 
 function initSlider(root) {
   const track = root.querySelector('[data-slider-track]');
@@ -13,7 +18,7 @@ function initSlider(root) {
   const prev = root.querySelector('[data-slider-prev]');
   const next = root.querySelector('[data-slider-next]');
   const dotsBox = root.querySelector('[data-slider-dots]');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const loop = root.dataset.sliderLoop !== 'false';
 
   // На сколько пикселей прокрутить трек, чтобы слайд встал на своё «прилипающее» место
   function offsetOf(slide) {
@@ -36,29 +41,55 @@ function initSlider(root) {
   }
 
   function goTo(index) {
-    const i = (index + slides.length) % slides.length;
-    track.scrollTo({
-      left: track.scrollLeft + offsetOf(slides[i]),
-      behavior: reduceMotion.matches ? 'auto' : 'smooth',
-    });
+    const i = loop
+      ? (index + slides.length) % slides.length
+      : Math.max(0, Math.min(index, slides.length - 1));
+    track.scrollTo({ left: track.scrollLeft + offsetOf(slides[i]) });
   }
 
-  const dots = slides.map((_, i) => {
-    if (!dotsBox) return null;
+  // Свои кнопки в блоке точек (миниатюры) берём как есть, иначе создаём точки
+  const ownDots = dotsBox ? [...dotsBox.querySelectorAll('button')] : [];
+  const dots = ownDots.length || !dotsBox ? ownDots : slides.map((_, i) => {
     const dot = document.createElement('button');
     dot.type = 'button';
     dot.className = 'slider__dot';
     dot.setAttribute('aria-label', `Слайд ${i + 1} з ${slides.length}`);
-    dot.addEventListener('click', () => goTo(i));
     dotsBox.append(dot);
     return dot;
   });
+  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
 
-  function updateDots() {
-    const active = currentIndex();
-    dots.forEach((dot, i) => {
-      if (dot) dot.setAttribute('aria-current', String(i === active));
+  // Если полоса точек сама прокручивается (миниатюры), активная точка показывается в ней.
+  // Прокручиваем только полосу: scrollIntoView сдвинул бы ещё и страницу
+  function revealDot(dot) {
+    if (dotsBox.scrollWidth <= dotsBox.clientWidth) return;
+    const boxRect = dotsBox.getBoundingClientRect();
+    const rect = dot.getBoundingClientRect();
+    if (rect.left < boxRect.left) {
+      dotsBox.scrollBy({ left: rect.left - boxRect.left });
+    } else if (rect.right > boxRect.right) {
+      dotsBox.scrollBy({ left: rect.right - boxRect.right });
+    }
+  }
+
+  // Без листания по кругу стрелки на краях выключаются.
+  // Если фокус стоял на стрелке, которую выключаем, он переходит на активную точку, а не теряется
+  function updateArrows(active) {
+    if (loop) return;
+    [[prev, active === 0], [next, active === slides.length - 1]].forEach(([arrow, isEdge]) => {
+      if (!arrow) return;
+      if (isEdge && document.activeElement === arrow && dots[active]) {
+        dots[active].focus({ preventScroll: true });
+      }
+      arrow.disabled = isEdge;
     });
+  }
+
+  function update() {
+    const active = currentIndex();
+    dots.forEach((dot, i) => dot.setAttribute('aria-current', String(i === active)));
+    if (dots[active]) revealDot(dots[active]);
+    updateArrows(active);
   }
 
   // Трек, который можно прокрутить, должен получать фокус: тогда его листают стрелками клавиатуры
@@ -73,19 +104,19 @@ function initSlider(root) {
   let frame = 0;
   track.addEventListener('scroll', () => {
     cancelAnimationFrame(frame);
-    frame = requestAnimationFrame(updateDots);
+    frame = requestAnimationFrame(update);
   }, { passive: true });
 
   window.addEventListener('resize', () => {
     updateFocusable();
-    updateDots();
+    update();
   });
 
   if (prev) prev.addEventListener('click', () => goTo(currentIndex() - 1));
   if (next) next.addEventListener('click', () => goTo(currentIndex() + 1));
 
   updateFocusable();
-  updateDots();
+  update();
 }
 
 document.querySelectorAll('[data-slider]').forEach(initSlider);

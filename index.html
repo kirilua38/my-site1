@@ -272,10 +272,10 @@
       </div>
     </section>
 
-    <!-- Фотогалерея: только на компьютере, как в оригинале. Миниатюры переключают фото, клик по фото — увеличение (js/gallery.js) -->
-    <section class="gallery" data-gallery aria-label="Фотогалерея">
+    <!-- Фотогалерея: только на компьютере, как в оригинале. Листание и миниатюры — js/slider.js (без листания по кругу), клик по фото — увеличение (js/gallery.js) -->
+    <section class="gallery" data-gallery data-slider data-slider-loop="false" aria-label="Фотогалерея">
       <div class="gallery__inner">
-        <ul class="gallery__track" data-gallery-track>
+        <ul class="gallery__track slider__track" data-slider-track>
           <li class="gallery__slide"><button class="gallery__zoom" type="button" aria-label="Збільшити фото 1 з 10"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-1.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="Фото EuroDrivers, 1 з 10" loading="lazy"></picture></button></li>
           <li class="gallery__slide"><button class="gallery__zoom" type="button" aria-label="Збільшити фото 2 з 10"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-2.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="Фото EuroDrivers, 2 з 10" loading="lazy"></picture></button></li>
           <li class="gallery__slide"><button class="gallery__zoom" type="button" aria-label="Збільшити фото 3 з 10"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-3.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="Фото EuroDrivers, 3 з 10" loading="lazy"></picture></button></li>
@@ -288,10 +288,10 @@
           <li class="gallery__slide"><button class="gallery__zoom" type="button" aria-label="Збільшити фото 10 з 10"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-10.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="Фото EuroDrivers, 10 з 10" loading="lazy"></picture></button></li>
         </ul>
         <div class="gallery__thumbs">
-          <button class="slider__arrow gallery__arrow gallery__arrow--prev" type="button" aria-label="Попереднє фото" data-gallery-prev>
+          <button class="slider__arrow gallery__arrow gallery__arrow--prev" type="button" aria-label="Попереднє фото" data-slider-prev>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-          <ul class="gallery__thumbs-list" data-gallery-thumbs>
+          <ul class="gallery__thumbs-list" data-slider-dots>
             <li><button class="gallery__thumb" type="button" aria-label="Показати фото 1"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-1.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="" loading="lazy"></picture></button></li>
             <li><button class="gallery__thumb" type="button" aria-label="Показати фото 2"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-2.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="" loading="lazy"></picture></button></li>
             <li><button class="gallery__thumb" type="button" aria-label="Показати фото 3"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-3.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="" loading="lazy"></picture></button></li>
@@ -303,7 +303,7 @@
             <li><button class="gallery__thumb" type="button" aria-label="Показати фото 9"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-9.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="" loading="lazy"></picture></button></li>
             <li><button class="gallery__thumb" type="button" aria-label="Показати фото 10"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-10.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="" loading="lazy"></picture></button></li>
           </ul>
-          <button class="slider__arrow gallery__arrow gallery__arrow--next" type="button" aria-label="Наступне фото" data-gallery-next>
+          <button class="slider__arrow gallery__arrow gallery__arrow--next" type="button" aria-label="Наступне фото" data-slider-next>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
@@ -517,10 +517,10 @@
     </div>
   </dialog>
 
-  <!-- Окно увеличения фото галереи: одно на страницу, фото подставляет js/gallery.js -->
+  <!-- Окно увеличения фото галереи: одно на страницу, фото подставляет js/gallery.js; крестик и клик по фону — js/modal.js -->
   <dialog class="lightbox" id="lightbox" aria-label="Перегляд фото">
     <img class="lightbox__img" alt="">
-    <button class="lightbox__btn lightbox__close" type="button" aria-label="Закрити" data-lightbox-close>
+    <button class="lightbox__btn lightbox__close" type="button" aria-label="Закрити" data-modal-close>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
     <button class="lightbox__btn lightbox__prev" type="button" aria-label="Попереднє фото" data-lightbox-prev>

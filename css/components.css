@@ -904,7 +904,7 @@ a.nav__link:not([href]) {
   }
 }
 
-/* ===== Фотогалерея (js/gallery.js) ===== */
+/* ===== Фотогалерея (листание — js/slider.js, увеличение — js/gallery.js) ===== */
 
 /* Как в оригинале, галерея есть только на компьютере; у скрытой секции фото не скачиваются */
 .gallery {
@@ -922,25 +922,19 @@ a.nav__link:not([href]) {
     margin-inline: auto;
   }
 
-  /* Большие фото: трек с «прилипанием», каждый слайд во всю ширину */
+  /* Большие фото: трек слайдера (прокрутку с «прилипанием» даёт .slider__track), каждый слайд во всю ширину */
   .gallery__track {
-    display: flex;
     margin: 0;
     padding: 0;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
     list-style: none;
   }
 
-  .gallery__track::-webkit-scrollbar,
   .gallery__thumbs-list::-webkit-scrollbar {
     display: none;
   }
 
   .gallery__slide {
-    flex: 0 0 100%;
-    scroll-snap-align: start;
+    flex-basis: 100%;
   }
 
   .gallery__zoom {

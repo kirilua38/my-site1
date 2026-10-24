@@ -26,6 +26,24 @@ html {
   text-size-adjust: 100%;
 }
 
+/*
+  Плавная прокрутка из скриптов: кнопка «наверх» (вся страница), стрелки и точки слайдеров (трек и полоса точек).
+  Скрипты просто вызывают scrollTo, а плавность берётся отсюда. Кто отключил анимации в системе — без плавности
+*/
+html,
+[data-slider-track],
+[data-slider-dots] {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  [data-slider-track],
+  [data-slider-dots] {
+    scroll-behavior: auto;
+  }
+}
+
 img,
 picture,
 video {
