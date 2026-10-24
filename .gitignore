@@ -1,0 +1,14 @@
+# Секреты: токен бота и chat_id. Шаблоны без секретов храним в git.
+.env
+.env.*
+!.env.example
+server/config.*
+!server/config.example.*
+
+# Python
+__pycache__/
+
+# Системные файлы Windows и macOS
+Thumbs.db
+desktop.ini
+.DS_Store
