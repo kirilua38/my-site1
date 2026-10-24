@@ -783,3 +783,113 @@ body:has(.modal[open]) {
   width: 48px;
   background-color: var(--color-primary);
 }
+
+/* ===== FAQ: вопросы-ответы на <details> (главная, «Код 95») ===== */
+
+/* interpolate-size разрешает плавно менять высоту до auto — нужно для анимации раскрытия */
+.faq {
+  padding-block: 50px 60px;
+  background-color: var(--color-bg-light);
+  interpolate-size: allow-keywords;
+}
+
+.faq__title {
+  margin-bottom: 30px;
+  font-size: 32px;
+  text-align: center;
+}
+
+.faq__list {
+  display: grid;
+  gap: 10px;
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.faq__item {
+  border-radius: var(--radius-button);
+  background-color: var(--color-bg);
+}
+
+/* Вопрос — заголовок блока <details>: по нажатию браузер сам открывает и закрывает ответ */
+.faq__question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 18px 18px 20px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--color-heading);
+  cursor: pointer;
+  list-style: none;
+}
+
+/* Убираем стандартный треугольник браузера: вместо него плюс справа */
+.faq__question::-webkit-details-marker {
+  display: none;
+}
+
+/* Плюс в синем круге из двух полосок; у открытого вопроса поворачивается в крестик */
+.faq__question::after {
+  content: "";
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background:
+    linear-gradient(var(--color-text-on-dark), var(--color-text-on-dark)) center / 16px 2px no-repeat,
+    linear-gradient(var(--color-text-on-dark), var(--color-text-on-dark)) center / 2px 16px no-repeat,
+    var(--color-primary);
+  transition: transform 0.3s;
+}
+
+.faq__item[open] .faq__question::after {
+  transform: rotate(45deg);
+}
+
+.faq__answer {
+  padding: 0 20px 22px;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.faq__answer ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.faq__answer li + li {
+  margin-top: 6px;
+}
+
+/* Плавное раскрытие ответа: работает в свежем Chrome, в остальных браузерах ответ открывается сразу */
+.faq__item::details-content {
+  block-size: 0;
+  overflow: hidden;
+  transition: block-size 0.3s ease-in-out, content-visibility 0.3s allow-discrete;
+}
+
+.faq__item[open]::details-content {
+  block-size: auto;
+}
+
+@media (min-width: 980px) {
+  .faq {
+    padding-block: 60px 80px;
+  }
+
+  .faq__title {
+    margin-bottom: 40px;
+    font-size: 48px;
+  }
+
+  .faq__question {
+    padding-left: 30px;
+  }
+
+  .faq__answer {
+    padding: 0 30px 24px;
+  }
+}
