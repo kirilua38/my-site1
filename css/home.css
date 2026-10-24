@@ -1,0 +1,401 @@
+/*
+  Секции главной страницы.
+  Mobile-first: база — телефон, @media (min-width: 640px) — планшет, (min-width: 980px) — компьютер.
+*/
+
+/* ===== Первый экран ===== */
+
+/* Телефон и планшет: фото команды под тёмной подложкой, шапка с логотипом лежит сверху */
+.hero {
+  position: relative;
+  background-color: var(--color-hero-bg);
+  background-image: var(--gradient-hero), url("../img/common/hero.webp");
+  background-position: center;
+  background-size: cover;
+  color: var(--color-text-on-dark);
+}
+
+.hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 620px;
+  padding-block: 100px 90px;
+}
+
+.hero__eyebrow {
+  margin-bottom: 14px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.hero__title {
+  margin-bottom: 20px;
+  font-size: 32px;
+  line-height: 1.1;
+  color: inherit;
+}
+
+/* Текст, залитый градиентом: фон-градиент виден только сквозь буквы */
+.hero__accent {
+  background-image: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* В оригинале на телефоне и планшете этой строки и трёх преимуществ из четырёх нет */
+.hero__subtitle,
+.hero__feature {
+  display: none;
+}
+
+.hero__features {
+  margin: 0 0 24px;
+  padding: 0;
+  list-style: none;
+}
+
+.hero__feature--main {
+  display: block;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.hero__action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.hero__button {
+  min-height: 52px;
+  padding-inline: 24px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.hero__note {
+  max-width: 200px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-text-muted-on-dark);
+}
+
+/* Значок «листайте вниз» внизу по центру */
+.hero__scroll {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  width: 34px;
+  transform: translateX(-50%);
+}
+
+@media (min-width: 640px) {
+  .hero__inner {
+    min-height: 520px;
+  }
+
+  .hero__title {
+    font-size: 42px;
+  }
+
+  .hero__action {
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .hero__button {
+    font-size: 14px;
+  }
+
+  .hero__note {
+    max-width: 150px;
+    font-size: 11px;
+  }
+}
+
+/* Компьютер: без фото, только тёмный градиент; высота 82% экрана */
+@media (min-width: 980px) {
+  .hero {
+    background-image: var(--gradient-hero);
+  }
+
+  .hero__inner {
+    justify-content: center;
+    min-height: 82vh;
+    padding-block: 40px 90px;
+  }
+
+  .hero__eyebrow {
+    margin-bottom: 16px;
+    font-size: 18px;
+  }
+
+  /* В оригинале 64px, но Manrope шире Circe: на 58px заголовок занимает те же три строки */
+  .hero__title {
+    max-width: 1115px;
+    margin-bottom: 16px;
+    font-size: 58px;
+  }
+
+  .hero__subtitle {
+    display: block;
+    margin-bottom: 36px;
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--color-text-muted-on-dark);
+  }
+
+  .hero__features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  .hero__feature,
+  .hero__feature--main {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+
+  /* Синяя галочка перед каждым преимуществом */
+  .hero__feature::before {
+    content: "";
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: url("../img/common/check.svg") center / contain no-repeat;
+  }
+
+  .hero__action {
+    align-self: center;
+    gap: 40px;
+  }
+
+  .hero__button {
+    min-height: 62px;
+    padding-inline: 20px;
+    font-size: 20px;
+  }
+
+  .hero__note {
+    max-width: 180px;
+    font-size: 14px;
+  }
+
+  .hero__scroll {
+    width: 43px;
+  }
+}
+
+/* ===== «В цифрах» ===== */
+
+.stats {
+  padding-block: 50px 40px;
+  text-align: center;
+}
+
+.stats__title {
+  margin-bottom: 30px;
+  font-size: 36px;
+  color: var(--color-text);
+}
+
+.stats__brand {
+  color: var(--color-primary);
+}
+
+.stats__list {
+  display: grid;
+  gap: 36px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stats__number {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--color-primary);
+}
+
+.stats__caption {
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+@media (min-width: 980px) {
+  .stats {
+    padding-block: 70px 60px;
+  }
+
+  .stats__title {
+    margin-bottom: 40px;
+    font-size: 42px;
+  }
+
+  .stats__list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .stats__number {
+    margin-bottom: 20px;
+    font-size: 40px;
+  }
+}
+
+/* ===== Рейтинг Google и Facebook ===== */
+
+/* Телефон и планшет: текст по центру, карточки — строки «название — оценка — звёзды» */
+.rating {
+  padding-block: 48px;
+}
+
+.rating__inner {
+  display: grid;
+  gap: 30px;
+  max-width: 1040px;
+}
+
+.rating__text {
+  text-align: center;
+}
+
+.rating__label {
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.rating__title {
+  margin-bottom: 8px;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.rating__descr {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.rating__cards {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.rating-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-card);
+  background-color: var(--color-bg-light);
+}
+
+.rating-card__name {
+  min-width: 90px;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--color-heading);
+}
+
+.rating-card--facebook .rating-card__name {
+  color: var(--color-facebook);
+}
+
+.rating-card__score {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.rating-card__value {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--color-heading);
+}
+
+/* Пять звёзд: картинка звезды служит маской (трафаретом), цвет берётся из переменной */
+.rating-card__stars {
+  width: 90px;
+  height: 16px;
+  margin-left: auto;
+  background-color: var(--color-star);
+  -webkit-mask: url("../img/icons/star.svg") left center / 18px 16px repeat-x;
+  mask: url("../img/icons/star.svg") left center / 18px 16px repeat-x;
+}
+
+/* Компьютер: текст слева, справа две квадратные карточки */
+@media (min-width: 980px) {
+  .rating {
+    padding-block: 98px;
+  }
+
+  .rating__inner {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+
+  .rating__text {
+    text-align: left;
+  }
+
+  .rating__title {
+    font-size: 34px;
+  }
+
+  .rating__cards {
+    grid-template-columns: repeat(2, 180px);
+    gap: 16px;
+    margin: 0;
+  }
+
+  .rating-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    height: 173px;
+    padding: 24px 20px;
+  }
+
+  .rating-card__name {
+    font-size: 22px;
+  }
+
+  .rating-card__score {
+    font-size: 16px;
+  }
+
+  .rating-card__value {
+    font-size: 36px;
+  }
+
+  .rating-card__stars {
+    margin-left: 0;
+  }
+}

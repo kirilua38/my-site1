@@ -14,6 +14,9 @@
   --color-accent: #3f93ff;
   --gradient-primary: linear-gradient(90deg, var(--color-accent) 0%, var(--color-primary) 100%);
   --gradient-primary-hover: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  --gradient-text: linear-gradient(0deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  --gradient-hero: linear-gradient(rgba(0, 15, 46, 0.9), rgba(0, 0, 0, 0.85));
+  --color-hero-bg: #000000;
   --color-heading: #242424;
   --color-text: #363636;
   --color-text-on-dark: #ffffff;
@@ -25,6 +28,9 @@
   --color-overlay: rgba(0, 15, 46, 0.9);
   --color-backdrop: rgba(0, 0, 0, 0.4);
   --color-modal-backdrop: rgba(0, 0, 0, 0.6);
+  --color-border-light: rgba(49, 97, 193, 0.07);
+  --color-star: #f0a830;
+  --color-facebook: #1877f2;
 
   /* Шрифты */
   --font-main: "Manrope", Arial, sans-serif;

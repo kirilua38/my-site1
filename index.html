@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/home.css">
   <script src="js/menu.js" defer></script>
   <script src="js/modal.js" defer></script>
   <script src="js/to-top.js" defer></script>
@@ -70,9 +71,60 @@
   </header>
 
   <main>
-    <div class="container">
-      <h1>Отримайте код 95 в Україні</h1>
-    </div>
+    <!-- Первый экран. До 980px — фото под подложкой, шапка лежит поверх; на компьютере — без фото, как в оригинале -->
+    <section class="hero">
+      <div class="hero__inner container">
+        <p class="hero__eyebrow">Школа далекобійників EuroDrivers</p>
+        <h1 class="hero__title">Код 95 - офіційний центр. <span class="hero__accent">Перша Школа Далекобійників.</span> Робота в компаніях з бездоганною репутацією</h1>
+        <p class="hero__subtitle">Для водіїв з наявною категорією СЕ</p>
+        <ul class="hero__features">
+          <li class="hero__feature">Працюємо з 16 лютого 2018 року</li>
+          <li class="hero__feature hero__feature--main">№1 транспортний центр за відгуками клієнтів</li>
+          <li class="hero__feature">Понад 6000+ задоволених клієнтів</li>
+          <li class="hero__feature">Гарантія найкращих умов на ринку</li>
+        </ul>
+        <div class="hero__action">
+          <button class="btn hero__button" type="button" data-modal-open="consultation">Безкоштовна консультація</button>
+          <p class="hero__note">Вкажіть Ваші контактні дані і ми зателефонуємо Вам</p>
+        </div>
+      </div>
+      <img class="hero__scroll" src="img/home/scroll-down.svg" width="43" height="42" alt="">
+    </section>
+
+    <section class="stats">
+      <div class="container">
+        <h2 class="stats__title"><span class="stats__brand">EuroDrivers</span> в цифрах</h2>
+        <ul class="stats__list">
+          <li><span class="stats__number">7 років</span> <span class="stats__caption">успішної роботи</span></li>
+          <li><span class="stats__number">6500+</span> <span class="stats__caption">задоволених клієнтів</span></li>
+          <li><span class="stats__number">80%</span> <span class="stats__caption">за рекомендацією</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Сюда встанет «Напрямки роботи» (шаг 10, пачка D) -->
+
+    <section class="rating">
+      <div class="rating__inner container">
+        <div class="rating__text">
+          <p class="rating__label">Відгуки</p>
+          <h2 class="rating__title">Репутація перш за все</h2>
+          <p class="rating__descr">Найвищий рейтинг серед компаній у нашій сфері</p>
+        </div>
+        <ul class="rating__cards">
+          <li class="rating-card">
+            <p class="rating-card__name">Google</p>
+            <p class="rating-card__score"><span class="rating-card__value">5.0</span> / 5</p>
+            <span class="rating-card__stars" role="img" aria-label="5 з 5 зірок"></span>
+          </li>
+          <li class="rating-card rating-card--facebook">
+            <p class="rating-card__name">facebook</p>
+            <p class="rating-card__score"><span class="rating-card__value">5.0</span> / 5</p>
+            <span class="rating-card__stars" role="img" aria-label="5 з 5 зірок"></span>
+          </li>
+        </ul>
+      </div>
+    </section>
   </main>
 
   <!-- Подвал: одинаковый на всех страницах. Правишь здесь — повтори в kod95ukr.html, chipcard.html, contacts.html -->
