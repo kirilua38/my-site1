@@ -402,3 +402,124 @@
     height: 25px;
   }
 }
+
+/* ===== Модальное окно ===== */
+
+/*
+  Сам <dialog> растянут на весь экран и служит тёмным фоном:
+  клик по нему (мимо окна) закрывает окно, а высокое окно прокручивается внутри.
+*/
+.modal {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 60px 19px;
+  border: 0;
+  overflow-y: auto;
+  background-color: var(--color-modal-backdrop);
+}
+
+.modal[open] {
+  display: flex;
+}
+
+/* Браузерный фон под окном не нужен: затемняет сам .modal */
+.modal::backdrop {
+  background: transparent;
+}
+
+/* Пока окно открыто, страница под ним не прокручивается */
+body:has(.modal[open]) {
+  overflow: hidden;
+}
+
+/* margin: auto центрирует окно, а если оно выше экрана — даёт прокрутить до верха */
+.modal__window {
+  width: 100%;
+  max-width: 504px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: var(--radius-button);
+  background-color: var(--color-bg-light);
+}
+
+.modal__img {
+  width: 100%;
+}
+
+.modal__body {
+  padding: 36px 18px 30px;
+}
+
+.modal__title {
+  margin-bottom: 22px;
+  /* В оригинале 28px, но Manrope шире Circe: на 25px заголовок помещается в строку, как там */
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.modal__form {
+  display: grid;
+  gap: 22px;
+}
+
+.modal__submit {
+  width: 100%;
+  font-size: 16px;
+}
+
+.modal__note {
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--color-text-muted);
+}
+
+/* Крестик в правом верхнем углу экрана, белый на тёмном фоне */
+.modal__close {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 43px;
+  height: 43px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.modal__close::before,
+.modal__close::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 26px;
+  height: 2px;
+  background-color: var(--color-text-on-dark);
+}
+
+.modal__close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.modal__close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+@media (min-width: 640px) {
+  .modal__body {
+    padding: 36px 40px 40px;
+  }
+
+  /* В оригинале 36px; на 33px самый длинный заголовок («Отримайте консультацію») помещается в строку, как там */
+  .modal__title {
+    font-size: 33px;
+  }
+
+  .modal .input,
+  .modal__submit {
+    height: 60px;
+  }
+}

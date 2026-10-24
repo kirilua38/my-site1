@@ -17,11 +17,13 @@
   --color-heading: #242424;
   --color-text: #363636;
   --color-text-on-dark: #ffffff;
+  --color-text-muted: #787878;
   --color-text-muted-on-dark: #d6d6d6;
   --color-bg: #ffffff;
   --color-bg-light: #f7f7f9;
   --color-overlay: rgba(0, 15, 46, 0.9);
   --color-backdrop: rgba(0, 0, 0, 0.4);
+  --color-modal-backdrop: rgba(0, 0, 0, 0.6);
 
   /* Шрифты */
   --font-main: "Manrope", Arial, sans-serif;

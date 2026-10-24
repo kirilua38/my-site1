@@ -5,6 +5,7 @@ function initMenu() {
   if (!header) return;
 
   const burger = header.querySelector('.header__burger');
+  const panel = header.querySelector('.header__panel');
   const closeButton = header.querySelector('.header__close');
   const backdrop = header.querySelector('.header__backdrop');
   const toggles = header.querySelectorAll('.nav__toggle');
@@ -31,6 +32,13 @@ function initMenu() {
   burger.addEventListener('click', () => setMenuOpen(true));
   closeButton.addEventListener('click', () => setMenuOpen(false));
   backdrop.addEventListener('click', () => setMenuOpen(false));
+
+  // Ссылка или кнопка окна в панели (например, «Зворотній дзвінок») закрывает панель, чтобы окно не открылось поверх неё
+  panel.addEventListener('click', (event) => {
+    if (header.classList.contains('is-open') && event.target.closest('a[href], [data-modal-open]')) {
+      setMenuOpen(false);
+    }
+  });
 
   document.addEventListener('keydown', (event) => {
     if (event.key !== 'Escape') return;

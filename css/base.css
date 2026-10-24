@@ -82,6 +82,63 @@ h4 {
   background-image: var(--gradient-primary-hover);
 }
 
+/* Поле формы. Шрифт 16px: при меньшем iPhone увеличивает страницу, когда ставишь курсор в поле */
+
+.input {
+  display: block;
+  width: 100%;
+  height: 45px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: var(--radius-button);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-size: 16px;
+}
+
+/* Телефон: белая плашка с префиксом +380 слева и полем справа */
+
+.phone-field {
+  display: flex;
+  align-items: center;
+  border-radius: var(--radius-button);
+  background-color: var(--color-bg);
+}
+
+.phone-field__prefix {
+  padding-left: 20px;
+  color: var(--color-text);
+}
+
+.phone-field .input {
+  padding-left: 8px;
+  background: none;
+}
+
+/* Скрыто с экрана, но доступно программам экранного чтения (подписи полей) */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Ловушка для ботов: поле унесено за экран, человек его не видит и не заполняет */
+
+.form-trap {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 /* Контейнер: центральная колонка шириной до 1200px с отступами по бокам */
 
 .container {
