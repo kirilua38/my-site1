@@ -222,7 +222,52 @@
       </div>
     </section>
 
-    <!-- Сюда встанут блок консультации (шаг 12), фотогалерея (шаг 13) и FAQ (шаг 14) -->
+    <!-- Блок консультации: до 980px всё столбиком, картинка телефона внизу; на компьютере картинка слева, форма справа -->
+    <section class="consult">
+      <div class="consult__panel">
+        <img class="consult__arc consult__arc--yellow" src="img/common/arc-yellow.svg" width="94" height="94" alt="" loading="lazy">
+        <img class="consult__arc consult__arc--gray" src="img/common/arc-gray.svg" width="200" height="200" alt="" loading="lazy">
+
+        <h2 class="consult__title">Отримати безкоштовну консультацію</h2>
+
+        <div class="consult__content">
+          <div class="consult__main">
+            <p class="consult__text">Ознайомтесь з основною інформацією про наші послуги:</p>
+
+            <form class="consult__form">
+              <input type="hidden" name="form" value="consultation-block">
+              <div class="form-trap" aria-hidden="true">
+                <label>Не заповнюйте це поле <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+              </div>
+              <label class="visually-hidden" for="consult-name">Ім'я</label>
+              <input class="input" id="consult-name" type="text" name="name" placeholder="Ваше ім'я" autocomplete="name">
+              <label class="visually-hidden" for="consult-phone">Телефон</label>
+              <div class="phone-field">
+                <span class="phone-field__prefix">+380</span>
+                <input class="input" id="consult-phone" type="tel" name="phone" placeholder="(00) 000-00-00" autocomplete="tel-national">
+              </div>
+              <!-- Пока type="button": отправку подключим на шаге 16 -->
+              <button class="btn consult__submit" type="button">Надіслати</button>
+            </form>
+
+            <div class="consult__messengers">
+              <p class="consult__hint">Або пишіть самостійно у месенджерах</p>
+              <img class="consult__arrow" src="img/common/arrow-curve.svg" width="30" height="15" alt="" loading="lazy">
+              <ul class="consult__icons">
+                <li><a href="viber://add?number=380676392016" aria-label="Viber"><img src="img/common/viber_4.svg" width="30" height="30" alt="" loading="lazy"></a></li>
+                <li><a href="https://t.me/eurodrivers" target="_blank" rel="noopener" aria-label="Telegram"><img src="img/common/telegram_4.svg" width="30" height="30" alt="" loading="lazy"></a></li>
+                <!-- В оригинале здесь другой номер WhatsApp, чем в шапке и подвале (380932993890) — уточнить у владельца -->
+                <li><a href="https://wa.me/380676392016" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="img/common/whatsapp_4.svg" width="30" height="30" alt="" loading="lazy"></a></li>
+              </ul>
+            </div>
+          </div>
+
+          <img class="consult__phone" src="img/common/phone-call.png" width="400" height="803" alt="Телефон із вхідним дзвінком від Eurodrivers" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- Сюда встанут фотогалерея (шаг 13) и FAQ (шаг 14) -->
 
     <!-- «Відгуки»: слайдер скриншотов; на планшете и компьютере текущий отзыв по центру, соседние выглядывают -->
     <section class="reviews" data-slider>
