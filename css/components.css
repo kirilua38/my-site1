@@ -893,3 +893,203 @@ body:has(.modal[open]) {
     padding: 0 30px 24px;
   }
 }
+
+/* ===== Фотогалерея (js/gallery.js) ===== */
+
+/* Как в оригинале, галерея есть только на компьютере; у скрытой секции фото не скачиваются */
+.gallery {
+  display: none;
+}
+
+@media (min-width: 980px) {
+  .gallery {
+    display: block;
+    padding-block: 35px 80px;
+  }
+
+  .gallery__inner {
+    width: min(1060px, 100% - 40px);
+    margin-inline: auto;
+  }
+
+  /* Большие фото: трек с «прилипанием», каждый слайд во всю ширину */
+  .gallery__track {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    list-style: none;
+  }
+
+  .gallery__track::-webkit-scrollbar,
+  .gallery__thumbs-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gallery__slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+  }
+
+  .gallery__zoom {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: zoom-in;
+  }
+
+  /* Фото обёрнуты в <picture>: настоящий файл грузится только с 980px (см. index.html) */
+  .gallery picture {
+    display: block;
+    height: 100%;
+  }
+
+  .gallery__zoom img {
+    width: auto;
+    height: 545px;
+    margin-inline: auto;
+  }
+
+  /* Полоса миниатюр со стрелками по бокам */
+  .gallery__thumbs {
+    position: relative;
+    margin-top: 35px;
+    padding-inline: 7px 8px;
+  }
+
+  .gallery__thumbs-list {
+    display: flex;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    list-style: none;
+  }
+
+  .gallery__thumbs-list > li {
+    flex-shrink: 0;
+  }
+
+  .gallery__thumb {
+    display: block;
+    width: 111px;
+    height: 80px;
+    padding: 0;
+    border: 0;
+    background: none;
+    opacity: 0.55;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .gallery__thumb:hover,
+  .gallery__thumb[aria-current="true"] {
+    opacity: 1;
+  }
+
+  .gallery__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .gallery__arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    background-color: var(--color-primary);
+    color: var(--color-text-on-dark);
+    transform: translateY(-50%);
+  }
+
+  .gallery__arrow--prev {
+    left: -33px;
+  }
+
+  .gallery__arrow--next {
+    right: -32px;
+  }
+
+  /* На первом и последнем фото стрелку в эту сторону прячем */
+  .gallery__arrow:disabled {
+    visibility: hidden;
+  }
+}
+
+/* ===== Окно увеличения фото ===== */
+
+/* <dialog> во весь экран с белым фоном, фото по центру; клик по фону мимо фото закрывает окно */
+.lightbox {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 60px;
+  border: 0;
+  background-color: var(--color-bg);
+}
+
+.lightbox[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox::backdrop {
+  background: transparent;
+}
+
+body:has(.lightbox[open]) {
+  overflow: hidden;
+}
+
+.lightbox__img {
+  width: auto;
+  max-height: 100%;
+}
+
+.lightbox__btn {
+  position: fixed;
+  display: grid;
+  place-items: center;
+  width: 37px;
+  height: 37px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: var(--color-bg-field);
+  color: var(--color-heading);
+  cursor: pointer;
+}
+
+.lightbox__btn svg {
+  width: 50%;
+  height: 50%;
+}
+
+.lightbox__close {
+  top: 13px;
+  right: 13px;
+}
+
+.lightbox__prev,
+.lightbox__next {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightbox__prev {
+  left: 13px;
+}
+
+.lightbox__next {
+  right: 13px;
+}
