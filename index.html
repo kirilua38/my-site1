@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Отримайте код 95 в Україні</title>
   <meta name="description" content="Офіційний транспортний центр. Онлайн та оффлайн навчання. Термін дії: 5 років. Термін виготовлення: 10 р.д.">
+  <link rel="icon" href="img/common/favicon-32x32.png" type="image/png">
+  <!-- Фото первого экрана — фон в CSS, браузер нашёл бы его поздно; грузим заранее, только там, где оно показывается (до 980px) -->
+  <link rel="preload" as="image" href="img/common/hero.webp" type="image/webp" media="(max-width: 979px)" fetchpriority="high">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +28,8 @@
     <div class="header__inner container">
       <a class="header__logo" href="index.html">
         <img class="header__logo-img" src="img/common/logo.png" width="156" height="150" alt="Eurodrivers — школа далекобійників нового покоління">
-        <span class="header__tagline">Eurodrivers — школа далекобійників нового покоління</span>
+        <!-- Подпись повторяет alt логотипа: прячем её от программ экранного чтения, чтобы текст не звучал дважды -->
+        <span class="header__tagline" aria-hidden="true">Eurodrivers — школа далекобійників нового покоління</span>
       </a>
 
       <button class="header__burger" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="header-panel">

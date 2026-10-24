@@ -26,15 +26,13 @@ function initSlider(root) {
     return slideRect.left - trackRect.left - paddingStart;
   }
 
-  // Текущий слайд — тот, что ближе всех к своему месту; в самом конце трека — последний
+  // Текущий слайд — тот, что ближе всех к своему месту; в самом конце трека — последний.
+  // Расстояния считаем один раз на слайд: замеры положения заставляют браузер пересчитывать раскладку
   function currentIndex() {
     const maxScroll = track.scrollWidth - track.clientWidth;
     if (maxScroll > 0 && track.scrollLeft >= maxScroll - 2) return slides.length - 1;
-    let best = 0;
-    slides.forEach((slide, i) => {
-      if (Math.abs(offsetOf(slide)) < Math.abs(offsetOf(slides[best]))) best = i;
-    });
-    return best;
+    const distances = slides.map((slide) => Math.abs(offsetOf(slide)));
+    return distances.indexOf(Math.min(...distances));
   }
 
   function goTo(index) {

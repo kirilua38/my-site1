@@ -64,7 +64,7 @@
   display: block;
   width: 22px;
   height: 2px;
-  border-radius: 2px;
+  border-radius: var(--radius-pill);
   background-color: var(--color-primary);
 }
 
@@ -101,6 +101,7 @@
   max-width: 100%;
   padding: 40px 20px 25px 25px;
   overflow-y: auto;
+  overscroll-behavior: contain;
   background-color: var(--color-bg);
   transform: translateX(100%);
   visibility: hidden;
@@ -166,8 +167,13 @@
   visibility: visible;
 }
 
-/* Пока панель открыта, страница под ней не прокручивается */
-.is-menu-open {
+/*
+  Пока открыта панель меню или любое окно (<dialog>), страница под ними не прокручивается.
+  Блокируем корень <html>, а не <body>: так это работает и в Safari на iPhone (iOS 16+).
+  Класс .is-menu-open на <html> ставит menu.js.
+*/
+html.is-menu-open,
+html:has(dialog[open]) {
   overflow: hidden;
 }
 
@@ -200,6 +206,11 @@
   color: var(--color-primary);
   text-decoration: underline 2px;
   text-underline-offset: 6px;
+}
+
+/* Пункты без страницы (ссылка без href) не должны выглядеть кликабельными */
+a.nav__link:not([href]) {
+  cursor: default;
 }
 
 /* Стрелка у раскрывающегося пункта */
@@ -345,7 +356,7 @@
     color: var(--color-primary);
   }
 
-  /* Выпадающий список: по наведению мыши или по нажатию */
+  /* Выпадающий список: по нажатию, а с мышью — ещё и по наведению (правило ниже) */
   .nav__item-dropdown {
     position: relative;
   }
@@ -361,10 +372,6 @@
     background-color: var(--color-bg);
     box-shadow: var(--shadow-dropdown);
     transform: translateX(-50%);
-  }
-
-  .nav__item-dropdown:hover .nav__sub {
-    display: block;
   }
 
   .nav__sublink {
@@ -403,6 +410,13 @@
   }
 }
 
+/* Наведением список открывается только там, где есть настоящая мышь: на планшете «наведение» залипает после касания */
+@media (min-width: 980px) and (hover: hover) {
+  .nav__item-dropdown:hover .nav__sub {
+    display: block;
+  }
+}
+
 /* ===== Модальное окно ===== */
 
 /*
@@ -418,6 +432,7 @@
   padding: 60px 19px;
   border: 0;
   overflow-y: auto;
+  overscroll-behavior: contain;
   background-color: var(--color-modal-backdrop);
 }
 
@@ -428,11 +443,6 @@
 /* Браузерный фон под окном не нужен: затемняет сам .modal */
 .modal::backdrop {
   background: transparent;
-}
-
-/* Пока окно открыто, страница под ним не прокручивается */
-body:has(.modal[open]) {
-  overflow: hidden;
 }
 
 /* margin: auto центрирует окно, а если оно выше экрана — даёт прокрутить до верха */
@@ -764,7 +774,7 @@ body:has(.modal[open]) {
   height: 8px;
   padding: 0;
   border: 0;
-  border-radius: 5px;
+  border-radius: var(--radius-pill);
   background-color: var(--color-dot);
   cursor: pointer;
   transition: width 0.3s, background-color 0.3s;
@@ -1045,10 +1055,6 @@ body:has(.modal[open]) {
 
 .lightbox::backdrop {
   background: transparent;
-}
-
-body:has(.lightbox[open]) {
-  overflow: hidden;
 }
 
 .lightbox__img {

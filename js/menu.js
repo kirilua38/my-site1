@@ -11,10 +11,24 @@ function initMenu() {
   const toggles = header.querySelectorAll('.nav__toggle');
   const desktop = window.matchMedia('(min-width: 980px)');
 
+  // Пока панель открыта, всё вокруг неё недоступно с клавиатуры и для программ экранного чтения (атрибут inert):
+  // Tab не уйдёт на страницу под затемнением
+  const outside = [
+    header.querySelector('.header__logo'),
+    burger,
+    document.querySelector('main'),
+    document.querySelector('footer'),
+    document.querySelector('.to-top'),
+  ].filter(Boolean);
+
   function setMenuOpen(isOpen) {
     header.classList.toggle('is-open', isOpen);
-    document.body.classList.toggle('is-menu-open', isOpen);
+    // Класс на <html>, а не на <body>: так блокировка прокрутки работает и в Safari на iPhone
+    document.documentElement.classList.toggle('is-menu-open', isOpen);
     burger.setAttribute('aria-expanded', String(isOpen));
+    outside.forEach((element) => {
+      element.inert = isOpen;
+    });
     // Фокус переходит в панель и возвращается на бургер, чтобы с клавиатуры не потеряться
     if (isOpen) {
       closeButton.focus();
