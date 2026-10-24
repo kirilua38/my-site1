@@ -16,6 +16,7 @@
   <script src="js/menu.js" defer></script>
   <script src="js/modal.js" defer></script>
   <script src="js/to-top.js" defer></script>
+  <script src="js/slider.js" defer></script>
 </head>
 <body>
   <!-- Шапка: одинаковая на всех страницах. Правишь здесь — повтори в kod95ukr.html, chipcard.html, contacts.html -->
@@ -102,7 +103,102 @@
       </div>
     </section>
 
-    <!-- Сюда встанет «Напрямки роботи» (шаг 10, пачка D) -->
+    <!-- «Напрямки роботи»: до 980px карточки столбиком, на компьютере — слайдер (js/slider.js) -->
+    <section class="directions" data-slider>
+      <div class="directions__head container">
+        <div>
+          <p class="directions__label">Напрямки роботи</p>
+          <h2 class="directions__title">Чим ми можемо<br> вам допомогти?</h2>
+        </div>
+        <div class="directions__arrows">
+          <button class="slider__arrow directions__arrow" type="button" aria-label="Попередній напрям" data-slider-prev>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="slider__arrow directions__arrow" type="button" aria-label="Наступний напрям" data-slider-next>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <ul class="directions__list slider__track" data-slider-track aria-label="Напрямки роботи">
+        <li class="direction-card">
+          <div class="direction-card__media">
+            <img class="direction-card__img" src="img/home/direction-kod95.webp" width="640" height="406" alt="Код 95" loading="lazy">
+            <span class="direction-card__num">01</span>
+          </div>
+          <div class="direction-card__body">
+            <span class="direction-card__tag">Популярне</span>
+            <h3 class="direction-card__title">Код 95</h3>
+            <p class="direction-card__lead">Акредитований центр</p>
+            <p class="direction-card__text">Акредитований центр згідно наказу МІУ № 789. №1 за відгуками клієнтів. Працюємо по всій території України. Оформлення — за прозорим регламентом.</p>
+            <ul class="direction-card__chips">
+              <li>Найкращі умови</li>
+              <li>Прозорий регламент</li>
+              <li>По всій Україні</li>
+            </ul>
+            <a class="direction-card__link" href="kod95ukr.html">Деталі по "Код 95" <span aria-hidden="true">→</span></a>
+          </div>
+        </li>
+        <li class="direction-card">
+          <div class="direction-card__media">
+            <img class="direction-card__img" src="img/common/team.webp" width="1024" height="1024" alt="Робота водієм CE" loading="lazy">
+            <span class="direction-card__num">02</span>
+          </div>
+          <div class="direction-card__body">
+            <span class="direction-card__tag">Вакансії</span>
+            <h3 class="direction-card__title">Робота водієм CE</h3>
+            <p class="direction-card__lead">Перевірені компанії</p>
+            <p class="direction-card__text">Вакансії в компаніях з бездоганною репутацією. Перевірені особисто. Безкоштовний супровід для наших клієнтів від подачі документів до приїзду.</p>
+            <ul class="direction-card__chips">
+              <li>Безкоштовно</li>
+              <li>Перевірено особисто</li>
+              <li>Від А до Я</li>
+            </ul>
+            <!-- Сторінки «Працевлаштування» в этапе 1 нет: ссылка пока никуда не ведёт -->
+            <a class="direction-card__link">Переглянути вакансії <span aria-hidden="true">→</span></a>
+          </div>
+        </li>
+        <li class="direction-card">
+          <div class="direction-card__media">
+            <img class="direction-card__img" src="img/home/direction-chipcard.webp" width="640" height="410" alt="Картка для цифрового тахографа (Чіп-карта)" loading="lazy">
+            <span class="direction-card__num">03</span>
+          </div>
+          <div class="direction-card__body">
+            <span class="direction-card__tag">Документи</span>
+            <h3 class="direction-card__title">Картка для цифрового тахографа (Чіп-карта)</h3>
+            <p class="direction-card__lead">Відправки по всій Європі</p>
+            <p class="direction-card__text">Подача документів за 30 секунд 24/7 онлайн. Найшвидша процедура оформлення. Картки для цифрових та смарт тахографів.</p>
+            <ul class="direction-card__chips">
+              <li>24/7 онлайн</li>
+              <li>30 секунд</li>
+              <li>Вся Європа</li>
+            </ul>
+            <a class="direction-card__link" href="chipcard.html">Подати документи <span aria-hidden="true">→</span></a>
+          </div>
+        </li>
+        <li class="direction-card">
+          <div class="direction-card__media">
+            <img class="direction-card__img" src="img/home/direction-certification.webp" width="430" height="640" alt="Навчання та сертифікація" loading="lazy">
+            <span class="direction-card__num">04</span>
+          </div>
+          <div class="direction-card__body">
+            <span class="direction-card__tag">Навчання</span>
+            <h3 class="direction-card__title">Навчання та сертифікація</h3>
+            <p class="direction-card__lead">Менеджер (управитель) на автомобільному транспорті</p>
+            <p class="direction-card__text">Домедична підготовка працівників. Контроль за технічним станом колісних транспортних засобів. Безпека дорожнього руху, охорона праці та пожежна безпека.</p>
+            <ul class="direction-card__chips">
+              <li>Передрейсовий огляд</li>
+              <li>Охорона праці</li>
+              <li>Пожежна безпека</li>
+            </ul>
+            <!-- Сторінки «Навчання та сертифікація» в этапе 1 нет: ссылка пока никуда не ведёт -->
+            <a class="direction-card__link">Переглянути умови <span aria-hidden="true">→</span></a>
+          </div>
+        </li>
+      </ul>
+
+      <div class="slider__dots slider__dots--pill directions__dots" data-slider-dots></div>
+    </section>
 
     <section class="rating">
       <div class="rating__inner container">
@@ -124,6 +220,32 @@
           </li>
         </ul>
       </div>
+    </section>
+
+    <!-- Сюда встанут блок консультации (шаг 12), фотогалерея (шаг 13) и FAQ (шаг 14) -->
+
+    <!-- «Відгуки»: слайдер скриншотов; на планшете и компьютере текущий отзыв по центру, соседние выглядывают -->
+    <section class="reviews" data-slider>
+      <h2 class="reviews__title">Відгуки</h2>
+      <div class="reviews__slider">
+        <ul class="reviews__list slider__track" data-slider-track aria-label="Відгуки клієнтів">
+          <li class="reviews__slide"><img src="img/common/review-1.webp" width="1536" height="1024" alt="Скриншот відгуку клієнта, 1 з 8" loading="lazy"></li>
+          <li class="reviews__slide"><img src="img/common/review-2.webp" width="1536" height="1024" alt="Скриншот відгуку клієнта, 2 з 8" loading="lazy"></li>
+          <li class="reviews__slide"><img src="img/common/review-3.webp" width="1536" height="1024" alt="Скриншот відгуку клієнта, 3 з 8" loading="lazy"></li>
+          <li class="reviews__slide"><img src="img/common/review-4.webp" width="1536" height="1024" alt="Скриншот відгуку клієнта, 4 з 8" loading="lazy"></li>
+          <li class="reviews__slide"><img src="img/common/review-5.webp" width="1536" height="1024" alt="Скриншот відгуку клієнта, 5 з 8" loading="lazy"></li>
+          <li class="reviews__slide"><img src="img/common/review-6.webp" width="1536" height="1024" alt="Скриншот відгуку клієнта, 6 з 8" loading="lazy"></li>
+          <li class="reviews__slide"><img src="img/common/review-7.webp" width="1536" height="1024" alt="Скриншот відгуку клієнта, 7 з 8" loading="lazy"></li>
+          <li class="reviews__slide"><img src="img/common/review-8.webp" width="1536" height="1024" alt="Скриншот відгуку клієнта, 8 з 8" loading="lazy"></li>
+        </ul>
+        <button class="slider__arrow reviews__arrow reviews__arrow--prev" type="button" aria-label="Попередній відгук" data-slider-prev>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="slider__arrow reviews__arrow reviews__arrow--next" type="button" aria-label="Наступний відгук" data-slider-next>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="slider__dots reviews__dots" data-slider-dots></div>
     </section>
   </main>
 
@@ -209,7 +331,7 @@
   <dialog class="modal" id="modal-callback" aria-labelledby="modal-callback-title">
     <button class="modal__close" type="button" aria-label="Закрити вікно" data-modal-close></button>
     <div class="modal__window">
-      <img class="modal__img" src="img/common/modal.webp" width="1024" height="1024" alt="" loading="lazy">
+      <img class="modal__img" src="img/common/team.webp" width="1024" height="1024" alt="" loading="lazy">
       <div class="modal__body">
         <h2 class="modal__title" id="modal-callback-title">Ми зателефонуємо вам</h2>
         <form class="modal__form">
@@ -235,7 +357,7 @@
   <dialog class="modal" id="modal-consultation" aria-labelledby="modal-consultation-title">
     <button class="modal__close" type="button" aria-label="Закрити вікно" data-modal-close></button>
     <div class="modal__window">
-      <img class="modal__img" src="img/common/modal.webp" width="1024" height="1024" alt="" loading="lazy">
+      <img class="modal__img" src="img/common/team.webp" width="1024" height="1024" alt="" loading="lazy">
       <div class="modal__body">
         <h2 class="modal__title" id="modal-consultation-title">Отримайте консультацію</h2>
         <form class="modal__form">

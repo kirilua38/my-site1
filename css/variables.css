@@ -29,6 +29,7 @@
   --color-backdrop: rgba(0, 0, 0, 0.4);
   --color-modal-backdrop: rgba(0, 0, 0, 0.6);
   --color-border-light: rgba(49, 97, 193, 0.07);
+  --color-dot: #cbd5e1;
   --color-star: #f0a830;
   --color-facebook: #1877f2;
 
@@ -39,9 +40,12 @@
   /* Радиусы */
   --radius-button: 8px;
   --radius-card: 15px;
+  --radius-large: 28px;
+  --radius-pill: 100px;
 
   /* Тени */
   --shadow-dropdown: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-card: 0 1px 4px rgba(0, 0, 0, 0.03);
 
   /* Сетка */
   --container-width: 1200px;

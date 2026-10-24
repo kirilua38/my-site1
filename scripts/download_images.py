@@ -2,8 +2,9 @@
 Выгрузка картинок с eurodrivers.com.ua (наш сайт на Tilda).
 
 Без флагов — только список: какие картинки на каких страницах и сколько весят.
---download — скачивает оригиналы в img-original/<папка страницы>/ (папка в .gitignore).
---compress — сжимает img-original/ в img/: крупные растровые картинки в WebP, остальное копией.
+--download — скачивает оригиналы в img-original/<папка страницы>/ (папка в .gitignore); уже скачанные пропускает.
+--compress [шаблон ...] — сжимает img-original/ в img/: крупные растровые картинки в WebP, остальное копией.
+    Шаблоны (например "home/Gemini*") ограничивают, какие файлы сжимать; без них — все.
 Картинки, которые есть на нескольких страницах, идут в папку common/.
 
 Запуск из корня проекта:
@@ -32,6 +33,16 @@ ROOT = Path(__file__).resolve().parent.parent
 ORIGINAL_DIR = ROOT / "img-original"
 IMG_DIR = ROOT / "img"
 USER_AGENT = "Mozilla/5.0 (image export for own site)"
+
+# Картинки, которые оригинал берёт не с Tilda, а со стороннего хостинга (блок «Напрямки роботи»)
+EXTRA_IMAGES = {
+    "home": {
+        "https://i.ibb.co/MH8TKhf/Gemini-Generated-Image-5xqt0z5xqt0z5xqt.png",
+        "https://i.ibb.co/rfp4Fqqb/2026-03-25-17-27-18.jpg",
+        "https://i.ibb.co/jvcV19W5/Gemini-Generated-Image-o0cdj8o0cdj8o0cd.png",
+        "https://i.ibb.co/RGrx21yV/image.png",
+    },
+}
 
 RASTER = {".png", ".jpg", ".jpeg", ".webp", ".gif"}
 MAX_WIDTH = 1920
@@ -125,6 +136,8 @@ def target_paths(folder_by_url: dict[str, str]) -> dict[str, Path]:
 
 def list_and_download(download: bool) -> None:
     pages = {folder: collect_page_images(path) for folder, path in PAGES.items()}
+    for folder, urls in EXTRA_IMAGES.items():
+        pages[folder] |= urls
     folder_by_url, sizes = unique_images(pages)
     paths = target_paths(folder_by_url)
 
@@ -142,18 +155,23 @@ def list_and_download(download: bool) -> None:
     print(f"\nВсего: {len(paths)} шт., {total / 1024 / 1024:.1f} МБ")
 
     if download:
+        new = 0
         for url, path in paths.items():
+            if path.exists():
+                continue
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_bytes(fetch(url))
-        print(f"Скачано в {ORIGINAL_DIR}")
+            new += 1
+        print(f"Скачано новых: {new}, в {ORIGINAL_DIR}")
 
 
-def compress_all() -> None:
+def compress_all(patterns: list[str]) -> None:
     """img-original/ → img/: крупные растровые картинки в WebP не шире MAX_WIDTH, остальное копией."""
     from PIL import Image  # нужен только здесь, чтобы список работал и без Pillow
 
     before = after = 0
-    for source in sorted(ORIGINAL_DIR.rglob("*")):
+    sources = sorted({s for p in patterns for s in ORIGINAL_DIR.glob(p)})
+    for source in sources:
         if not source.is_file():
             continue
         target = IMG_DIR / source.relative_to(ORIGINAL_DIR)
@@ -187,11 +205,11 @@ def main() -> None:
     sys.stdout.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--download", action="store_true", help="скачать оригиналы в img-original/")
-    parser.add_argument("--compress", action="store_true", help="сжать img-original/ в img/")
+    parser.add_argument("--compress", nargs="*", metavar="ШАБЛОН", help="сжать img-original/ в img/ (все файлы или по шаблонам)")
     args = parser.parse_args()
 
-    if args.compress:
-        compress_all()
+    if args.compress is not None:
+        compress_all(args.compress or ["**/*"])
     else:
         list_and_download(args.download)
 

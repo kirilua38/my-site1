@@ -717,3 +717,69 @@ body:has(.modal[open]) {
   opacity: 1;
   visibility: visible;
 }
+
+/* ===== Слайдер (js/slider.js) ===== */
+
+/* Трек прокручивается вбок и «прилипает» к слайдам; полосу прокрутки прячем — есть стрелки и точки */
+.slider__track {
+  display: flex;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.slider__track::-webkit-scrollbar {
+  display: none;
+}
+
+.slider__track > * {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+.slider__arrow {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider__arrow svg {
+  width: 50%;
+  height: 50%;
+}
+
+/* Точки: круглые; вариант --pill — активная вытягивается в полоску */
+.slider__dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.slider__dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 5px;
+  background-color: var(--color-dot);
+  cursor: pointer;
+  transition: width 0.3s, background-color 0.3s;
+}
+
+.slider__dot[aria-current="true"] {
+  background-color: var(--color-heading);
+}
+
+.slider__dots--pill .slider__dot {
+  width: 10px;
+  height: 10px;
+}
+
+.slider__dots--pill .slider__dot[aria-current="true"] {
+  width: 48px;
+  background-color: var(--color-primary);
+}
