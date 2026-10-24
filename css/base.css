@@ -133,6 +133,42 @@ h4 {
   background: none;
 }
 
+/* Ошибки и «Дякуємо!» в формах (js/forms.js) */
+
+/* Красная рамка у неверного поля; у телефона — вокруг всей плашки с +380, а не только вокруг цифр */
+.input[aria-invalid="true"],
+.phone-field:has(.input[aria-invalid="true"]) {
+  box-shadow: var(--shadow-error);
+}
+
+.phone-field .input[aria-invalid="true"] {
+  box-shadow: none;
+}
+
+.form-error {
+  margin: 6px 0 0;
+  font-size: 13px;
+  line-height: 1.3;
+  color: var(--color-error);
+}
+
+/* После успешной отправки в форме видно только «Дякуємо!» (класс .is-sent ставит forms.js) */
+.is-sent > :not(.form-success) {
+  display: none;
+}
+
+.form-success {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-heading);
+}
+
+/* Фокус ставит скрипт, чтобы сообщение прочитала программа экранного чтения; это не кнопка, рамка не нужна */
+.form-success:focus {
+  outline: none;
+}
+
 /* Скрыто с экрана, но доступно программам экранного чтения (подписи полей) */
 
 .visually-hidden {

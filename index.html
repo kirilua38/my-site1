@@ -21,6 +21,7 @@
   <script src="js/to-top.js" defer></script>
   <script src="js/slider.js" defer></script>
   <script src="js/gallery.js" defer></script>
+  <script src="js/forms.js" defer></script>
 </head>
 <body>
   <!-- Шапка: одинаковая на всех страницах. Правишь здесь — повтори в kod95ukr.html, chipcard.html, contacts.html -->
@@ -239,20 +240,26 @@
           <div class="consult__main">
             <p class="consult__text">Ознайомтесь з основною інформацією про наші послуги:</p>
 
-            <form class="consult__form">
+            <form class="consult__form" method="post" novalidate data-form>
               <input type="hidden" name="form" value="consultation-block">
               <div class="form-trap" aria-hidden="true">
                 <label>Не заповнюйте це поле <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
               </div>
-              <label class="visually-hidden" for="consult-name">Ім'я</label>
-              <input class="input" id="consult-name" type="text" name="name" placeholder="Ваше ім'я" autocomplete="name">
-              <label class="visually-hidden" for="consult-phone">Телефон</label>
-              <div class="phone-field">
-                <span class="phone-field__prefix">+380</span>
-                <input class="input" id="consult-phone" type="tel" name="phone" placeholder="(00) 000-00-00" autocomplete="tel-national">
+              <div class="form-field">
+                <label class="visually-hidden" for="consult-name">Ім'я</label>
+                <input class="input" id="consult-name" type="text" name="name" placeholder="Ваше ім'я" autocomplete="name" maxlength="50" aria-describedby="consult-name-error">
+                <p class="form-error" id="consult-name-error" hidden></p>
               </div>
-              <!-- Пока type="button": отправку подключим на шаге 16 -->
-              <button class="btn consult__submit" type="button">Надіслати</button>
+              <div class="form-field">
+                <label class="visually-hidden" for="consult-phone">Телефон</label>
+                <div class="phone-field">
+                  <span class="phone-field__prefix">+380</span>
+                  <input class="input" id="consult-phone" type="tel" name="phone" placeholder="(00) 000-00-00" autocomplete="tel-national" required inputmode="numeric" aria-describedby="consult-phone-error">
+                </div>
+                <p class="form-error" id="consult-phone-error" hidden></p>
+              </div>
+              <button class="btn consult__submit" type="submit">Надіслати</button>
+              <p class="form-success" tabindex="-1" hidden>Дякуємо! Чекайте на дзвінок від нашого менеджера протягом робочого дня!</p>
             </form>
 
             <div class="consult__messengers">
@@ -439,7 +446,7 @@
           </ul>
         </div>
 
-        <form class="footer__form">
+        <form class="footer__form" method="post" novalidate data-form>
           <h3 class="footer__label">Передзвонити вам?</h3>
           <input type="hidden" name="form" value="contacts">
           <div class="form-trap" aria-hidden="true">
@@ -449,11 +456,12 @@
             <label class="visually-hidden" for="contacts-phone">Телефон</label>
             <div class="phone-field">
               <span class="phone-field__prefix">+380</span>
-              <input class="input" id="contacts-phone" type="tel" name="phone" placeholder="(00) 000-00-00" autocomplete="tel-national">
+              <input class="input" id="contacts-phone" type="tel" name="phone" placeholder="(00) 000-00-00" autocomplete="tel-national" required inputmode="numeric" aria-describedby="contacts-phone-error">
             </div>
-            <!-- Пока type="button": отправку подключим на шаге 16 -->
-            <button class="btn footer__submit" type="button">Замовити дзвінок</button>
+            <button class="btn footer__submit" type="submit">Замовити дзвінок</button>
           </div>
+          <p class="form-error" id="contacts-phone-error" hidden></p>
+          <p class="form-success" tabindex="-1" hidden>Дякуємо! Чекайте на дзвінок від нашого менеджера протягом робочого дня!</p>
         </form>
       </div>
     </div>
@@ -472,21 +480,27 @@
       <img class="modal__img" src="img/common/team.webp" width="1024" height="1024" alt="" loading="lazy">
       <div class="modal__body">
         <h2 class="modal__title" id="modal-callback-title">Ми зателефонуємо вам</h2>
-        <form class="modal__form">
+        <form class="modal__form" method="post" novalidate data-form>
           <input type="hidden" name="form" value="callback">
           <div class="form-trap" aria-hidden="true">
             <label>Не заповнюйте це поле <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
           </div>
-          <label class="visually-hidden" for="callback-name">Ім'я</label>
-          <input class="input" id="callback-name" type="text" name="name" placeholder="Ім'я" autocomplete="name">
-          <label class="visually-hidden" for="callback-phone">Телефон</label>
-          <div class="phone-field">
-            <span class="phone-field__prefix">+380</span>
-            <input class="input" id="callback-phone" type="tel" name="phone" placeholder="(00) 000-00-00" autocomplete="tel-national">
+          <div class="form-field">
+            <label class="visually-hidden" for="callback-name">Ім'я</label>
+            <input class="input" id="callback-name" type="text" name="name" placeholder="Ім'я" autocomplete="name" maxlength="50" aria-describedby="callback-name-error">
+            <p class="form-error" id="callback-name-error" hidden></p>
           </div>
-          <!-- Пока type="button": отправку подключим на шаге 16 -->
-          <button class="btn modal__submit" type="button">Відправити</button>
+          <div class="form-field">
+            <label class="visually-hidden" for="callback-phone">Телефон</label>
+            <div class="phone-field">
+              <span class="phone-field__prefix">+380</span>
+              <input class="input" id="callback-phone" type="tel" name="phone" placeholder="(00) 000-00-00" autocomplete="tel-national" required inputmode="numeric" aria-describedby="callback-phone-error">
+            </div>
+            <p class="form-error" id="callback-phone-error" hidden></p>
+          </div>
+          <button class="btn modal__submit" type="submit">Відправити</button>
           <p class="modal__note">Натискаючи кнопку ви погоджуєтесь з політикою конфіденційності</p>
+          <p class="form-success" tabindex="-1" hidden>Дякуємо! Чекайте на дзвінок від нашого менеджера протягом робочого дня!</p>
         </form>
       </div>
     </div>
@@ -498,20 +512,27 @@
       <img class="modal__img" src="img/common/team.webp" width="1024" height="1024" alt="" loading="lazy">
       <div class="modal__body">
         <h2 class="modal__title" id="modal-consultation-title">Отримайте консультацію</h2>
-        <form class="modal__form">
+        <form class="modal__form" method="post" novalidate data-form>
           <input type="hidden" name="form" value="consultation">
           <div class="form-trap" aria-hidden="true">
             <label>Не заповнюйте це поле <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
           </div>
-          <label class="visually-hidden" for="consultation-name">Ім'я</label>
-          <input class="input" id="consultation-name" type="text" name="name" placeholder="Ім'я" autocomplete="name">
-          <label class="visually-hidden" for="consultation-phone">Телефон</label>
-          <div class="phone-field">
-            <span class="phone-field__prefix">+380</span>
-            <input class="input" id="consultation-phone" type="tel" name="phone" placeholder="(00) 000-00-00" autocomplete="tel-national">
+          <div class="form-field">
+            <label class="visually-hidden" for="consultation-name">Ім'я</label>
+            <input class="input" id="consultation-name" type="text" name="name" placeholder="Ім'я" autocomplete="name" maxlength="50" aria-describedby="consultation-name-error">
+            <p class="form-error" id="consultation-name-error" hidden></p>
           </div>
-          <button class="btn modal__submit" type="button">Відправити</button>
+          <div class="form-field">
+            <label class="visually-hidden" for="consultation-phone">Телефон</label>
+            <div class="phone-field">
+              <span class="phone-field__prefix">+380</span>
+              <input class="input" id="consultation-phone" type="tel" name="phone" placeholder="(00) 000-00-00" autocomplete="tel-national" required inputmode="numeric" aria-describedby="consultation-phone-error">
+            </div>
+            <p class="form-error" id="consultation-phone-error" hidden></p>
+          </div>
+          <button class="btn modal__submit" type="submit">Відправити</button>
           <p class="modal__note">Натискаючи кнопку ви погоджуєтесь з політикою конфіденційності</p>
+          <p class="form-success" tabindex="-1" hidden>Дякуємо! Чекайте на дзвінок від нашого менеджера протягом робочого дня!</p>
         </form>
       </div>
     </div>
