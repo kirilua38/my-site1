@@ -92,8 +92,111 @@
       <span class="kod-hero__scroll" aria-hidden="true"></span>
     </section>
 
-    <!-- Сюда встанут: «Документи» (шаг 20), «Як це працює» (21), «Чому обирають нас» (22), «В цифрах» и галерея (25),
-         тарифы (23), блок консультации, отзывы и FAQ (25) — в порядке оригинала -->
+    <!-- «Документи»: список документов, образцы и плашка с кнопкой; до 980px всё столбиком -->
+    <section class="docs">
+      <div class="container">
+        <p class="kod-label">Документи</p>
+        <h2 class="kod-title">Список документів</h2>
+        <div class="docs__grid">
+          <div class="docs__card">
+            <p class="docs__eyebrow">Що потрібно</p>
+            <h3 class="docs__card-title">Перелік документів для оформлення Коду 95</h3>
+            <ol class="docs__list">
+              <li>Копія паспорта громадянина України (1, 2 сторінки + прописка).</li>
+              <li>Копія закордонного паспорту (1 стор.).</li>
+              <li>Копія посвідчення водія (з двох сторін).</li>
+              <li>Кольорова фотографія 3.5×4.5 (в електронному вигляді розмір не важливий).</li>
+              <li>Ідентифікаційний код.</li>
+            </ol>
+          </div>
+          <ul class="docs__samples">
+            <li><figure><img src="img/kod95/doc-card-front.webp" width="438" height="278" alt="Кваліфікаційна картка водія — лицьова" loading="lazy"><figcaption>Картка водія — лицьова</figcaption></figure></li>
+            <li><figure><img src="img/kod95/doc-card-back.webp" width="438" height="278" alt="Кваліфікаційна картка водія — зворотна" loading="lazy"><figcaption>Картка водія — зворотна</figcaption></figure></li>
+            <li><figure><img src="img/kod95/doc-certificate-en.webp" width="476" height="686" alt="Свідоцтво — English" loading="lazy"><figcaption>Свідоцтво (EN)</figcaption></figure></li>
+            <li><figure><img src="img/kod95/doc-certificate-ua.webp" width="468" height="668" alt="Свідоцтво — Українська" loading="lazy"><figcaption>Свідоцтво (UA)</figcaption></figure></li>
+          </ul>
+        </div>
+        <div class="docs__cta">
+          <p class="docs__cta-title">Бажаєте отримати Код 95 в Україні?</p>
+          <button class="docs__cta-button" type="button" data-modal-open="consultation">Заповнити заявку 24/7</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- «Як це працює»: три шага на вертикальной линии; на компьютере карточки по очереди слева и справа от неё -->
+    <section class="steps">
+      <div class="container">
+        <p class="kod-label">Як це працює</p>
+        <h2 class="kod-title">Процес подачі документів для запису в групу</h2>
+        <p class="steps__lead">Три простих кроки, щоб розпочати. Ми супроводжуємо вас на кожному етапі.</p>
+        <ol class="steps__list">
+          <li class="step">
+            <div class="step__card">
+              <svg class="step__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              <h3 class="step__title">Зв'яжіться з нами</h3>
+              <p class="step__text">Отримайте консультацію з приводу умов отримання.</p>
+            </div>
+          </li>
+          <li class="step">
+            <div class="step__card">
+              <svg class="step__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>
+              <h3 class="step__title">Надішліть фото або сканкопії документів онлайн або особисто в одному з представництв</h3>
+              <p class="step__text">Згідно переліку надішліть фото на електронну пошту: <a href="mailto:cpc@eurodrivers.com.ua">cpc@eurodrivers.com.ua</a> або в один з месенджерів вказаний на сайті.</p>
+              <ul class="step__messengers">
+                <li><a href="viber://add?number=380676392016"><img src="img/common/viber_4.svg" width="16" height="16" alt="" loading="lazy">Viber</a></li>
+                <li><a href="https://wa.me/380932993890" target="_blank" rel="noopener"><img src="img/common/whatsapp_4.svg" width="16" height="16" alt="" loading="lazy">WhatsApp</a></li>
+                <li><a href="https://t.me/eurodrivers" target="_blank" rel="noopener"><img src="img/common/telegram_4.svg" width="16" height="16" alt="" loading="lazy">Telegram</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="step">
+            <div class="step__card">
+              <svg class="step__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+              <h3 class="step__title">Протягом 3-х робочих годин отримайте підтвердження про зарахування в групу</h3>
+              <p class="step__text">У відповідь отримайте підтвердження про зарахування в групу.</p>
+            </div>
+          </li>
+        </ol>
+        <!-- В оригинале ведёт на страницу заявки /form-code95, её в этапе 1 нет — открываем окно консультации -->
+        <button class="btn steps__cta" type="button" data-modal-open="consultation">Оформити заявку онлайн 24/7 <span aria-hidden="true">→</span></button>
+      </div>
+    </section>
+
+    <!-- «Чому обирають нас»: шесть причин и две карточки; до 980px всё столбиком -->
+    <section class="why">
+      <div class="container">
+        <p class="kod-label">Чому обирають нас</p>
+        <h2 class="kod-title">Нам довіряють — документи професійних водіїв офіційно та безпечно</h2>
+        <div class="why__grid">
+          <ul class="why__list">
+            <li>Працюємо з 2019 року по всій Україні</li>
+            <li>Найбільша кількість виданих документів в Україні</li>
+            <li>Внесення в офіційний реєстр</li>
+            <li>Оплата після отримання</li>
+            <li>Юридичний супровід і консультація</li>
+            <li>Підтримка після отримання</li>
+          </ul>
+          <div class="why__cards">
+            <div class="why-card">
+              <h3 class="why-card__title">Електронний реєстр професійних водіїв</h3>
+              <p class="why-card__text">Усі документи вносяться в офіційний електронний реєстр</p>
+            </div>
+            <div class="why-card">
+              <h3 class="why-card__title">Найвищий рейтинг</h3>
+              <ul class="why-card__ratings">
+                <li><span class="why-card__score">5/5</span> Google <span class="stars" role="img" aria-label="5 з 5 зірок"></span></li>
+                <li><span class="why-card__score">5/5</span> Facebook <span class="stars" role="img" aria-label="5 з 5 зірок"></span></li>
+              </ul>
+              <p class="why-card__text">Ми рекомендуємо перевіряти навчальні центри на предмет наявності акредитації для відповідних курсів, з нами ви можете зробити це безкоштовно</p>
+              <!-- Сторінки перевірки навчального центру в этапе 1 нет: ссылка пока никуда не ведёт -->
+              <a class="why-card__link">Перевірити навчальний центр <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Сюда встанут: «В цифрах» и галерея (шаг 25), тарифы (23), блок консультации, отзывы и FAQ (25) — в порядке оригинала -->
   </main>
 
   <!-- Подвал: одинаковый на всех страницах (index.html, kod95ukr.html, chipcard.html, contacts.html). Правишь в одной — повтори во всех -->

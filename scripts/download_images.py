@@ -34,13 +34,21 @@ ORIGINAL_DIR = ROOT / "img-original"
 IMG_DIR = ROOT / "img"
 USER_AGENT = "Mozilla/5.0 (image export for own site)"
 
-# Картинки, которые оригинал берёт не с Tilda, а со стороннего хостинга (блок «Напрямки роботи»)
+# Картинки, которые оригинал берёт не с Tilda, а со стороннего хостинга
 EXTRA_IMAGES = {
+    # «Напрямки роботи» на главной
     "home": {
         "https://i.ibb.co/MH8TKhf/Gemini-Generated-Image-5xqt0z5xqt0z5xqt.png",
         "https://i.ibb.co/rfp4Fqqb/2026-03-25-17-27-18.jpg",
         "https://i.ibb.co/jvcV19W5/Gemini-Generated-Image-o0cdj8o0cdj8o0cd.png",
         "https://i.ibb.co/RGrx21yV/image.png",
+    },
+    # Образцы документов в блоке «Документи» на «Код 95»
+    "kod95": {
+        "https://i.ibb.co/TxbBgsxZ/Euro-Drivers-png.webp",
+        "https://i.ibb.co/L3QgJtr/Euro-Drivers-1-png.webp",
+        "https://i.ibb.co/xthdCTzq/Screenshot-5-png.webp",
+        "https://i.ibb.co/S4Gp2yGQ/Screenshot-1.webp",
     },
 }
 

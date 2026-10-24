@@ -340,14 +340,9 @@
   color: var(--color-heading);
 }
 
-/* Пять звёзд: картинка звезды служит маской (трафаретом), цвет берётся из переменной */
+/* Сами звёзды рисует общий класс .stars (components.css), здесь только их место в карточке */
 .rating-card__stars {
-  width: 90px;
-  height: 16px;
   margin-left: auto;
-  background-color: var(--color-star);
-  -webkit-mask: url("../img/icons/star.svg") left center / 18px 16px repeat-x;
-  mask: url("../img/icons/star.svg") left center / 18px 16px repeat-x;
 }
 
 /* Компьютер: текст слева, справа две квадратные карточки */

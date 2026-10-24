@@ -800,6 +800,20 @@ a.nav__link:not([href]) {
   background-color: var(--color-primary);
 }
 
+/* ===== Пять звёзд рейтинга (главная, «Код 95») ===== */
+
+/* Картинка звезды служит маской (трафаретом) и повторяется вбок, цвет берётся из переменной */
+/* flex-shrink: 0 — в тесной карточке браузер не сплющит пустую полоску звёзд, ужимая содержимое */
+.stars {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 90px;
+  height: 16px;
+  background-color: var(--color-star);
+  -webkit-mask: url("../img/icons/star.svg") left center / 18px 16px repeat-x;
+  mask: url("../img/icons/star.svg") left center / 18px 16px repeat-x;
+}
+
 /* ===== FAQ: вопросы-ответы на <details> (главная, «Код 95») ===== */
 
 /* interpolate-size разрешает плавно менять высоту до auto — нужно для анимации раскрытия */
