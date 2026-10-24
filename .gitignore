@@ -5,6 +5,9 @@
 server/config.*
 !server/config.example.*
 
+# Оригиналы картинок до сжатия (скачивает scripts/download_images.py)
+img-original/
+
 # Python
 __pycache__/
 

@@ -1,0 +1,35 @@
+/*
+  Переменные дизайна. На этапе 2 (ребрендинг) меняем значения здесь, имена остаются.
+  Имена — по роли (primary, heading), а не по цвету (blue, black).
+
+  Точки перелома. В @media переменные не работают, поэтому пишем числами, одинаково на всех страницах:
+  телефон — базовые стили без @media;
+  планшет — @media (min-width: 640px);
+  компьютер — @media (min-width: 980px).
+*/
+
+:root {
+  /* Цвета */
+  --color-primary: #254995;
+  --color-accent: #3f93ff;
+  --gradient-primary: linear-gradient(90deg, var(--color-accent) 0%, var(--color-primary) 100%);
+  --color-heading: #242424;
+  --color-text: #363636;
+  --color-text-on-dark: #ffffff;
+  --color-text-muted-on-dark: #d6d6d6;
+  --color-bg: #ffffff;
+  --color-bg-light: #f7f7f9;
+  --color-overlay: rgba(0, 15, 46, 0.9);
+
+  /* Шрифты */
+  --font-main: "Manrope", Arial, sans-serif;
+  --font-alt: "DM Sans", Arial, sans-serif;
+
+  /* Радиусы */
+  --radius-button: 8px;
+  --radius-card: 15px;
+
+  /* Сетка */
+  --container-width: 1200px;
+  --container-padding: 20px;
+}
