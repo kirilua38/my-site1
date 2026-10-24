@@ -523,3 +523,197 @@ body:has(.modal[open]) {
     height: 60px;
   }
 }
+
+/* ===== Подвал: «Зв'яжіться з нами» ===== */
+
+/* Телефон: одна колонка в порядке HTML */
+
+.footer {
+  padding-block: 50px 80px;
+  background-color: var(--color-bg);
+}
+
+.footer__title {
+  margin-bottom: 25px;
+  font-size: 32px;
+  text-align: center;
+}
+
+.footer__grid {
+  display: grid;
+  gap: 20px;
+}
+
+.footer__label {
+  margin-bottom: 6px;
+  font-size: 20px;
+  line-height: 1.55;
+}
+
+.footer__text,
+.footer__list {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 25px;
+}
+
+.footer__list,
+.footer__icons,
+.footer__phones {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer__text a,
+.footer__phones a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer__icons {
+  display: flex;
+  gap: 10px;
+}
+
+.footer__icons img {
+  width: 30px;
+  height: 30px;
+}
+
+/* Мессенджеры — круглые, соцсети — квадратные, как в оригинале */
+.footer__icons--round img {
+  border-radius: 50%;
+}
+
+.footer__phones {
+  display: grid;
+  gap: 8px;
+  font-size: 18px;
+}
+
+.footer__phones li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer__phones img {
+  width: 20px;
+}
+
+.footer__form {
+  margin-top: 20px;
+}
+
+.footer__form-row {
+  display: grid;
+  gap: 12px;
+}
+
+.footer .phone-field {
+  background-color: var(--color-bg-field);
+}
+
+.footer .input {
+  height: 50px;
+}
+
+.footer__submit {
+  min-height: 50px;
+  font-size: 18px;
+}
+
+/* Планшет: две колонки, форма во всю ширину */
+
+@media (min-width: 640px) {
+  .footer__title {
+    margin-bottom: 30px;
+    font-size: 40px;
+  }
+
+  .footer__grid {
+    max-width: 500px;
+    margin-inline: auto;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "address schedule"
+      "messengers social"
+      "email phones"
+      "form form";
+    column-gap: 30px;
+  }
+
+  .footer__group--address { grid-area: address; }
+  .footer__group--schedule { grid-area: schedule; }
+  .footer__group--email { grid-area: email; }
+  .footer__group--phones { grid-area: phones; }
+  .footer__group--messengers { grid-area: messengers; }
+  .footer__group--social { grid-area: social; }
+
+  .footer__form {
+    grid-area: form;
+    margin-top: 0;
+  }
+
+  .footer__phones {
+    gap: 10px;
+    font-size: 14px;
+  }
+
+  .footer__form-row {
+    grid-template-columns: 1fr 260px;
+    gap: 10px;
+  }
+}
+
+/* Компьютер: четыре колонки сверху, мессенджеры, соцсети и форма снизу */
+
+@media (min-width: 980px) {
+  .footer {
+    padding-block: 65px 70px;
+  }
+
+  .footer__title {
+    margin-bottom: 45px;
+    font-size: 48px;
+  }
+
+  .footer__grid {
+    max-width: 1040px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      "address schedule email phones"
+      "messengers social form form";
+    column-gap: 0;
+    row-gap: 8px;
+  }
+}
+
+/* ===== Кнопка «наверх» ===== */
+
+/* Спрятана, пока страницу не прокрутили на экран вниз; класс .is-visible ставит to-top.js */
+.to-top {
+  position: fixed;
+  left: 60px;
+  bottom: 30px;
+  z-index: 15;
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: var(--color-text-on-dark);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
