@@ -30,6 +30,7 @@
   --color-backdrop: rgba(0, 0, 0, 0.4);
   --color-modal-backdrop: rgba(0, 0, 0, 0.6);
   --color-border-light: rgba(49, 97, 193, 0.07);
+  --color-border: #e0e6ed;
   --color-dot: #cbd5e1;
   --color-star: #f0a830;
   --color-highlight: #ffb200;
@@ -49,6 +50,7 @@
   /* Тени */
   --shadow-dropdown: 0 8px 24px rgba(0, 0, 0, 0.12);
   --shadow-card: 0 1px 4px rgba(0, 0, 0, 0.03);
+  --shadow-raised: 0 15px 30px -10px rgba(0, 11, 48, 0.2);
   --shadow-error: inset 0 0 0 2px var(--color-error);
 
   /* Сетка */
