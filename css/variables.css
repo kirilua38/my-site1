@@ -41,6 +41,11 @@
   --color-whatsapp: #27d061;
   --color-viber: #7360f2;
   --color-chat-button: #0088cc;
+  /* Свой цвет у каждого направления в «Напрямки роботи» на главной: метка, подзаголовок, номер, точка слайдера */
+  --color-direction-kod95: #2563eb;
+  --color-direction-jobs: #f59e0b;
+  --color-direction-chipcard: #10b981;
+  --color-direction-training: #8b5cf6;
 
   /* Шрифты */
   --font-main: "Manrope", Arial, sans-serif;
