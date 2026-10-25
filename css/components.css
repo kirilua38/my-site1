@@ -824,6 +824,14 @@ a.nav__link:not([href]) {
   mask: url("../img/icons/star.svg") left center / 18px 16px repeat-x;
 }
 
+/* Мелкие звёзды (плашки Google и Facebook в «Чому обирають нас» на «Код 95») */
+.stars--small {
+  width: 65px;
+  height: 12px;
+  -webkit-mask-size: 13px 12px;
+  mask-size: 13px 12px;
+}
+
 /* ===== FAQ: вопросы-ответы на <details> (главная, «Код 95», «Чип-карта») ===== */
 
 /* interpolate-size разрешает плавно менять высоту до auto — нужно для анимации раскрытия */

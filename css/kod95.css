@@ -374,43 +374,64 @@
 
 /* ===== «Чому обирають нас» ===== */
 
-/* Телефон: причины строками, под ними две карточки */
+/* Телефон и планшет: причины списком с тонкими линиями, под ними две карточки — реестр и рейтинг */
 .why {
-  padding-block: 60px;
+  padding-block: 48px 60px;
+}
+
+.why .section-title {
+  margin-bottom: 50px;
 }
 
 .why__grid {
   display: grid;
-  gap: 28px;
+  gap: 36px;
 }
 
 .why__list {
-  display: grid;
-  gap: 12px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .why__list li {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 16px 18px;
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-card);
-  background-color: var(--color-bg-light);
-  font-size: 16px;
+  gap: 12px;
+  padding-block: 14px;
+  border-bottom: 1px solid var(--color-border-light);
+  font-size: 14px;
   font-weight: 600;
+  line-height: 1.4;
   color: var(--color-heading);
 }
 
+.why__list li:last-child {
+  border-bottom: 0;
+}
+
+/* Галочка: голубой кружок, поверх него синяя галочка-трафарет */
 .why__list li::before {
   content: "";
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-  background: url("../img/common/check.svg") center / contain no-repeat;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--color-bg-accent);
+}
+
+.why__list li::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  width: 16px;
+  height: 16px;
+  background-color: var(--color-primary);
+  transform: translateY(-50%);
+  -webkit-mask: url("../img/icons/check.svg") center / contain no-repeat;
+  mask: url("../img/icons/check.svg") center / contain no-repeat;
 }
 
 .why__cards {
@@ -419,72 +440,213 @@
 }
 
 .why-card {
-  padding: 26px 24px;
+  padding: 24px 20px;
   border: 1px solid var(--color-border-light);
   border-radius: var(--radius-card);
   background-color: var(--color-bg-light);
 }
 
+/* Реестр: значок с тризубом (картинка-трафарет, как на плашках «Акредитовано»); на телефоне всё по центру столбиком */
+.why-card--registry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.why-card__badge {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  margin: 3px;
+  background-color: var(--color-heading);
+  -webkit-mask: url("../img/icons/accredited.svg") center / contain no-repeat;
+  mask: url("../img/icons/accredited.svg") center / contain no-repeat;
+}
+
 .why-card__title {
-  margin-bottom: 6px;
-  font-size: 17px;
+  margin-bottom: 4px;
+  font-size: 16px;
+  line-height: 1.35;
 }
 
 .why-card__text {
-  font-size: 14px;
+  font-size: 13.5px;
   line-height: 1.55;
   color: var(--color-text-muted);
 }
 
+/* Рейтинг: заголовок и звёзды в строку, под ними плашки Google и Facebook */
+.why-card__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.why-card__top .why-card__title {
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
 .why-card__ratings {
   display: flex;
-  gap: 40px;
-  margin: 18px 0;
+  gap: 10px;
+  margin: 0 0 18px;
   padding: 0;
   list-style: none;
 }
 
-/* Оценка и название в строку, звёзды под ними */
 .why-card__ratings li {
-  display: grid;
-  grid-template-columns: auto auto;
-  align-items: baseline;
-  column-gap: 8px;
-  font-size: 14px;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-button);
+  background-color: var(--color-bg);
+}
+
+.why-card__score {
+  font-size: 18px;
   font-weight: 700;
   color: var(--color-heading);
 }
 
-.why-card__score {
-  font-size: 22px;
+/* Название площадки, под ним мелкие звёзды */
+.why-card__brand {
+  display: grid;
+  gap: 2px;
+  font-size: 13px;
   font-weight: 700;
+  color: var(--color-text-muted);
 }
 
-.why-card__ratings .stars {
-  grid-column: 1 / -1;
-  margin-top: 6px;
-}
-
-.why-card__link {
-  display: inline-block;
-  margin-top: 14px;
+/* Кнопка-ссылка: градиент общих кнопок, на телефоне во всю ширину */
+.why-card__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 14px 24px;
+  border-radius: var(--radius-button);
+  background-image: var(--gradient-primary);
+  box-shadow: var(--shadow-button);
+  font-size: 14px;
   font-weight: 700;
-  color: var(--color-primary);
+  color: var(--color-text-on-dark);
   text-decoration: none;
 }
 
-/* Компьютер: причины слева, карточки справа */
+.why-card__button svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Планшет: крупнее, у реестра значок слева, карточки не шире 540px */
+@media (min-width: 640px) {
+  .why {
+    padding-block: 56px 72px;
+  }
+
+  .why .section-title {
+    margin-bottom: 66px;
+  }
+
+  .why__list li {
+    gap: 16px;
+    padding-block: 18px;
+    font-size: 15.5px;
+  }
+
+  .why__list li::before {
+    width: 36px;
+    height: 36px;
+  }
+
+  .why__list li::after {
+    left: 9px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .why__cards {
+    max-width: 540px;
+  }
+
+  .why-card {
+    padding: 28px;
+  }
+
+  .why-card--registry {
+    flex-direction: row;
+    gap: 20px;
+    text-align: left;
+  }
+
+  .why-card__badge {
+    width: 64px;
+    height: 64px;
+    margin: 4px;
+  }
+
+  .why-card__title {
+    font-size: 17px;
+  }
+
+  .why-card__top .why-card__title {
+    font-size: 15px;
+  }
+
+  .why-card__ratings {
+    gap: 24px;
+  }
+
+  .why-card__ratings li {
+    flex: none;
+    padding: 8px 16px;
+  }
+
+  .why-card__score {
+    font-size: 22px;
+  }
+
+  .why-card__brand {
+    font-size: 14px;
+  }
+
+  .why-card__text {
+    font-size: 14px;
+  }
+
+  .why-card__button {
+    display: inline-flex;
+    padding: 14px 28px;
+    font-size: 14.5px;
+  }
+}
+
+/* Компьютер: причины слева, карточки справа, колонки поровну */
 @media (min-width: 980px) {
   .why {
-    padding-block: 85px 90px;
+    padding-block: 80px 88px;
   }
 
   .why__grid {
-    grid-template-columns: 1fr 554px;
+    grid-template-columns: 1fr 1fr;
     align-items: start;
-    gap: 40px;
+    gap: 32px;
     max-width: 1140px;
     margin-inline: auto;
+  }
+
+  .why__cards {
+    max-width: none;
   }
 }
 
