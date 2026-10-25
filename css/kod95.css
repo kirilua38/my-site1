@@ -912,6 +912,11 @@
   overscroll-behavior: contain;
 }
 
+/* Пока окно на весь экран открыто, страница под ним не прокручивается — как под меню и модальными окнами (components.css) */
+html:has(.chat__popup:popover-open) {
+  overflow: hidden;
+}
+
 .chat__popup::before {
   content: "";
   display: block;
@@ -1022,6 +1027,11 @@
     box-shadow: var(--shadow-float);
   }
 
+  /* Окошко маленькое — страница под ним прокручивается. С модальным окном не пересекается: оно закрывает popover */
+  html:has(.chat__popup:popover-open) {
+    overflow: visible;
+  }
+
   .chat__popup::before,
   .chat__close {
     display: none;
@@ -1118,6 +1128,25 @@
   margin-top: 26px;
 }
 
+/* Галереи: серый фон, как у «В цифрах» над ними; у мобильной свои отступы */
+.gallery,
+.gallery-mobile {
+  background-color: var(--color-bg-light);
+}
+
+.gallery-mobile {
+  padding-block: 15px 86px;
+}
+
+/* FAQ: заголовок дальше от вопросов и больше места снизу, чем на главной */
+.faq {
+  padding-block: 44px 90px;
+}
+
+.faq__title {
+  margin-bottom: 42px;
+}
+
 @media (min-width: 640px) {
   .stats {
     padding-bottom: 112px;
@@ -1176,8 +1205,18 @@
     padding-inline: calc(50% - 320px);
   }
 
+  /* min(): на окне 640–655px с полосой прокрутки слайд не шире трека */
   .reviews__slide {
-    width: 640px;
+    width: min(640px, 100%);
+  }
+
+  /* В оригинале на планшете между заголовком и вопросами почти 100px — так он и выглядит */
+  .faq {
+    padding-top: 48px;
+  }
+
+  .faq__title {
+    margin-bottom: 98px;
   }
 }
 
@@ -1239,5 +1278,15 @@
 
   .reviews__arrow--next {
     right: calc(50% - 500px);
+  }
+
+  /* Заголовок FAQ на компьютере 42px, как в оригинале (на главной 48px) */
+  .faq {
+    padding-block: 38px 90px;
+  }
+
+  .faq__title {
+    margin-bottom: 81px;
+    font-size: 42px;
   }
 }

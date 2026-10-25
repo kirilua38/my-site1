@@ -20,6 +20,7 @@
   <script src="js/modal.js" defer></script>
   <script src="js/to-top.js" defer></script>
   <script src="js/slider.js" defer></script>
+  <script src="js/gallery.js" defer></script>
   <script src="js/forms.js" defer></script>
 </head>
 <body>
@@ -209,7 +210,69 @@
       </div>
     </section>
 
-    <!-- Сюда встанет мобильная галерея (пачка 25б) — в порядке оригинала -->
+    <!-- Фотогалерея — как на главной, на сером фоне (css/kod95.css). Для компьютера (с 980px), как в оригинале; до 980px вместо неё мобильная, ниже. Листание и миниатюры — js/slider.js (без листания по кругу), клик по фото — увеличение (js/gallery.js) -->
+    <section class="gallery" data-gallery data-slider data-slider-loop="false" aria-label="Фотогалерея">
+      <div class="gallery__inner">
+        <ul class="gallery__track slider__track" data-slider-track aria-label="Фото EuroDrivers">
+          <li class="gallery__slide"><button class="gallery__zoom" type="button" aria-label="Збільшити фото 1 з 10"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-1.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="Фото EuroDrivers, 1 з 10" loading="lazy"></picture></button></li>
+          <li class="gallery__slide"><button class="gallery__zoom" type="button" aria-label="Збільшити фото 2 з 10"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-2.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="Фото EuroDrivers, 2 з 10" loading="lazy"></picture></button></li>
+          <li class="gallery__slide"><button class="gallery__zoom" type="button" aria-label="Збільшити фото 3 з 10"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-3.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="Фото EuroDrivers, 3 з 10" loading="lazy"></picture></button></li>
+          <li class="gallery__slide"><button class="gallery__zoom" type="button" aria-label="Збільшити фото 4 з 10"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-4.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="Фото EuroDrivers, 4 з 10" loading="lazy"></picture></button></li>
+          <li class="gallery__slide"><button class="gallery__zoom" type="button" aria-label="Збільшити фото 5 з 10"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-5.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="Фото EuroDrivers, 5 з 10" loading="lazy"></picture></button></li>
+          <li class="gallery__slide"><button class="gallery__zoom" type="button" aria-label="Збільшити фото 6 з 10"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-6.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="Фото EuroDrivers, 6 з 10" loading="lazy"></picture></button></li>
+          <li class="gallery__slide"><button class="gallery__zoom" type="button" aria-label="Збільшити фото 7 з 10"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-7.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="Фото EuroDrivers, 7 з 10" loading="lazy"></picture></button></li>
+          <li class="gallery__slide"><button class="gallery__zoom" type="button" aria-label="Збільшити фото 8 з 10"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-8.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="Фото EuroDrivers, 8 з 10" loading="lazy"></picture></button></li>
+          <li class="gallery__slide"><button class="gallery__zoom" type="button" aria-label="Збільшити фото 9 з 10"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-9.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="Фото EuroDrivers, 9 з 10" loading="lazy"></picture></button></li>
+          <li class="gallery__slide"><button class="gallery__zoom" type="button" aria-label="Збільшити фото 10 з 10"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-10.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="Фото EuroDrivers, 10 з 10" loading="lazy"></picture></button></li>
+        </ul>
+        <div class="gallery__thumbs">
+          <button class="slider__arrow gallery__arrow gallery__arrow--prev" type="button" aria-label="Попереднє фото" data-slider-prev>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="gallery__thumbs-list" data-slider-dots>
+            <li><button class="gallery__thumb" type="button" aria-label="Показати фото 1"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-1.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="" loading="lazy"></picture></button></li>
+            <li><button class="gallery__thumb" type="button" aria-label="Показати фото 2"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-2.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="" loading="lazy"></picture></button></li>
+            <li><button class="gallery__thumb" type="button" aria-label="Показати фото 3"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-3.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="" loading="lazy"></picture></button></li>
+            <li><button class="gallery__thumb" type="button" aria-label="Показати фото 4"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-4.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="" loading="lazy"></picture></button></li>
+            <li><button class="gallery__thumb" type="button" aria-label="Показати фото 5"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-5.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="" loading="lazy"></picture></button></li>
+            <li><button class="gallery__thumb" type="button" aria-label="Показати фото 6"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-6.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="" loading="lazy"></picture></button></li>
+            <li><button class="gallery__thumb" type="button" aria-label="Показати фото 7"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-7.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="" loading="lazy"></picture></button></li>
+            <li><button class="gallery__thumb" type="button" aria-label="Показати фото 8"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-8.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="" loading="lazy"></picture></button></li>
+            <li><button class="gallery__thumb" type="button" aria-label="Показати фото 9"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-9.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="" loading="lazy"></picture></button></li>
+            <li><button class="gallery__thumb" type="button" aria-label="Показати фото 10"><picture><source media="(min-width: 980px)" srcset="img/common/gallery-10.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="" loading="lazy"></picture></button></li>
+          </ul>
+          <button class="slider__arrow gallery__arrow gallery__arrow--next" type="button" aria-label="Наступне фото" data-slider-next>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Мобильная фотогалерея — как на главной, на сером фоне и со своими отступами (css/kod95.css): до 980px вместо галереи выше, как в оригинале — фото со стрелками и точками, без миниатюр и увеличения. Листание по кругу — js/slider.js.
+         Настоящие фото только до 980px (<picture>, условие — точная противоположность @media (min-width: 980px)), на компьютере скрытая секция их не скачивает -->
+    <section class="gallery-mobile" data-slider aria-label="Фотогалерея">
+      <div class="gallery-mobile__slider">
+        <ul class="gallery-mobile__track slider__track" data-slider-track aria-label="Фото EuroDrivers">
+          <li class="gallery-mobile__slide"><picture><source media="not all and (min-width: 980px)" srcset="img/common/gallery-1.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="Фото EuroDrivers, 1 з 10" loading="lazy"></picture></li>
+          <li class="gallery-mobile__slide"><picture><source media="not all and (min-width: 980px)" srcset="img/common/gallery-2.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="Фото EuroDrivers, 2 з 10" loading="lazy"></picture></li>
+          <li class="gallery-mobile__slide"><picture><source media="not all and (min-width: 980px)" srcset="img/common/gallery-3.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="Фото EuroDrivers, 3 з 10" loading="lazy"></picture></li>
+          <li class="gallery-mobile__slide"><picture><source media="not all and (min-width: 980px)" srcset="img/common/gallery-4.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="Фото EuroDrivers, 4 з 10" loading="lazy"></picture></li>
+          <li class="gallery-mobile__slide"><picture><source media="not all and (min-width: 980px)" srcset="img/common/gallery-5.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="Фото EuroDrivers, 5 з 10" loading="lazy"></picture></li>
+          <li class="gallery-mobile__slide"><picture><source media="not all and (min-width: 980px)" srcset="img/common/gallery-6.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="Фото EuroDrivers, 6 з 10" loading="lazy"></picture></li>
+          <li class="gallery-mobile__slide"><picture><source media="not all and (min-width: 980px)" srcset="img/common/gallery-7.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="Фото EuroDrivers, 7 з 10" loading="lazy"></picture></li>
+          <li class="gallery-mobile__slide"><picture><source media="not all and (min-width: 980px)" srcset="img/common/gallery-8.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="Фото EuroDrivers, 8 з 10" loading="lazy"></picture></li>
+          <li class="gallery-mobile__slide"><picture><source media="not all and (min-width: 980px)" srcset="img/common/gallery-9.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="Фото EuroDrivers, 9 з 10" loading="lazy"></picture></li>
+          <li class="gallery-mobile__slide"><picture><source media="not all and (min-width: 980px)" srcset="img/common/gallery-10.webp"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1067" height="771" alt="Фото EuroDrivers, 10 з 10" loading="lazy"></picture></li>
+        </ul>
+        <button class="slider__arrow gallery-mobile__arrow gallery-mobile__arrow--prev" type="button" aria-label="Попереднє фото" data-slider-prev>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="slider__arrow gallery-mobile__arrow gallery-mobile__arrow--next" type="button" aria-label="Наступне фото" data-slider-next>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="slider__dots gallery-mobile__dots" data-slider-dots></div>
+    </section>
 
     <!-- «Тарифи»: три курса; до 980px карточки столбиком, на компьютере в ряд -->
     <section class="tariffs">
@@ -327,7 +390,81 @@
       <div class="slider__dots reviews__dots" data-slider-dots></div>
     </section>
 
-    <!-- Сюда встанет свой FAQ «Код 95» (пачка 25б) -->
+    <!-- FAQ «Код 95» — свои вопросы, вид как на главной (components.css), отступы — в конце css/kod95.css.
+         <details> работают без JS, с клавиатуры и в программах экранного чтения -->
+    <section class="faq">
+      <div class="container">
+        <h2 class="faq__title">Відповіді на поширені запитання</h2>
+        <div class="faq__list">
+          <details class="faq__item">
+            <summary class="faq__question">Яка вартість та терміни?</summary>
+            <div class="faq__answer">
+              <p>Відповідно до вашого стажу та дати відкриття категорії, передбачено три формати підготовки:</p>
+              <ul>
+                <li><strong>Періодичний курс (5 днів) — 4900 грн.</strong> Призначений для водіїв, які відкрили категорію «C» до 02.03.2021 року або мають чинний сертифікат, термін дії якого закінчується. Це періодичне навчання для підтвердження кваліфікації.</li>
+                <li><strong>Початково-скорочений курс (18 днів) — 8000 грн.</strong> Розрахований на водіїв, які мають відкриту категорію «C» не менше ніж 3 роки, але отримують Свідоцтво вперше.</li>
+                <li><strong>Початковий курс (35 днів) — 9000 грн.</strong> Обов’язковий для водіїв зі стажем за категорією «C» до 3-х років. Передбачає повний цикл теоретичної та практичної підготовки.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary class="faq__question">Як перевірити чи офіційний Код 95?</summary>
+            <div class="faq__answer">
+              <ul>
+                <li>Кожне Свідоцтво, видане нашим центром, внесено до <strong>Електронного реєстру професійних водіїв</strong>. На документі розміщено індивідуальний QR-код. При його скануванні автоматично відкривається персональна сторінка водія в державному реєстрі, що підтверджує легітимність Коду 95 перед контролюючими органами (Укртрансбезпека, транспортна поліція ЄС).</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary class="faq__question">Як розпочати оформлення?</summary>
+            <div class="faq__answer">
+              <p>Для початку опрацювання ваших даних та реєстрації в групі достатньо надіслати фото або скан-копії документів (Viber/Email). Орієнтовний час перевірки документів у системі — до 3-х годин.<br><strong>Необхідний перелік документів:</strong></p>
+              <ul>
+                <li>Копія паспорта (або ID-картки з витягом).</li>
+                <li>Ідентифікаційний код (РНОКПП).</li>
+                <li>Посвідчення водія з відповідною категорією.</li>
+                <li>Закордонний паспорт (для коректної транслітерації даних у Свідоцтві).</li>
+                <li>Фото</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary class="faq__question">Чим регламентується контроль наявності у водіїв Код 95?</summary>
+            <div class="faq__answer">
+              <ul>
+                <!-- В оригинале ссылка ведёт на Наказ №789 (тот же адрес, что в следующем вопросе), а не на текст Хартії — уточнить у владельца -->
+                <li><a href="https://zakon.rada.gov.ua/laws/show/z0198-21#Text" target="_blank" rel="noopener">Хартія Якості міжнародних автомобільних вантажних перевезень в системі багатосторонньої квоти ЄКМТ (Текст Хартії Якості прийнято Міністрами Транспорту європейських країн членів Міжнародного транспортного форуму (засідання Міністрів 28 травня 2015 р. Лейпциг, Німеччина))</a></li>
+                <li><a href="https://zakon.rada.gov.ua/laws/show/984_001-22#Text" target="_blank" rel="noopener">Угода між Україною та Європейським Союзом про вантажні перевезення автомобільним транспортом (затверджена Указом Президента № 654/2022 від 16.09.2022)</a></li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary class="faq__question">Чим регламентується формат навчання та вигляд картки і свідоцтва Код 95?</summary>
+            <div class="faq__answer">
+              <ul>
+                <li><a href="https://zakon.rada.gov.ua/laws/show/z0198-21#Text" target="_blank" rel="noopener">Наказ Міністерства інфраструктури України №789 від 18.11.2020 р. "Про затвердження Порядку підтвердження професійної компетентності водіїв транспортних засобів для надання послуг з перевезення пасажирів і вантажів"</a></li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary class="faq__question">Кому саме потрібен Код 95 згідно з Наказом №789?</summary>
+            <div class="faq__answer">
+              <p>Сертифікат є обов’язковим для водіїв, які виконують міжнародні перевезення за багаторазовими дозволами ЄКМТ або здійснюють двосторонні та транзитні рейси без дозволів («транспортний безвіз»). Це стосується водіїв транспортних засобів категорій C, CE, D та DE. Наявність цього документа підтверджує, що водій пройшов спеціальну підготовку та володіє необхідними знаннями для безпечної роботи на міжнародних маршрутах.<br><strong>Чим регламентується легітимність українського Коду 95?</strong> Ваш документ базується на трьох фундаментальних актах:</p>
+              <ol>
+                <li><strong>Наказ МІУ №789:</strong> Визначає порядок підтвердження професійної компетентності та формат Свідоцтва.</li>
+                <li><strong>Хартія якості ЄКМТ:</strong> Міжнародний стандарт, який вимагає наявності сертифіката у водіїв, що працюють у системі багатосторонньої квоти.</li>
+                <li><strong>Угода між Україною та ЄС про вантажні перевезення (№654/2022):</strong> Гарантує визнання українських документів професійної компетентності під час виконання рейсів до країн Євросоюзу.</li>
+              </ol>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- Подвал: одинаковый на всех страницах (index.html, kod95ukr.html, chipcard.html, contacts.html). Правишь в одной — повтори во всех -->
@@ -495,6 +632,20 @@
         </form>
       </div>
     </div>
+  </dialog>
+
+  <!-- Окно увеличения фото галереи: одно на страницу, фото подставляет js/gallery.js; крестик и клик по фону — js/modal.js -->
+  <dialog class="lightbox" id="lightbox" aria-label="Перегляд фото">
+    <img class="lightbox__img" alt="">
+    <button class="lightbox__btn lightbox__close" type="button" aria-label="Закрити" data-modal-close>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <button class="lightbox__btn lightbox__prev" type="button" aria-label="Попереднє фото" data-lightbox-prev>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="lightbox__btn lightbox__next" type="button" aria-label="Наступне фото" data-lightbox-next>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
   </dialog>
 </body>
 </html>

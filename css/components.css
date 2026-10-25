@@ -885,13 +885,26 @@ a.nav__link:not([href]) {
   line-height: 1.55;
 }
 
-.faq__answer ul {
+.faq__answer ul,
+.faq__answer ol {
   margin: 10px 0;
   padding-left: 20px;
 }
 
 .faq__answer li + li {
   margin-top: 6px;
+}
+
+/* Ссылки в ответах (FAQ «Код 95») — как в оригинале: своим цветом, без подчёркивания */
+.faq__answer a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+/* Без подчёркивания ссылку выдаёт только цвет — при наведении и фокусе с клавиатуры подчёркиваем */
+.faq__answer a:hover,
+.faq__answer a:focus-visible {
+  text-decoration: underline;
 }
 
 /* Плавное раскрытие ответа: работает в свежем Chrome, в остальных браузерах ответ открывается сразу */
@@ -926,7 +939,7 @@ a.nav__link:not([href]) {
 
 /* ===== Фотогалерея (листание — js/slider.js, увеличение — js/gallery.js) ===== */
 
-/* Как в оригинале, галерея есть только на компьютере; у скрытой секции фото не скачиваются */
+/* Как в оригинале, эта галерея только на компьютере, до 980px вместо неё мобильная (ниже); у скрытой секции фото не скачиваются */
 .gallery {
   display: none;
 }
@@ -1044,6 +1057,86 @@ a.nav__link:not([href]) {
   /* На первом и последнем фото стрелку в эту сторону прячем */
   .gallery__arrow:disabled {
     visibility: hidden;
+  }
+}
+
+/* ===== Мобильная фотогалерея (до 980px; листание — js/slider.js) ===== */
+
+/*
+  Как в оригинале, отдельный блок вместо галереи выше: фото со стрелками по бокам и точки, без миниатюр и увеличения.
+  Телефон: фото во всю ширину, стрелки поверх фото у краёв
+*/
+.gallery-mobile {
+  padding-block: 30px 56px;
+}
+
+.gallery-mobile__slider {
+  position: relative;
+}
+
+.gallery-mobile__track {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gallery-mobile__slide {
+  width: 100%;
+}
+
+/* Фото обрезаны до пропорций кадра оригинала 860×550 */
+.gallery-mobile img {
+  width: 100%;
+  aspect-ratio: 860 / 550;
+  object-fit: cover;
+}
+
+.gallery-mobile__arrow {
+  position: absolute;
+  top: 50%;
+  width: 24px;
+  height: 24px;
+  background-color: var(--color-primary);
+  color: var(--color-text-on-dark);
+  transform: translateY(-50%);
+}
+
+.gallery-mobile__arrow--prev {
+  left: 5px;
+}
+
+.gallery-mobile__arrow--next {
+  right: 5px;
+}
+
+.gallery-mobile__dots {
+  margin-top: 26px;
+}
+
+/* Планшет: фото 600px по центру, стрелки крупнее и сбоку от фото — в 76px от него, но не ближе 20px к краю экрана */
+@media (min-width: 640px) {
+  .gallery-mobile__track {
+    width: 600px;
+    margin-inline: auto;
+  }
+
+  .gallery-mobile__arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .gallery-mobile__arrow--prev {
+    left: max(20px, 50% - 416px);
+  }
+
+  .gallery-mobile__arrow--next {
+    right: max(20px, 50% - 416px);
+  }
+}
+
+@media (min-width: 980px) {
+  .gallery-mobile {
+    display: none;
   }
 }
 
