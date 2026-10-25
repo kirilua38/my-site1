@@ -94,33 +94,50 @@
       <span class="page-hero__scroll" aria-hidden="true"></span>
     </section>
 
-    <!-- «Документи»: список документов, образцы и плашка с кнопкой; до 980px всё столбиком -->
-    <section class="docs">
+    <!--
+      «Документи»: общий бенто-блок (css/components.css), как «Інструкція» на «Чип-карте».
+      До 980px всё столбиком; на компьютере список слева, справа две карточки по паре образцов, плашка во всю ширину
+    -->
+    <section class="bento">
       <div class="container">
         <p class="section-label">Документи</p>
         <h2 class="section-title">Список документів</h2>
-        <div class="docs__grid">
-          <div class="docs__card">
-            <p class="docs__eyebrow">Що потрібно</p>
-            <h3 class="docs__card-title">Перелік документів для оформлення Коду 95</h3>
-            <ol class="docs__list">
-              <li>Копія паспорта громадянина України (1, 2 сторінки + прописка).</li>
-              <li>Копія закордонного паспорту (1 стор.).</li>
-              <li>Копія посвідчення водія (з двох сторін).</li>
-              <li>Кольорова фотографія 3.5×4.5 (в електронному вигляді розмір не важливий).</li>
-              <li>Ідентифікаційний код.</li>
+        <div class="bento__grid">
+          <div class="bento__card bento__list-card">
+            <p class="bento__eyebrow">Що потрібно</p>
+            <h3 class="bento__card-title">Перелік документів для оформлення Коду 95</h3>
+            <ol class="bento__steps">
+              <li><span>Копія паспорта громадянина України (1, 2 сторінки + прописка).</span></li>
+              <li><span>Копія закордонного паспорту (1 стор.).</span></li>
+              <li><span>Копія посвідчення водія (з двох сторін).</span></li>
+              <li><span>Кольорова фотографія 3.5×4.5 (в електронному вигляді розмір не важливий).</span></li>
+              <li><span>Ідентифікаційний код.</span></li>
             </ol>
           </div>
-          <ul class="docs__samples">
-            <li><figure><img src="img/kod95/doc-card-front.webp" width="438" height="278" alt="Кваліфікаційна картка водія — лицьова" loading="lazy"><figcaption>Картка водія — лицьова</figcaption></figure></li>
-            <li><figure><img src="img/kod95/doc-card-back.webp" width="438" height="278" alt="Кваліфікаційна картка водія — зворотна" loading="lazy"><figcaption>Картка водія — зворотна</figcaption></figure></li>
-            <li><figure><img src="img/kod95/doc-certificate-en.webp" width="476" height="686" alt="Свідоцтво — English" loading="lazy"><figcaption>Свідоцтво (EN)</figcaption></figure></li>
-            <li><figure><img src="img/kod95/doc-certificate-ua.webp" width="468" height="668" alt="Свідоцтво — Українська" loading="lazy"><figcaption>Свідоцтво (UA)</figcaption></figure></li>
-          </ul>
+          <div class="bento__side">
+            <div class="bento__card bento__pair">
+              <figure><img src="img/kod95/doc-card-front.webp" width="438" height="278" alt="Кваліфікаційна картка водія — лицьова" loading="lazy"><figcaption>Картка водія — лицьова</figcaption></figure>
+              <figure><img src="img/kod95/doc-card-back.webp" width="438" height="278" alt="Кваліфікаційна картка водія — зворотна" loading="lazy"><figcaption>Картка водія — зворотна</figcaption></figure>
+            </div>
+            <div class="bento__card bento__pair bento__pair--tall">
+              <figure><img src="img/kod95/doc-certificate-en.webp" width="476" height="686" alt="Свідоцтво — English" loading="lazy"><figcaption>Свідоцтво (EN)</figcaption></figure>
+              <figure><img src="img/kod95/doc-certificate-ua.webp" width="468" height="668" alt="Свідоцтво — Українська" loading="lazy"><figcaption>Свідоцтво (UA)</figcaption></figure>
+            </div>
+          </div>
         </div>
-        <div class="docs__cta">
-          <p class="docs__cta-title">Бажаєте отримати Код 95 в Україні?</p>
-          <button class="docs__cta-button" type="button" data-modal-open="consultation">Заповнити заявку 24/7</button>
+        <div class="bento__cta">
+          <div class="bento__cta-text">
+            <p class="bento__cta-title">Бажаєте отримати Код 95 в Україні?</p>
+            <p class="bento__badge"><span>Акредитовано згідно<br>наказу МІУ №789</span></p>
+          </div>
+          <div class="bento__cta-buttons">
+            <button class="bento__button bento__button--primary" type="button" data-modal-open="consultation">
+              Отримати консультацію
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <!-- В оригинале ведёт на страницу заявки /form-code95, её в этапе 1 нет — открываем окно консультации -->
+            <button class="bento__button bento__button--outline" type="button" data-modal-open="consultation">Заповнити заявку 24/7</button>
+          </div>
         </div>
       </div>
     </section>

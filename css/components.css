@@ -1974,10 +1974,11 @@ a.nav__link:not([href]) {
   background-color: currentColor;
 }
 
+/* Размер растёт с шириной окна, как в оригинале: 4% ширины, но не меньше 26px и не больше 40px (на 768px — около 31px) */
 .section-title {
   max-width: 760px;
   margin: 0 auto 36px;
-  font-size: 26px;
+  font-size: clamp(26px, 4vw, 40px);
   line-height: 1.2;
   text-align: center;
 }
@@ -1985,11 +1986,10 @@ a.nav__link:not([href]) {
 @media (min-width: 980px) {
   .section-title {
     margin-bottom: 64px;
-    font-size: 40px;
   }
 }
 
-/* ===== Бенто-блок: карточка со списком шагов, карточки с картинками и плашка с кнопками («Чип-карта») ===== */
+/* ===== Бенто-блок: карточка со списком, карточки с картинками и плашка с кнопками («Код 95», «Чип-карта») ===== */
 
 /*
   Телефон и планшет: всё столбиком — список, картинки, «Важливо знати», плашка.
@@ -2001,14 +2001,21 @@ a.nav__link:not([href]) {
   background-color: var(--color-bg-light);
 }
 
+/* Под заголовком секции — как в оригинале бенто-блока: 32px на телефоне, 48px шире */
+.bento .section-title {
+  margin-bottom: 32px;
+}
+
 .bento__grid {
   display: grid;
   gap: 12px;
 }
 
+/* Если список выше колонки карточек, свободное место уходит между карточками — как в сетке оригинала */
 .bento__side {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 12px;
 }
 
@@ -2104,14 +2111,42 @@ a.nav__link:not([href]) {
   background-image: linear-gradient(145deg, var(--color-bg-light) 0%, var(--color-bg-field) 100%);
 }
 
-.bento__image img {
+/* Две картинки в одной карточке («Код 95»): половины через тонкую линию, у каждой своя подпись; --tall — карточка выше */
+.bento__pair {
+  display: flex;
+  height: 170px;
+  background-image: linear-gradient(145deg, var(--color-bg-light) 0%, var(--color-bg-field) 100%);
+}
+
+.bento__pair--tall {
+  height: 210px;
+}
+
+.bento__pair figure {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  margin: 0;
+  padding: 12px 16px;
+}
+
+.bento__pair figure + figure {
+  border-left: 1px solid var(--color-border-light);
+}
+
+.bento__image img,
+.bento__pair img {
   width: auto;
   max-height: 100%;
   border-radius: var(--radius-small);
   filter: drop-shadow(var(--shadow-image));
 }
 
-.bento__image figcaption {
+.bento__image figcaption,
+.bento__pair figcaption {
   position: absolute;
   bottom: 6px;
   left: 6px;
@@ -2124,6 +2159,12 @@ a.nav__link:not([href]) {
   font-weight: 600;
   letter-spacing: 0.03em;
   color: color-mix(in srgb, var(--color-heading) 50%, transparent);
+}
+
+.bento__pair figcaption {
+  left: 8px;
+  padding: 3px 8px;
+  font-size: 9.5px;
 }
 
 /* «Важливо знати»: на компьютере растягивается до низа карточки со списком */
@@ -2309,6 +2350,10 @@ a.nav__link:not([href]) {
     padding-block: 56px 60px;
   }
 
+  .bento .section-title {
+    margin-bottom: 48px;
+  }
+
   .bento__grid,
   .bento__side {
     gap: 16px;
@@ -2344,6 +2389,21 @@ a.nav__link:not([href]) {
   .bento__image figcaption {
     bottom: 8px;
     left: 16px;
+  }
+
+  .bento__pair {
+    height: 180px;
+  }
+
+  .bento__pair--tall {
+    height: 220px;
+  }
+
+  .bento__pair figcaption {
+    bottom: 8px;
+    left: 10px;
+    padding: 4px 10px;
+    font-size: 10px;
   }
 
   .bento__info {
@@ -2404,6 +2464,18 @@ a.nav__link:not([href]) {
 
   .bento__list-card {
     padding: 32px 32px 36px;
+  }
+
+  .bento__pair {
+    height: 190px;
+  }
+
+  .bento__pair--tall {
+    height: 300px;
+  }
+
+  .bento__pair--tall figure {
+    padding: 16px 20px;
   }
 
   .bento__cta {
