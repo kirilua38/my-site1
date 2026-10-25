@@ -13,14 +13,66 @@
   padding-top: 56px;
 }
 
+/* ===== Карта офисов (js/map.js, библиотека Leaflet — vendor/leaflet) ===== */
+
+/* Карта по центру, со скруглёнными углами; высота растёт с шириной окна, как в оригинале */
+.map {
+  padding-bottom: 60px;
+}
+
+/* isolation: свой слой — внутренние слои Leaflet (z-index до 1000) не вылезают поверх шапки, меню и кнопки «наверх» */
+.map__frame {
+  isolation: isolate;
+  width: 94%;
+  margin-inline: auto;
+  overflow: hidden;
+  border-radius: var(--radius-button);
+}
+
+.map__canvas {
+  height: clamp(240px, 72vw, 360px);
+}
+
+/* Подписи и всплывающие окна карты — шрифтом сайта (Leaflet ставит свой) */
+.map .leaflet-container {
+  font-family: inherit;
+}
+
+/* Рамка фокуса с клавиатуры — внутри карты: снаружи её обрезала бы рамка со скруглением */
+.map .leaflet-container:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
 @media (min-width: 640px) {
   .footer {
     padding-top: 50px;
+  }
+
+  .map__frame {
+    width: 92%;
+  }
+
+  .map__canvas {
+    height: clamp(260px, 62vw, 420px);
   }
 }
 
 @media (min-width: 980px) {
   .footer {
     padding-top: 65px;
+  }
+
+  /*
+    Как в оригинале: до 1200px окна — 88% ширины и высота 50% ширины окна (не больше 540px),
+    шире — 80% и 46% (не больше 620px). Отдельной точки перелома 1200px у нас нет, поэтому через max()
+  */
+  .map__frame {
+    width: min(88%, max(80%, 1056px));
+    border-radius: var(--radius-card);
+  }
+
+  .map__canvas {
+    height: clamp(300px, max(46vw, min(50vw, 540px)), 620px);
   }
 }

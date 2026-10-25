@@ -18,6 +18,7 @@
   <script src="js/modal.js" defer></script>
   <script src="js/to-top.js" defer></script>
   <script src="js/forms.js" defer></script>
+  <script src="js/map.js" defer></script>
 </head>
 <body>
   <!-- Шапка: одинаковая на всех страницах (index.html, kod95ukr.html, chipcard.html, contacts.html; на contacts.html — с классом header--solid). Правишь в одной — повтори во всех -->
@@ -77,8 +78,8 @@
   <main>
     <!--
       «Зв'яжіться з нами!» — тот же блок, что подвал на других страницах (классы .footer*, css/components.css).
-      Здесь он главное содержимое: стоит в <main> и заголовок — <h1>, отдельного подвала на странице нет, как в оригинале.
-      Правишь подвал — повтори здесь
+      Здесь он главное содержимое: стоит в <main>, заголовок — <h1>, подписи групп — <h2> (в подвале <h2> и <h3>),
+      отдельного подвала на странице нет, как в оригинале. Правишь подвал — повтори здесь
     -->
     <section class="footer">
       <div class="container">
@@ -87,7 +88,7 @@
         <!-- Порядок блоков — как на телефоне; на широких экранах их переставляет CSS-сетка -->
         <div class="footer__grid">
           <div class="footer__group footer__group--address">
-            <h3 class="footer__label">Наша адреса:</h3>
+            <h2 class="footer__label">Наша адреса:</h2>
             <ul class="footer__list">
               <li>м. Тернопіль,<br>вул. Микулинецька, 3а</li>
               <li>м. Дніпро,<br>вул. Європейська, 5, оф. 314</li>
@@ -96,7 +97,7 @@
           </div>
 
           <div class="footer__group footer__group--messengers">
-            <h3 class="footer__label">Месенджери:</h3>
+            <h2 class="footer__label">Месенджери:</h2>
             <ul class="footer__icons footer__icons--round">
               <li><a href="https://t.me/eurodrivers" target="_blank" rel="noopener" aria-label="Telegram"><img src="img/common/telegram_4.svg" width="30" height="30" alt="" loading="lazy"></a></li>
               <li><a href="viber://add?number=380676392016" aria-label="Viber"><img src="img/common/viber_4.svg" width="30" height="30" alt="" loading="lazy"></a></li>
@@ -105,17 +106,17 @@
           </div>
 
           <div class="footer__group footer__group--email">
-            <h3 class="footer__label">E-mail:</h3>
+            <h2 class="footer__label">E-mail:</h2>
             <p class="footer__text"><a href="mailto:info@eurodrivers.com.ua">info@eurodrivers.com.ua</a></p>
           </div>
 
           <div class="footer__group footer__group--schedule">
-            <h3 class="footer__label">Графік роботи:</h3>
+            <h2 class="footer__label">Графік роботи:</h2>
             <p class="footer__text">Пн-Пт 09:00-18:00</p>
           </div>
 
           <div class="footer__group footer__group--social">
-            <h3 class="footer__label">Соціальні мережі:</h3>
+            <h2 class="footer__label">Соціальні мережі:</h2>
             <ul class="footer__icons">
               <li><a href="https://www.facebook.com/eurodrivers.com.ua/" target="_blank" rel="noopener" aria-label="Facebook"><img src="img/common/facebook_3.svg" width="30" height="30" alt="" loading="lazy"></a></li>
               <li><a href="https://www.instagram.com/euro.drivers/" target="_blank" rel="noopener" aria-label="Instagram"><img src="img/common/instagram-sketched.svg" width="30" height="30" alt="" loading="lazy"></a></li>
@@ -123,7 +124,7 @@
           </div>
 
           <div class="footer__group footer__group--phones">
-            <h3 class="footer__label">Телефони:</h3>
+            <h2 class="footer__label">Телефони:</h2>
             <ul class="footer__phones">
               <li><img src="img/common/phone_1.svg" width="20" height="20" alt="" loading="lazy"><a href="tel:0800357113">0-800-357-113</a></li>
               <li><img src="img/common/kyivstar.png" width="20" height="19" alt="" loading="lazy"><a href="tel:+380676392016">+38(067)-639-20-16</a></li>
@@ -132,7 +133,7 @@
           </div>
 
           <form class="footer__form" method="post" novalidate data-form>
-            <h3 class="footer__label">Передзвонити вам?</h3>
+            <h2 class="footer__label">Передзвонити вам?</h2>
             <input type="hidden" name="form" value="contacts">
             <div class="form-trap" aria-hidden="true">
               <label>Не заповнюйте це поле <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
@@ -152,7 +153,12 @@
       </div>
     </section>
 
-    <!-- Сюда встанет карта с офисами (шаг 27б) -->
+    <!-- Карта офисов: Leaflet (vendor/leaflet) с плитками OpenStreetMap; библиотеку подгружает и карту создаёт js/map.js, когда до карты почти докрутили. Почему так — docs/decisions/2026-10-25-karta-kontaktiv.md -->
+    <section class="map" aria-label="Карта офісів">
+      <div class="map__frame">
+        <div class="map__canvas" id="offices-map"></div>
+      </div>
+    </section>
   </main>
 
   <button class="to-top" type="button" aria-label="Нагору">
