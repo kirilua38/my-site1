@@ -19,6 +19,7 @@ function initMenu() {
     document.querySelector('main'),
     document.querySelector('footer'),
     document.querySelector('.to-top'),
+    document.querySelector('.chat'),
   ].filter(Boolean);
 
   function setMenuOpen(isOpen) {

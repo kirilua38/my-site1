@@ -36,6 +36,10 @@
   --color-highlight: #ffb200;
   --color-error: #d93025;
   --color-facebook: #1877f2;
+  --color-telegram: #1d98dc;
+  --color-whatsapp: #27d061;
+  --color-viber: #7360f2;
+  --color-chat-button: #0088cc;
 
   /* Шрифты */
   --font-main: "Manrope", Arial, sans-serif;
@@ -51,6 +55,7 @@
   --shadow-dropdown: 0 8px 24px rgba(0, 0, 0, 0.12);
   --shadow-card: 0 1px 4px rgba(0, 0, 0, 0.03);
   --shadow-raised: 0 15px 30px -10px rgba(0, 11, 48, 0.2);
+  --shadow-float: 0 0 20px rgba(0, 0, 0, 0.3);
   --shadow-error: inset 0 0 0 2px var(--color-error);
 
   /* Сетка */

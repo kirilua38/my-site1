@@ -830,3 +830,204 @@
     padding-inline: 44px;
   }
 }
+
+/* ===== Плавающая кнопка «Напишіть нам» ===== */
+
+/* Облачко и крестик лежат в одной клетке сетки, видно одно из них */
+.chat__toggle {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  z-index: 15;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: var(--color-chat-button);
+  box-shadow: var(--shadow-float);
+  color: var(--color-text-on-dark);
+  cursor: pointer;
+}
+
+/* Облачко нарисовано маской: его цвет — это фон, поэтому он берётся из CSS */
+.chat__icon {
+  grid-area: 1 / 1;
+  width: 35px;
+  height: 32px;
+  background-color: currentColor;
+  -webkit-mask: url("../img/icons/chat.svg") center / contain no-repeat;
+  mask: url("../img/icons/chat.svg") center / contain no-repeat;
+}
+
+.chat__toggle::before,
+.chat__toggle::after {
+  content: "";
+  display: none;
+  grid-area: 1 / 1;
+  width: 22px;
+  height: 2px;
+  background-color: currentColor;
+}
+
+/* Окно открыто (:popover-open): кнопка белая, вместо облачка крестик */
+.chat:has(.chat__popup:popover-open) .chat__toggle {
+  background-color: var(--color-bg);
+  color: var(--color-heading);
+}
+
+.chat:has(.chat__popup:popover-open) .chat__icon {
+  display: none;
+}
+
+.chat:has(.chat__popup:popover-open) .chat__toggle::before,
+.chat:has(.chat__popup:popover-open) .chat__toggle::after {
+  display: block;
+}
+
+.chat__toggle::before {
+  transform: rotate(45deg);
+}
+
+.chat__toggle::after {
+  transform: rotate(-45deg);
+}
+
+/*
+  Телефон и планшет: окно на весь экран, сверху чёрная полоса с крестиком.
+  Браузер по умолчанию ставит popover посередине экрана в рамке — эти свойства сбрасываем
+*/
+.chat__popup {
+  inset: 0;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0 20px 20px;
+  border: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  text-align: center;
+  overscroll-behavior: contain;
+}
+
+.chat__popup::before {
+  content: "";
+  display: block;
+  height: 50px;
+  margin-inline: -20px;
+  background-color: var(--color-heading);
+}
+
+.chat__close {
+  position: absolute;
+  top: 2px;
+  right: 0;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.chat__close::before,
+.chat__close::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 2px;
+  background-color: var(--color-text-on-dark);
+}
+
+.chat__close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.chat__close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.chat__title {
+  margin: 50px 0 30px;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+/* Иконки по три в ряд: в 260px четвёртая не помещается и уходит во второй ряд по центру */
+.chat__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 260px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.chat__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 62px;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.chat__circle {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+}
+
+.chat__link--phone .chat__circle {
+  background-color: var(--color-heading);
+}
+
+.chat__link--telegram .chat__circle {
+  background-color: var(--color-telegram);
+}
+
+.chat__link--whatsapp .chat__circle {
+  background-color: var(--color-whatsapp);
+}
+
+.chat__link--viber .chat__circle {
+  background-color: var(--color-viber);
+}
+
+/* Компьютер: окошко над кнопкой, крестик — на самой кнопке */
+@media (min-width: 980px) {
+  .chat__toggle {
+    right: 65px;
+    bottom: 50px;
+  }
+
+  .chat__popup {
+    inset: auto 65px 125px auto;
+    width: 300px;
+    padding: 30px 20px 40px;
+    border-radius: var(--radius-button);
+    box-shadow: var(--shadow-float);
+  }
+
+  .chat__popup::before,
+  .chat__close {
+    display: none;
+  }
+
+  .chat__title {
+    margin: 0 0 36px;
+  }
+}

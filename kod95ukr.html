@@ -321,6 +321,29 @@
     </svg>
   </button>
 
+  <!--
+    Плавающая кнопка «Напишіть нам» — только на этой странице.
+    Окно открывает и закрывает сам браузер (атрибуты popover и popovertarget), своего JS нет:
+    кнопка переключает окно, Esc и клик мимо окна его закрывают.
+    WhatsApp здесь, как в оригинале, на 380676392016 (в шапке и подвале — 380932993890)
+  -->
+  <div class="chat">
+    <button class="chat__toggle" type="button" popovertarget="chat-popup" aria-label="Напишіть нам">
+      <span class="chat__icon" aria-hidden="true"></span>
+    </button>
+    <div class="chat__popup" id="chat-popup" popover role="dialog" aria-labelledby="chat-title">
+      <!-- Крестик виден только до 980px, где окно на весь экран и закрывает собой кнопку -->
+      <button class="chat__close" type="button" popovertarget="chat-popup" popovertargetaction="hide" aria-label="Закрити"></button>
+      <h2 class="chat__title" id="chat-title">Напишіть нам</h2>
+      <ul class="chat__list">
+        <li><a class="chat__link chat__link--phone" href="tel:+380676392016"><span class="chat__circle"><img src="img/icons/phone.svg" width="30" height="30" alt=""></span>Телефон</a></li>
+        <li><a class="chat__link chat__link--telegram" href="https://t.me/eurodrivers" target="_blank" rel="noopener"><span class="chat__circle"><img src="img/icons/telegram.svg" width="30" height="30" alt=""></span>Telegram</a></li>
+        <li><a class="chat__link chat__link--whatsapp" href="https://wa.me/380676392016" target="_blank" rel="noopener"><span class="chat__circle"><img src="img/icons/whatsapp.svg" width="30" height="30" alt=""></span>WhatsApp</a></li>
+        <li><a class="chat__link chat__link--viber" href="viber://add?number=380676392016"><span class="chat__circle"><img src="img/icons/viber.svg" width="30" height="30" alt=""></span>Viber</a></li>
+      </ul>
+    </div>
+  </div>
+
   <!-- Модальные окна: одинаковые на всех страницах, как шапка. Открываются кнопкой с data-modal-open="<имя>" -->
   <dialog class="modal" id="modal-callback" aria-labelledby="modal-callback-title">
     <button class="modal__close" type="button" aria-label="Закрити вікно" data-modal-close></button>
