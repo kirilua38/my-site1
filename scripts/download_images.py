@@ -50,6 +50,11 @@ EXTRA_IMAGES = {
         "https://i.ibb.co/xthdCTzq/Screenshot-5-png.webp",
         "https://i.ibb.co/S4Gp2yGQ/Screenshot-1.webp",
     },
+    # Картка водія (обе стороны) в блоке «Інструкція отримання ЧІП-КАРТИ»
+    "chipcard": {
+        "https://i.ibb.co/SDVQPdhX/chip-card-front.webp",
+        "https://i.ibb.co/xqXkdnhM/chip-card-back.webp",
+    },
 }
 
 RASTER = {".png", ".jpg", ".jpeg", ".webp", ".gif"}

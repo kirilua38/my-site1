@@ -3,45 +3,6 @@
   Mobile-first: база — телефон, @media (min-width: 640px) — планшет, (min-width: 980px) — компьютер.
 */
 
-/* ===== Подписи и заголовки секций «Код 95» ===== */
-
-/* Маленькая надпись над заголовком: заглавными, с короткими чертами по бокам */
-.kod-label {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 14px;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-primary);
-}
-
-.kod-label::before,
-.kod-label::after {
-  content: "";
-  width: 24px;
-  height: 2px;
-  background-color: currentColor;
-}
-
-.kod-title {
-  max-width: 760px;
-  margin: 0 auto 36px;
-  font-size: 26px;
-  line-height: 1.2;
-  text-align: center;
-}
-
-@media (min-width: 980px) {
-  .kod-title {
-    margin-bottom: 64px;
-    font-size: 40px;
-  }
-}
-
 /* ===== «Документи» ===== */
 
 /* Телефон: карточка со списком, под ней образцы сеткой 2×2 и плашка с кнопкой */

@@ -1790,3 +1790,480 @@ a.nav__link:not([href]) {
     height: 60px;
   }
 }
+
+/* ===== Подпись и заголовок секции («Код 95», «Чип-карта») ===== */
+
+/* Маленькая надпись над заголовком: заглавными, с короткими чертами по бокам */
+.section-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.section-label::before,
+.section-label::after {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background-color: currentColor;
+}
+
+.section-title {
+  max-width: 760px;
+  margin: 0 auto 36px;
+  font-size: 26px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+@media (min-width: 980px) {
+  .section-title {
+    margin-bottom: 64px;
+    font-size: 40px;
+  }
+}
+
+/* ===== Бенто-блок: карточка со списком шагов, карточки с картинками и плашка с кнопками («Чип-карта») ===== */
+
+/*
+  Телефон и планшет: всё столбиком — список, картинки, «Важливо знати», плашка.
+  Компьютер: список слева, справа столбик карточек, плашка во всю ширину.
+  Полупрозрачные цвета смешиваются из переменных (color-mix): так в файле нет голых цветов
+*/
+.bento {
+  padding-block: 48px;
+  background-color: var(--color-bg-light);
+}
+
+.bento__grid {
+  display: grid;
+  gap: 12px;
+}
+
+.bento__side {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bento__card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-large);
+  background-color: var(--color-bg);
+}
+
+.bento__list-card {
+  padding: 24px 20px 28px;
+}
+
+.bento__eyebrow {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.bento__card-title {
+  margin-bottom: 16px;
+  font-size: 19px;
+  line-height: 1.3;
+}
+
+/* Шаги: номера рисует CSS-счётчик в синих квадратиках; текст чуть ниже верха номера, между шагами — тонкая линия */
+.bento__steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.bento__steps li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding-block: 16px 12px;
+  border-bottom: 1px solid var(--color-border-light);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--color-heading);
+  counter-increment: step;
+}
+
+.bento__steps li:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.bento__steps li::before {
+  content: counter(step);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  margin-top: -4px;
+  border-radius: var(--radius-button);
+  background-image: var(--gradient-primary);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text-on-dark);
+}
+
+/* Почта в тексте шага: синим, подчёркнута пунктиром */
+.bento__steps a {
+  border-bottom: 1px dashed color-mix(in srgb, var(--color-primary) 30%, transparent);
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.bento__steps a:hover,
+.bento__steps a:focus-visible {
+  border-bottom-style: solid;
+}
+
+/* Картинка на светлом фоне, подпись — плашкой в левом нижнем углу */
+.bento__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 170px;
+  margin: 0;
+  padding: 10px 18px;
+  background-image: linear-gradient(145deg, var(--color-bg-light) 0%, var(--color-bg-field) 100%);
+}
+
+.bento__image img {
+  width: auto;
+  max-height: 100%;
+  border-radius: 6px;
+  filter: drop-shadow(0 3px 12px color-mix(in srgb, var(--color-heading) 8%, transparent));
+}
+
+.bento__image figcaption {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background-color: color-mix(in srgb, var(--color-bg) 75%, transparent);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: color-mix(in srgb, var(--color-heading) 50%, transparent);
+}
+
+/* «Важливо знати»: на компьютере растягивается до низа карточки со списком */
+.bento__info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 18px;
+  background-color: var(--color-bg-accent);
+}
+
+.bento__info-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.bento__info-title svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.bento__info-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bento__info-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px 14px;
+  border-left: 3px solid var(--color-primary);
+  border-radius: var(--radius-button);
+  background-color: var(--color-bg);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-heading);
+}
+
+.bento__info-list svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  color: var(--color-primary);
+}
+
+/* Плашка с кнопками: градиент, два полупрозрачных круга-украшения по углам */
+.bento__cta {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 12px;
+  padding: 28px 20px;
+  border-radius: var(--radius-card);
+  background-image: var(--gradient-primary);
+  color: var(--color-text-on-dark);
+}
+
+.bento__cta::before,
+.bento__cta::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.bento__cta::before {
+  top: -60px;
+  right: -40px;
+  width: 200px;
+  height: 200px;
+  background-color: color-mix(in srgb, var(--color-text-on-dark) 7%, transparent);
+}
+
+.bento__cta::after {
+  bottom: -50px;
+  left: -30px;
+  width: 160px;
+  height: 160px;
+  background-color: color-mix(in srgb, var(--color-text-on-dark) 5%, transparent);
+}
+
+/* z-index поднимает текст и кнопки над кругами */
+.bento__cta-text,
+.bento__cta-buttons {
+  position: relative;
+  z-index: 1;
+}
+
+.bento__cta-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.bento__cta-title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+/* Значок «Акредитовано»: рамка с тризубом — картинка-трафарет, цвет берётся из текста */
+.bento__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid color-mix(in srgb, var(--color-text-on-dark) 20%, transparent);
+  border-radius: var(--radius-button);
+  background-color: color-mix(in srgb, var(--color-text-on-dark) 12%, transparent);
+  font-size: 11.5px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.bento__badge::before {
+  content: "";
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  background-color: currentColor;
+  -webkit-mask: url("../img/icons/accredited.svg") center / contain no-repeat;
+  mask: url("../img/icons/accredited.svg") center / contain no-repeat;
+}
+
+.bento__cta-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bento__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  border: 0;
+  border-radius: var(--radius-button);
+  font-size: 13.5px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.bento__button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.bento__button--primary {
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow-dropdown);
+  color: var(--color-primary);
+}
+
+.bento__button--outline {
+  border: 2px solid color-mix(in srgb, var(--color-text-on-dark) 35%, transparent);
+  background-color: color-mix(in srgb, var(--color-text-on-dark) 10%, transparent);
+  color: var(--color-text-on-dark);
+}
+
+/* Планшет: крупнее шрифты и отступы, кнопки в ряд */
+@media (min-width: 640px) {
+  .bento {
+    padding-block: 56px 60px;
+  }
+
+  .bento__grid,
+  .bento__side {
+    gap: 16px;
+  }
+
+  .bento__list-card {
+    padding: 28px 24px 32px;
+  }
+
+  .bento__card-title {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+
+  .bento__steps li {
+    gap: 16px;
+    padding-block: 20px 14px;
+    font-size: 16px;
+  }
+
+  .bento__steps li::before {
+    width: 38px;
+    height: 38px;
+    margin-top: -6px;
+    font-size: 16px;
+  }
+
+  .bento__image {
+    height: 180px;
+    padding: 12px 24px;
+  }
+
+  .bento__image figcaption {
+    bottom: 8px;
+    left: 16px;
+  }
+
+  .bento__info {
+    padding: 20px 22px;
+  }
+
+  .bento__info-list li {
+    gap: 10px;
+    font-size: 13.5px;
+  }
+
+  .bento__info-list svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .bento__cta {
+    gap: 24px;
+    margin-top: 16px;
+    padding: 32px 28px;
+    border-radius: var(--radius-large);
+  }
+
+  .bento__cta-title {
+    font-size: 20px;
+  }
+
+  .bento__badge {
+    gap: 10px;
+    padding: 10px 16px;
+    font-size: 12.5px;
+  }
+
+  .bento__badge::before {
+    width: 36px;
+    height: 36px;
+  }
+
+  .bento__cta-buttons {
+    flex-direction: row;
+  }
+
+  .bento__button {
+    padding: 15px 32px;
+    font-size: 14.5px;
+  }
+}
+
+/* Компьютер: две колонки, плашка в строку — текст слева, кнопки справа */
+@media (min-width: 980px) {
+  .bento {
+    padding-block: 80px;
+  }
+
+  .bento__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .bento__list-card {
+    padding: 32px 32px 36px;
+  }
+
+  .bento__cta {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 40px 44px;
+  }
+
+  .bento__cta-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .bento__cta-title {
+    font-size: 26px;
+  }
+
+  .bento__cta-buttons {
+    flex-shrink: 0;
+  }
+}

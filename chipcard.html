@@ -91,7 +91,71 @@
       <span class="page-hero__scroll" aria-hidden="true"></span>
     </section>
 
-    <!-- Дальше, в порядке оригинала: «Інструкція отримання ЧІП-КАРТИ» (шаг 26б), «В цифрах», консультация, отзывы, FAQ (пачка 26в) -->
+    <!--
+      «Інструкція отримання ЧІП-КАРТИ»: общий бенто-блок (css/components.css).
+      До 980px всё столбиком; на компьютере список слева, справа картинки и «Важливо знати», плашка во всю ширину
+    -->
+    <section class="bento">
+      <div class="container">
+        <p class="section-label">Чіп-карта</p>
+        <h2 class="section-title">Інструкція отримання ЧІП-КАРТИ</h2>
+        <div class="bento__grid">
+          <div class="bento__card bento__list-card">
+            <p class="bento__eyebrow">Як отримати</p>
+            <h3 class="bento__card-title">Покрокова інструкція оформлення картки для цифрових тахографів</h3>
+            <ol class="bento__steps">
+              <li><span>Подати онлайн заявку або надіслати документи та фото в електронному вигляді через ел.пошту <a href="mailto:tacho@eurodrivers.com.ua">tacho@eurodrivers.com.ua</a></span></li>
+              <li><span>Отримайте підтвердження на оплату після перевірки документів протягом 3-х робочих годин</span></li>
+              <li><span>Отримайте рахунок та посилання на оплату</span></li>
+              <li><span>Отримайте посилання на відстеження статусу виготовлення.</span></li>
+              <li><span>Отримайте картку для цифрових тахографів.</span></li>
+            </ol>
+          </div>
+          <div class="bento__side">
+            <figure class="bento__card bento__image">
+              <img src="img/chipcard/chip-card-front.webp" width="640" height="410" alt="Картка водія — лицьова сторона" loading="lazy">
+              <figcaption>Картка водія — лицьова</figcaption>
+            </figure>
+            <figure class="bento__card bento__image">
+              <img src="img/chipcard/chip-card-back.webp" width="640" height="410" alt="Картка водія — зворотна сторона" loading="lazy">
+              <figcaption>Картка водія — зворотна</figcaption>
+            </figure>
+            <div class="bento__card bento__info">
+              <p class="bento__info-title">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 16v-4M12 8h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                Важливо знати
+              </p>
+              <ul class="bento__info-list">
+                <li>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>Якщо у вас вже є діюча чіп-карта, подати заяву на отримання ви можете не раніше ніж 180 днів до закінчення терміну дії.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 7h.01M7 12h10M7 17h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  <span>Якщо у Вас ID-картка — потрібно витяг з QR-кодом.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="bento__cta">
+          <div class="bento__cta-text">
+            <p class="bento__cta-title">Бажаєте отримати чіп-карту?</p>
+            <p class="bento__badge">Акредитовано згідно<br>наказу МІУ №789</p>
+          </div>
+          <div class="bento__cta-buttons">
+            <button class="bento__button bento__button--primary" type="button" data-modal-open="consultation">
+              Отримати консультацію
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <!-- В оригинале ведёт на страницу заявки /form-chipcard, её в этапе 1 нет — открываем окно консультации -->
+            <button class="bento__button bento__button--outline" type="button" data-modal-open="consultation">Заповнити заявку 24/7</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Дальше, в порядке оригинала: «В цифрах», консультация, отзывы, FAQ (пачка 26в) -->
   </main>
 
   <!-- Подвал: одинаковый на всех страницах (index.html, kod95ukr.html, chipcard.html, contacts.html). Правишь в одной — повтори во всех -->
