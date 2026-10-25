@@ -338,7 +338,8 @@
 
 /*
   Телефон и планшет: карточки столбиком, фото сверху, без слайдера. Компьютер: слайдер, фото слева, текст справа.
-  В оригинале этот блок на шрифте DM Sans. У каждой карточки свой цвет (--accent) — из переменных --color-direction-*
+  В оригинале этот блок на шрифте DM Sans. У каждой карточки свой цвет (--accent) — из переменных --color-direction-*.
+  Мелкий текст — более тёмным оттенком того же цвета (--accent-text): светлые оранжевый и зелёный на белом читаются плохо
 */
 .directions {
   padding-block: 36px 48px;
@@ -367,7 +368,7 @@
   content: "";
   width: 28px;
   height: 3px;
-  border-radius: 2px;
+  border-radius: var(--radius-pill);
   background-color: currentColor;
 }
 
@@ -395,6 +396,7 @@
 
 .direction-card {
   --accent: var(--color-direction-kod95);
+  --accent-text: color-mix(in srgb, var(--accent) 55%, var(--color-heading));
   display: grid;
   overflow: hidden;
   border: 1.5px solid var(--color-border);
@@ -459,7 +461,7 @@
   box-shadow: var(--shadow-image);
   font-size: 13px;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent-text);
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -479,7 +481,7 @@
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.3px;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 .direction-card__title {
@@ -492,7 +494,7 @@
   margin-bottom: 12px;
   font-size: 14px;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 .direction-card__text {
@@ -621,31 +623,34 @@
   }
 
   .directions__arrow:hover {
-    border-color: var(--color-direction-kod95);
-    background-color: color-mix(in srgb, var(--color-direction-kod95) 6%, var(--color-bg));
-    color: var(--color-direction-kod95);
+    border-color: var(--color-primary);
+    background-color: color-mix(in srgb, var(--color-primary) 6%, var(--color-bg));
+    color: var(--color-primary);
   }
 
   .directions__arrow--next {
-    border-color: var(--color-direction-kod95);
-    background-color: var(--color-direction-kod95);
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
     color: var(--color-text-on-dark);
   }
 
   .directions__arrow--next:hover {
-    background-color: color-mix(in srgb, var(--color-direction-kod95) 85%, var(--color-heading));
+    background-color: color-mix(in srgb, var(--color-primary) 85%, var(--color-heading));
     color: var(--color-text-on-dark);
   }
 
   /*
     Трек на всю ширину окна: первая карточка начинается от левого края контейнера,
-    справа выглядывает следующая. Тот же отступ — у scroll-padding, чтобы карточки «прилипали» к краю контейнера
+    справа выглядывает следующая. Тот же отступ — у scroll-padding, чтобы карточки «прилипали» к краю контейнера.
+    Трек прокручивается и поэтому обрезает всё, что за ним: запас сверху и снизу — под подъём карточки и её тень,
+    отрицательные поля возвращают блок на прежнее место
   */
   .directions__list {
     --track-offset: max(var(--container-padding), (100% - var(--container-width)) / 2 + var(--container-padding));
     display: flex;
     gap: 28px;
-    padding: 4px var(--track-offset) 16px;
+    margin-block: -20px -32px;
+    padding: 24px var(--track-offset) 48px;
     overflow-x: auto;
     scroll-padding-inline: var(--track-offset);
     scroll-snap-type: x mandatory;
@@ -710,35 +715,12 @@
     font-size: 15px;
   }
 
-  .direction-card:hover {
-    border-color: color-mix(in srgb, var(--accent) 20%, transparent);
-    box-shadow: 0 28px 72px color-mix(in srgb, var(--accent) 10%, transparent), var(--shadow-card);
-    transform: translateY(-10px);
-  }
-
-  .direction-card:hover .direction-card__num {
-    background-color: var(--accent);
-    color: var(--color-text-on-dark);
-  }
-
-  .direction-card:hover .direction-card__chips li {
-    border-color: color-mix(in srgb, var(--accent) 10%, transparent);
-    background-color: color-mix(in srgb, var(--accent) 3%, transparent);
-    color: var(--accent);
-  }
-
-  .direction-card:hover .direction-card__link {
-    background-color: var(--accent);
-    box-shadow: 0 8px 24px color-mix(in srgb, var(--accent) 19%, transparent);
-    color: var(--color-text-on-dark);
-  }
-
   .directions__dots {
     display: flex;
     margin-top: 40px;
   }
 
-  /* Активная точка — цветом своей карточки */
+  /* Активная точка — цветом своей карточки; порядок цветов = порядок карточек в index.html */
   .directions__dots .slider__dot[aria-current="true"] {
     background-color: var(--color-direction-kod95);
   }
@@ -756,9 +738,44 @@
   }
 }
 
+/*
+  Наведение мышью (и фокус с клавиатуры внутри карточки): карточка приподнимается и окрашивается в свой цвет.
+  Только там, где есть мышь, — на планшете тап не оставляет карточку «наведённой»
+*/
+@media (min-width: 980px) and (hover: hover) {
+  .direction-card:hover,
+  .direction-card:focus-within {
+    border-color: color-mix(in srgb, var(--accent) 20%, transparent);
+    box-shadow: var(--shadow-hover-size) color-mix(in srgb, var(--accent) 10%, transparent), var(--shadow-card);
+    transform: translateY(-10px);
+  }
+
+  .direction-card:hover .direction-card__num,
+  .direction-card:focus-within .direction-card__num {
+    background-color: var(--accent-text);
+    color: var(--color-text-on-dark);
+  }
+
+  .direction-card:hover .direction-card__chips li,
+  .direction-card:focus-within .direction-card__chips li {
+    border-color: color-mix(in srgb, var(--accent) 10%, transparent);
+    background-color: color-mix(in srgb, var(--accent) 3%, transparent);
+    color: var(--accent-text);
+  }
+
+  /* Кнопка окрашивается, только если ведёт на страницу: ссылки без адреса не должны выглядеть кликабельными */
+  .direction-card:hover .direction-card__link[href],
+  .direction-card:focus-within .direction-card__link[href] {
+    background-color: var(--accent-text);
+    box-shadow: var(--shadow-glow-size) color-mix(in srgb, var(--accent) 19%, transparent);
+    color: var(--color-text-on-dark);
+  }
+}
+
 /* Кто в системе выбрал «меньше анимаций», видит наведение без подъёма карточки */
-@media (min-width: 980px) and (prefers-reduced-motion: reduce) {
-  .direction-card:hover {
+@media (min-width: 980px) and (hover: hover) and (prefers-reduced-motion: reduce) {
+  .direction-card:hover,
+  .direction-card:focus-within {
     transform: none;
   }
 }

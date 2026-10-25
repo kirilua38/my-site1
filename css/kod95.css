@@ -47,8 +47,10 @@
   z-index: 1;
 }
 
+/* Строки заголовка примерно поровну, как в оригинале («…документів / для запису в групу») */
 .steps .section-title {
   margin-bottom: 14px;
+  text-wrap: balance;
 }
 
 .steps__lead {
@@ -68,7 +70,7 @@
   counter-reset: step;
 }
 
-/* Линия проходит через центры кружков: колонка кружка 44px, её середина — 22px */
+/* Линия — по середине колонки кружков (колонка 44px, середина 22px), по высоте списка без 40px сверху и снизу, как в оригинале */
 .steps__list::before {
   content: "";
   position: absolute;
@@ -76,7 +78,7 @@
   bottom: 40px;
   left: 21px;
   width: 2px;
-  border-radius: 2px;
+  border-radius: var(--radius-pill);
   background-color: var(--color-bg-accent);
 }
 
@@ -192,17 +194,18 @@
   color: color-mix(in srgb, var(--color-viber) 70%, var(--color-heading));
 }
 
+/* Текст темнее, чем в оригинале: зелёный и голубой на светлом фоне иначе читаются плохо */
 .step__messenger--whatsapp {
   background-color: color-mix(in srgb, var(--color-whatsapp) 12%, var(--color-bg));
-  color: color-mix(in srgb, var(--color-whatsapp) 80%, var(--color-heading));
+  color: color-mix(in srgb, var(--color-whatsapp) 50%, var(--color-heading));
 }
 
 .step__messenger--telegram {
   background-color: color-mix(in srgb, var(--color-telegram) 12%, var(--color-bg));
-  color: color-mix(in srgb, var(--color-telegram) 85%, var(--color-heading));
+  color: color-mix(in srgb, var(--color-telegram) 60%, var(--color-heading));
 }
 
-/* «До 3 робочих годин» — тёплая плашка с часами */
+/* «До 3 робочих годин» — тёплая плашка с часами; текст темнее оригинального, чтобы читался */
 .step__badge {
   display: inline-flex;
   align-items: center;
@@ -213,7 +216,7 @@
   background-image: linear-gradient(135deg, color-mix(in srgb, var(--color-star) 8%, var(--color-bg)), color-mix(in srgb, var(--color-star) 18%, var(--color-bg)));
   font-size: 13px;
   font-weight: 700;
-  color: color-mix(in srgb, var(--color-star) 80%, var(--color-heading));
+  color: color-mix(in srgb, var(--color-star) 45%, var(--color-heading));
 }
 
 .step__badge svg {
@@ -238,6 +241,10 @@
   font-weight: 700;
   color: var(--color-text-on-dark);
   cursor: pointer;
+}
+
+.steps__cta:hover {
+  background-color: color-mix(in srgb, var(--color-primary) 85%, var(--color-heading));
 }
 
 .steps__cta svg {
@@ -526,21 +533,16 @@
   color: var(--color-text-muted);
 }
 
-/* Кнопка-ссылка: градиент общих кнопок, на телефоне во всю ширину */
+/* Кнопка — общая .btn (градиент и наведение), здесь размеры и тень; на телефоне во всю ширину */
 .why-card__button {
   display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 8px;
+  width: 100%;
   margin-top: 18px;
   padding: 14px 24px;
-  border-radius: var(--radius-button);
-  background-image: var(--gradient-primary);
   box-shadow: var(--shadow-button);
   font-size: 14px;
   font-weight: 700;
-  color: var(--color-text-on-dark);
-  text-decoration: none;
 }
 
 .why-card__button svg {
@@ -626,6 +628,7 @@
 
   .why-card__button {
     display: inline-flex;
+    width: auto;
     padding: 14px 28px;
     font-size: 14.5px;
   }
