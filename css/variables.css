@@ -35,17 +35,24 @@
   --color-star: #f0a830;
   --color-highlight: #ffb200;
   --color-error: #d93025;
+  --color-link: #ff8562;
   --color-facebook: #1877f2;
   --color-telegram: #1d98dc;
   --color-whatsapp: #27d061;
   --color-viber: #7360f2;
   --color-chat-button: #0088cc;
+  /* Свой цвет у каждого направления в «Напрямки роботи» на главной: метка, подзаголовок, номер, точка слайдера */
+  --color-direction-kod95: var(--color-primary);
+  --color-direction-jobs: #f59e0b;
+  --color-direction-chipcard: #10b981;
+  --color-direction-training: #8b5cf6;
 
   /* Шрифты */
   --font-main: "Manrope", Arial, sans-serif;
   --font-alt: "DM Sans", Arial, sans-serif;
 
   /* Радиусы */
+  --radius-small: 6px;
   --radius-button: 8px;
   --radius-card: 15px;
   --radius-large: 28px;
@@ -57,6 +64,13 @@
   --shadow-raised: 0 15px 30px -10px rgba(0, 11, 48, 0.2);
   --shadow-float: 0 0 20px rgba(0, 0, 0, 0.3);
   --shadow-error: inset 0 0 0 2px var(--color-error);
+  --shadow-image: 0 3px 12px rgba(27, 33, 55, 0.08);
+  --shadow-soft: 0 1px 3px rgba(0, 0, 0, 0.02), 0 8px 30px rgba(49, 97, 193, 0.05);
+  --shadow-ring: 0 4px 20px rgba(49, 97, 193, 0.1), 0 0 0 8px rgba(49, 97, 193, 0.04);
+  --shadow-button: 0 4px 16px rgba(49, 97, 193, 0.2);
+  /* Размеры теней без цвета — цвет подставляет сам блок (например, цвет карточки направления) */
+  --shadow-hover-size: 0 28px 72px;
+  --shadow-glow-size: 0 8px 24px;
 
   /* Сетка */
   --container-width: 1200px;

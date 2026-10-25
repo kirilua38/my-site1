@@ -15,6 +15,16 @@
   z-index: 10;
 }
 
+/* Страница без первого экрана с фото («Контакти»): на телефоне шапка стоит в потоке, подпись тёмная.
+   На компьютере шапка и так в потоке — правило ниже в @media (min-width: 980px) возвращает position: static */
+.header--solid {
+  position: relative;
+}
+
+.header--solid .header__logo {
+  color: var(--color-heading);
+}
+
 .header__inner {
   display: flex;
   align-items: center;
@@ -814,7 +824,15 @@ a.nav__link:not([href]) {
   mask: url("../img/icons/star.svg") left center / 18px 16px repeat-x;
 }
 
-/* ===== FAQ: вопросы-ответы на <details> (главная, «Код 95») ===== */
+/* Мелкие звёзды (плашки Google и Facebook в «Чому обирають нас» на «Код 95») */
+.stars--small {
+  width: 65px;
+  height: 12px;
+  -webkit-mask-size: 13px 12px;
+  mask-size: 13px 12px;
+}
+
+/* ===== FAQ: вопросы-ответы на <details> (главная, «Код 95», «Чип-карта») ===== */
 
 /* interpolate-size разрешает плавно менять высоту до auto — нужно для анимации раскрытия */
 .faq {
@@ -885,13 +903,26 @@ a.nav__link:not([href]) {
   line-height: 1.55;
 }
 
-.faq__answer ul {
+.faq__answer ul,
+.faq__answer ol {
   margin: 10px 0;
   padding-left: 20px;
 }
 
 .faq__answer li + li {
   margin-top: 6px;
+}
+
+/* Ссылки в ответах (FAQ «Код 95») — как в оригинале: своим цветом, без подчёркивания */
+.faq__answer a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+/* Без подчёркивания ссылку выдаёт только цвет — при наведении и фокусе с клавиатуры подчёркиваем */
+.faq__answer a:hover,
+.faq__answer a:focus-visible {
+  text-decoration: underline;
 }
 
 /* Плавное раскрытие ответа: работает в свежем Chrome, в остальных браузерах ответ открывается сразу */
@@ -926,7 +957,7 @@ a.nav__link:not([href]) {
 
 /* ===== Фотогалерея (листание — js/slider.js, увеличение — js/gallery.js) ===== */
 
-/* Как в оригинале, галерея есть только на компьютере; у скрытой секции фото не скачиваются */
+/* Как в оригинале, эта галерея только на компьютере, до 980px вместо неё мобильная (ниже); у скрытой секции фото не скачиваются */
 .gallery {
   display: none;
 }
@@ -937,8 +968,9 @@ a.nav__link:not([href]) {
     padding-block: 35px 80px;
   }
 
+  /* Поля по бокам не уже вынесенных за ленту миниатюр стрелок (33px) — иначе на 980–1140px страница прокручивается вбок */
   .gallery__inner {
-    width: min(1060px, 100% - 40px);
+    width: min(1060px, 100% - 80px);
     margin-inline: auto;
   }
 
@@ -1047,6 +1079,86 @@ a.nav__link:not([href]) {
   }
 }
 
+/* ===== Мобильная фотогалерея (до 980px; листание — js/slider.js) ===== */
+
+/*
+  Как в оригинале, отдельный блок вместо галереи выше: фото со стрелками по бокам и точки, без миниатюр и увеличения.
+  Телефон: фото во всю ширину, стрелки поверх фото у краёв
+*/
+.gallery-mobile {
+  padding-block: 30px 56px;
+}
+
+.gallery-mobile__slider {
+  position: relative;
+}
+
+.gallery-mobile__track {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gallery-mobile__slide {
+  width: 100%;
+}
+
+/* Фото обрезаны до пропорций кадра оригинала 860×550 */
+.gallery-mobile img {
+  width: 100%;
+  aspect-ratio: 860 / 550;
+  object-fit: cover;
+}
+
+.gallery-mobile__arrow {
+  position: absolute;
+  top: 50%;
+  width: 24px;
+  height: 24px;
+  background-color: var(--color-primary);
+  color: var(--color-text-on-dark);
+  transform: translateY(-50%);
+}
+
+.gallery-mobile__arrow--prev {
+  left: 5px;
+}
+
+.gallery-mobile__arrow--next {
+  right: 5px;
+}
+
+.gallery-mobile__dots {
+  margin-top: 26px;
+}
+
+/* Планшет: фото 600px по центру, стрелки крупнее и сбоку от фото — в 76px от него, но не ближе 20px к краю экрана */
+@media (min-width: 640px) {
+  .gallery-mobile__track {
+    width: 600px;
+    margin-inline: auto;
+  }
+
+  .gallery-mobile__arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .gallery-mobile__arrow--prev {
+    left: max(20px, 50% - 416px);
+  }
+
+  .gallery-mobile__arrow--next {
+    right: max(20px, 50% - 416px);
+  }
+}
+
+@media (min-width: 980px) {
+  .gallery-mobile {
+    display: none;
+  }
+}
+
 /* ===== Окно увеличения фото ===== */
 
 /* <dialog> во весь экран с белым фоном, фото по центру; клик по фону мимо фото закрывает окно */
@@ -1114,7 +1226,7 @@ a.nav__link:not([href]) {
   right: 13px;
 }
 
-/* ===== «В цифрах» (главная, «Код 95») ===== */
+/* ===== «В цифрах» (главная, «Код 95», «Чип-карта») ===== */
 
 .stats {
   padding-block: 50px 40px;
@@ -1175,7 +1287,7 @@ a.nav__link:not([href]) {
   }
 }
 
-/* ===== Блок консультации (главная, «Код 95») ===== */
+/* ===== Блок консультации (главная, «Код 95», «Чип-карта») ===== */
 
 /* Декоративные дуги выходят за края панели — обрезаем их по секции, чтобы не было прокрутки вбок */
 .consult {
@@ -1406,11 +1518,122 @@ a.nav__link:not([href]) {
   }
 }
 
-/* ===== «Відгуки» (главная, «Код 95») ===== */
+/*
+  Вариант «в рамке» («Код 95», «Чип-карта»): панель в синей рамке, ниже и просторнее, чем на главной.
+  Правила варианта стоят в файле после основных (а у вложенных элементов ещё и сильнее их — селектор из двух классов),
+  поэтому свойство, заданное здесь без @media, повторяем в @media там, где основные правила меняют его для шире экранов.
+  CSS страницы подключается позже: его правило .consult { padding-block } перебило бы вариант на всех ширинах
+*/
+.consult--framed {
+  padding-block: 87px 89px;
+}
 
-/* Телефон: один отзыв на всю ширину, стрелки по краям поверх картинки */
+.consult--framed .consult__panel {
+  width: min(320px, 100% - 36px);
+  padding: 46px 23px 53px;
+  border: 2px solid var(--color-primary);
+}
+
+.consult--framed .consult__arc--yellow {
+  top: -27px;
+  right: -28px;
+  width: 51px;
+}
+
+.consult--framed .consult__arc--gray {
+  bottom: -45px;
+  left: -45px;
+}
+
+/* В оригинале 32px, но Manrope шире Circe: на 30px заголовок остаётся в одну строку */
+.consult--framed .consult__title {
+  margin-bottom: 33px;
+  font-size: 30px;
+}
+
+.consult--framed .consult__text {
+  margin-bottom: 11px;
+}
+
+.consult--framed .consult__form {
+  margin-bottom: 24px;
+}
+
+.consult--framed .consult__phone {
+  margin-top: 44px;
+}
+
+@media (min-width: 640px) {
+  .consult--framed {
+    padding-block: 92px 138px;
+  }
+
+  .consult--framed .consult__panel {
+    width: min(600px, 100% - 36px);
+    padding: 71px 28px 90px;
+  }
+
+  .consult--framed .consult__arc--yellow {
+    top: -28px;
+    right: -29px;
+  }
+
+  .consult--framed .consult__arc--gray {
+    bottom: -45px;
+    left: -46px;
+  }
+
+  .consult--framed .consult__title {
+    margin-bottom: 67px;
+    font-size: 34px;
+  }
+
+  .consult--framed .consult__text {
+    margin-top: 15px;
+  }
+
+  .consult--framed .consult__phone {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 980px) {
+  .consult--framed .consult__panel {
+    width: min(920px, 100% - 36px);
+    padding: 77px 78px 54px;
+  }
+
+  .consult--framed .consult__arc--yellow {
+    top: -49px;
+    right: 51px;
+    width: 94px;
+  }
+
+  .consult--framed .consult__arc--gray {
+    bottom: -103px;
+    left: -2px;
+  }
+
+  .consult--framed .consult__title {
+    margin-bottom: 78px;
+    font-size: 48px;
+  }
+
+  .consult--framed .consult__text {
+    margin-top: 19px;
+  }
+
+  .consult--framed .consult__form {
+    margin-bottom: 43px;
+  }
+}
+
+/* ===== «Відгуки» (главная, «Код 95», «Чип-карта») ===== */
+
+/* Телефон: один отзыв на всю ширину, стрелки по краям поверх картинки. Фон серый, как в оригинале на всех страницах */
 .reviews {
   padding-block: 40px 30px;
+  background-color: var(--color-bg-light);
 }
 
 .reviews__title {
@@ -1508,5 +1731,789 @@ a.nav__link:not([href]) {
 
   .reviews__arrow--next {
     right: calc(50% - 450px);
+  }
+}
+
+/*
+  Вариант с широкими слайдами («Код 95», «Чип-карта»): заголовок «Відгуки про нас» мельче, чем на главной, слайды шире.
+  Отступы секции у страниц разные — они в CSS-файле страницы
+*/
+.reviews--wide .reviews__title {
+  margin-bottom: 46px;
+}
+
+.reviews--wide .reviews__dots {
+  margin-top: 26px;
+}
+
+@media (min-width: 640px) {
+  .reviews--wide .reviews__list {
+    padding-inline: calc(50% - 320px);
+  }
+
+  /* min(): на окне 640–655px с полосой прокрутки слайд не шире трека */
+  .reviews--wide .reviews__slide {
+    width: min(640px, 100%);
+  }
+}
+
+@media (min-width: 980px) {
+  .reviews--wide .reviews__title {
+    margin-bottom: 90px;
+    font-size: 42px;
+  }
+
+  .reviews--wide .reviews__list {
+    padding-inline: calc(50% - 430px);
+  }
+
+  .reviews--wide .reviews__slide {
+    width: 860px;
+  }
+
+  /* Стрелки в 30px от краёв центрального отзыва, но не ближе 20px к краю окна — иначе на 980–1016px страница прокручивается вбок */
+  .reviews--wide .reviews__arrow--prev {
+    left: max(20px, 50% - 500px);
+  }
+
+  .reviews--wide .reviews__arrow--next {
+    right: max(20px, 50% - 500px);
+  }
+}
+
+/* ===== Первый экран внутренних страниц («Код 95», «Чип-карта») ===== */
+
+/* Фото команды под тёмной подложкой на всех ширинах; на телефоне шапка с логотипом лежит сверху */
+.page-hero {
+  position: relative;
+  background-color: var(--color-hero-bg);
+  background-image: var(--gradient-hero), url("../img/common/hero.webp");
+  background-position: center;
+  background-size: cover;
+  color: var(--color-text-on-dark);
+  text-align: center;
+}
+
+.page-hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 700px;
+  padding-block: 70px 80px;
+}
+
+/* Название страницы крупно, подзаголовок — часть того же <h1>, но отдельной строкой и мельче */
+.page-hero__title {
+  margin-bottom: 18px;
+  font-size: 76px;
+  line-height: 1.4;
+  color: var(--color-text-muted-on-dark);
+}
+
+.page-hero__subtitle {
+  display: block;
+  max-width: 360px;
+  margin: -10px auto 0;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.page-hero__text {
+  max-width: 370px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+.page-hero__features {
+  display: grid;
+  gap: 14px;
+  margin: 0 0 30px;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+/* Текст пункта обёрнут в <span>: иначе каждое выделенное слово стало бы отдельным элементом строки */
+.page-hero__features li {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+/* Синяя галочка перед каждым преимуществом */
+.page-hero__features li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 31px;
+  height: 31px;
+  background: url("../img/common/check.svg") center / contain no-repeat;
+}
+
+/* Жёлтое выделение («при отриманні»); у <mark> по умолчанию жёлтый фон — убираем */
+.page-hero__features mark {
+  background: none;
+  color: var(--color-highlight);
+}
+
+.page-hero__button {
+  min-width: 260px;
+  min-height: 50px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* Стрелка «листайте вниз»: картинка служит маской (трафаретом), цвет берётся из переменной */
+.page-hero__scroll {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-text-on-dark);
+  transform: translateX(-50%);
+  -webkit-mask: url("../img/common/chevron-down.svg") center / contain no-repeat;
+  mask: url("../img/common/chevron-down.svg") center / contain no-repeat;
+}
+
+/* Планшет: преимущества сеткой 2×2 */
+@media (min-width: 640px) {
+  .page-hero__inner {
+    min-height: 610px;
+    padding-block: 100px 110px;
+  }
+
+  .page-hero__title {
+    margin-bottom: 14px;
+    font-size: 69px;
+  }
+
+  .page-hero__subtitle {
+    max-width: none;
+    font-size: 20px;
+  }
+
+  .page-hero__text {
+    max-width: none;
+    margin-bottom: 40px;
+    font-size: 14px;
+  }
+
+  .page-hero__features {
+    grid-template-columns: repeat(2, 230px);
+    column-gap: 40px;
+    row-gap: 28px;
+  }
+
+  .page-hero__features li {
+    gap: 14px;
+    font-size: 16px;
+  }
+
+  .page-hero__button {
+    font-size: 18px;
+  }
+}
+
+/* Компьютер: преимущества в ряд, кнопка крупнее */
+@media (min-width: 980px) {
+  .page-hero__inner {
+    min-height: 710px;
+    padding-block: 80px 150px;
+  }
+
+  .page-hero__title {
+    margin-bottom: 8px;
+    font-size: 100px;
+  }
+
+  .page-hero__subtitle {
+    margin-top: -15px;
+    font-size: 27px;
+  }
+
+  .page-hero__text {
+    margin-bottom: 60px;
+  }
+
+  .page-hero__features {
+    grid-template-columns: repeat(4, auto);
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1075px;
+    column-gap: 30px;
+    margin-bottom: 43px;
+  }
+
+  .page-hero__features li {
+    gap: 16px;
+    font-size: 18px;
+  }
+
+  .page-hero__features li::before {
+    width: 40px;
+    height: 40px;
+  }
+
+  .page-hero__button {
+    min-width: 280px;
+    min-height: 60px;
+  }
+
+  .page-hero__scroll {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* ===== Подпись и заголовок секции («Код 95», «Чип-карта») ===== */
+
+/* Маленькая надпись над заголовком: заглавными, с короткими чертами по бокам */
+.section-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.section-label::before,
+.section-label::after {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background-color: currentColor;
+}
+
+/* Размер растёт с шириной окна, как в оригинале: 4% ширины, но не меньше 26px и не больше 40px (на 768px — около 31px) */
+.section-title {
+  max-width: 760px;
+  margin: 0 auto 36px;
+  font-size: clamp(26px, 4vw, 40px);
+  line-height: 1.2;
+  text-align: center;
+}
+
+@media (min-width: 980px) {
+  .section-title {
+    margin-bottom: 64px;
+  }
+}
+
+/* ===== Бенто-блок: карточка со списком, карточки с картинками и плашка с кнопками («Код 95», «Чип-карта») ===== */
+
+/*
+  Телефон и планшет: всё столбиком — список, картинки, «Важливо знати», плашка.
+  Компьютер: список слева, справа столбик карточек, плашка во всю ширину.
+  Полупрозрачные цвета смешиваются из переменных (color-mix): так в файле нет голых цветов
+*/
+.bento {
+  padding-block: 48px;
+  background-color: var(--color-bg-light);
+}
+
+/* Под заголовком секции — как в оригинале бенто-блока: 32px на телефоне, 48px шире */
+.bento .section-title {
+  margin-bottom: 32px;
+}
+
+.bento__grid {
+  display: grid;
+  gap: 12px;
+}
+
+/* Если список выше колонки карточек, свободное место уходит между карточками — как в сетке оригинала */
+.bento__side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.bento__card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-large);
+  background-color: var(--color-bg);
+}
+
+.bento__list-card {
+  padding: 24px 20px 28px;
+}
+
+.bento__eyebrow {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.bento__card-title {
+  margin-bottom: 16px;
+  font-size: 19px;
+  line-height: 1.3;
+}
+
+/* Шаги: номера рисует CSS-счётчик в синих квадратиках; текст чуть ниже верха номера, между шагами — тонкая линия */
+.bento__steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.bento__steps li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding-block: 16px 12px;
+  border-bottom: 1px solid var(--color-border-light);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--color-heading);
+  counter-increment: step;
+}
+
+.bento__steps li:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.bento__steps li::before {
+  content: counter(step);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  margin-top: -4px;
+  border-radius: var(--radius-button);
+  background-image: var(--gradient-primary);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text-on-dark);
+}
+
+/* Почта в тексте шага: синим, подчёркнута пунктиром */
+.bento__steps a {
+  border-bottom: 1px dashed color-mix(in srgb, var(--color-primary) 30%, transparent);
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.bento__steps a:hover,
+.bento__steps a:focus-visible {
+  border-bottom-style: solid;
+}
+
+/* Картинка на светлом фоне, подпись — плашкой в левом нижнем углу */
+.bento__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 170px;
+  margin: 0;
+  padding: 10px 18px;
+  background-image: linear-gradient(145deg, var(--color-bg-light) 0%, var(--color-bg-field) 100%);
+}
+
+/* Две картинки в одной карточке («Код 95»): половины через тонкую линию, у каждой своя подпись; --tall — карточка выше */
+.bento__pair {
+  display: flex;
+  height: 170px;
+  background-image: linear-gradient(145deg, var(--color-bg-light) 0%, var(--color-bg-field) 100%);
+}
+
+.bento__pair--tall {
+  height: 210px;
+}
+
+.bento__pair figure {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  margin: 0;
+  padding: 12px 16px;
+}
+
+.bento__pair figure + figure {
+  border-left: 1px solid var(--color-border-light);
+}
+
+.bento__image img,
+.bento__pair img {
+  width: auto;
+  max-height: 100%;
+  border-radius: var(--radius-small);
+  filter: drop-shadow(var(--shadow-image));
+}
+
+.bento__image figcaption,
+.bento__pair figcaption {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-small);
+  background-color: color-mix(in srgb, var(--color-bg) 75%, transparent);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: color-mix(in srgb, var(--color-heading) 50%, transparent);
+}
+
+.bento__pair figcaption {
+  left: 8px;
+  padding: 3px 8px;
+  font-size: 9.5px;
+}
+
+/* «Важливо знати»: на компьютере растягивается до низа карточки со списком */
+.bento__info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 18px;
+  background-color: var(--color-bg-accent);
+}
+
+.bento__info-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.bento__info-title svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.bento__info-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bento__info-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px 14px;
+  border-left: 3px solid var(--color-primary);
+  border-radius: var(--radius-button);
+  background-color: var(--color-bg);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-heading);
+}
+
+.bento__info-list svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  color: var(--color-primary);
+}
+
+/* Плашка с кнопками: градиент, два полупрозрачных круга-украшения по углам */
+.bento__cta {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 12px;
+  padding: 28px 20px;
+  border-radius: var(--radius-card);
+  background-image: var(--gradient-primary);
+  color: var(--color-text-on-dark);
+}
+
+.bento__cta::before,
+.bento__cta::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.bento__cta::before {
+  top: -60px;
+  right: -40px;
+  width: 200px;
+  height: 200px;
+  background-color: color-mix(in srgb, var(--color-text-on-dark) 7%, transparent);
+}
+
+.bento__cta::after {
+  bottom: -50px;
+  left: -30px;
+  width: 160px;
+  height: 160px;
+  background-color: color-mix(in srgb, var(--color-text-on-dark) 5%, transparent);
+}
+
+/* z-index поднимает текст и кнопки над кругами */
+.bento__cta-text,
+.bento__cta-buttons {
+  position: relative;
+  z-index: 1;
+}
+
+.bento__cta-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.bento__cta-title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+/* Значок «Акредитовано»: рамка с тризубом — картинка-трафарет, цвет берётся из текста.
+   Текст обёрнут в <span>: иначе в flex-контейнере куски до и после <br> стали бы отдельными элементами строки */
+.bento__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid color-mix(in srgb, var(--color-text-on-dark) 20%, transparent);
+  border-radius: var(--radius-button);
+  background-color: color-mix(in srgb, var(--color-text-on-dark) 12%, transparent);
+  font-size: 11.5px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.bento__badge::before {
+  content: "";
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  background-color: currentColor;
+  -webkit-mask: url("../img/icons/accredited.svg") center / contain no-repeat;
+  mask: url("../img/icons/accredited.svg") center / contain no-repeat;
+}
+
+.bento__cta-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bento__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  border: 0;
+  border-radius: var(--radius-button);
+  font-size: 13.5px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.bento__button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.bento__button--primary {
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow-dropdown);
+  color: var(--color-primary);
+}
+
+.bento__button--outline {
+  border: 2px solid color-mix(in srgb, var(--color-text-on-dark) 35%, transparent);
+  background-color: color-mix(in srgb, var(--color-text-on-dark) 10%, transparent);
+  color: var(--color-text-on-dark);
+}
+
+/* Планшет: крупнее шрифты и отступы, кнопки в ряд */
+@media (min-width: 640px) {
+  .bento {
+    padding-block: 56px 60px;
+  }
+
+  .bento .section-title {
+    margin-bottom: 48px;
+  }
+
+  .bento__grid,
+  .bento__side {
+    gap: 16px;
+  }
+
+  .bento__list-card {
+    padding: 28px 24px 32px;
+  }
+
+  .bento__card-title {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+
+  .bento__steps li {
+    gap: 16px;
+    padding-block: 20px 14px;
+    font-size: 16px;
+  }
+
+  .bento__steps li::before {
+    width: 38px;
+    height: 38px;
+    margin-top: -6px;
+    font-size: 16px;
+  }
+
+  .bento__image {
+    height: 180px;
+    padding: 12px 24px;
+  }
+
+  .bento__image figcaption {
+    bottom: 8px;
+    left: 16px;
+  }
+
+  .bento__pair {
+    height: 180px;
+  }
+
+  .bento__pair--tall {
+    height: 220px;
+  }
+
+  .bento__pair figcaption {
+    bottom: 8px;
+    left: 10px;
+    padding: 4px 10px;
+    font-size: 10px;
+  }
+
+  .bento__info {
+    padding: 20px 22px;
+  }
+
+  .bento__info-list li {
+    gap: 10px;
+    font-size: 13.5px;
+  }
+
+  .bento__info-list svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .bento__cta {
+    gap: 24px;
+    margin-top: 16px;
+    padding: 32px 28px;
+    border-radius: var(--radius-large);
+  }
+
+  .bento__cta-title {
+    font-size: 20px;
+  }
+
+  .bento__badge {
+    gap: 10px;
+    padding: 10px 16px;
+    font-size: 12.5px;
+  }
+
+  .bento__badge::before {
+    width: 36px;
+    height: 36px;
+  }
+
+  .bento__cta-buttons {
+    flex-direction: row;
+  }
+
+  .bento__button {
+    padding: 15px 32px;
+    font-size: 14.5px;
+  }
+}
+
+/* Компьютер: две колонки, плашка в строку — текст слева, кнопки справа */
+@media (min-width: 980px) {
+  .bento {
+    padding-block: 80px;
+  }
+
+  .bento__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .bento__list-card {
+    padding: 32px 32px 36px;
+  }
+
+  .bento__pair {
+    height: 190px;
+  }
+
+  .bento__pair--tall {
+    height: 300px;
+  }
+
+  .bento__pair--tall figure {
+    padding: 16px 20px;
+  }
+
+  .bento__cta {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 40px 44px;
+  }
+
+  .bento__cta-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .bento__cta-title {
+    font-size: 26px;
+  }
+
+  .bento__cta-buttons {
+    flex-shrink: 0;
   }
 }

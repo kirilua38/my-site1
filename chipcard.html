@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Чіп-карта водія (Картка до тахографа) | Оформлення онлайн</title>
+  <meta name="description" content="Картка водія для цифрового тахографа: первинне отримання, продовження дії або відновлення у разі втрати. Консультація та супровід документів.">
+  <meta name="keywords" content="чіп карта водія, картка до тахографа, виготовлення чіп карти, зробити чіп карту онлайн, картка цифрового тахографа.">
+  <!--
+    Адрес страницы на боевом домене: поисковики считают его главным (canonical), соцсети и мессенджеры
+    берут из og: заголовок, описание и картинку для превью ссылки. Сменится домен (этап 2) — поправить на всех страницах
+  -->
+  <link rel="canonical" href="https://eurodrivers.com.ua/chipcard">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://eurodrivers.com.ua/chipcard">
+  <meta property="og:title" content="ЧІП-КАРТА в Україні">
+  <meta property="og:description" content="Офіційний транспортний центр | ЧІП-КАРТА">
+  <meta property="og:image" content="https://eurodrivers.com.ua/img/common/og-image.jpg">
+  <!-- Иконки: во вкладке — колесо (логотип из тонких светлых линий в 16px не виден), на экране «Домой» у iPhone — логотип 180×180 на белом -->
+  <link rel="icon" href="img/common/favicon-32x32.png" type="image/png">
+  <link rel="apple-touch-icon" href="img/common/apple-touch-icon.png">
+  <!-- Фото первого экрана — фон в CSS, браузер нашёл бы его поздно; здесь оно видно на всех ширинах -->
+  <link rel="preload" as="image" href="img/common/hero.webp" type="image/webp" fetchpriority="high">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/chipcard.css">
+  <script src="js/menu.js" defer></script>
+  <script src="js/modal.js" defer></script>
+  <script src="js/to-top.js" defer></script>
+  <script src="js/slider.js" defer></script>
+  <script src="js/forms.js" defer></script>
+</head>
+<body>
+  <!-- Шапка: одинаковая на всех страницах (index.html, kod95ukr.html, chipcard.html, contacts.html; на contacts.html — с классом header--solid). Правишь в одной — повтори во всех -->
+  <header class="header">
+    <div class="header__inner container">
+      <a class="header__logo" href="index.html">
+        <img class="header__logo-img" src="img/common/logo.png" width="156" height="150" alt="EuroDrivers — школа далекобійників нового покоління">
+        <!-- Подпись повторяет alt логотипа: прячем её от программ экранного чтения, чтобы текст не звучал дважды -->
+        <span class="header__tagline" aria-hidden="true">EuroDrivers — школа далекобійників нового покоління</span>
+      </a>
+
+      <button class="header__burger" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="header-panel">
+        <span class="header__burger-lines"></span>
+      </button>
+
+      <div class="header__panel" id="header-panel">
+        <button class="header__close" type="button" aria-label="Закрити меню"></button>
+        <img class="header__panel-logo" src="img/common/logo.png" width="156" height="150" alt="">
+
+        <nav class="nav" aria-label="Головне меню">
+          <ul class="nav__list">
+            <li><a class="nav__link" href="index.html">Головна</a></li>
+            <li><a class="nav__link">Курси</a></li>
+            <li class="nav__item-dropdown">
+              <button class="nav__link nav__toggle" type="button" aria-expanded="false" aria-controls="nav-docs">Документи водія</button>
+              <ul class="nav__sub" id="nav-docs">
+                <li><a class="nav__sublink" href="kod95ukr.html">КОД 95</a></li>
+                <li><a class="nav__sublink" href="chipcard.html" aria-current="page">ЧІП-КАРТА</a></li>
+              </ul>
+            </li>
+            <li><a class="nav__link">Навчання та сертифікація</a></li>
+            <li><a class="nav__link">Працевлаштування</a></li>
+            <li><a class="nav__link" href="contacts.html">Контакти</a></li>
+          </ul>
+        </nav>
+
+        <div class="header__contacts">
+          <ul class="social">
+            <li><a class="social__link" href="https://t.me/eurodrivers" target="_blank" rel="noopener" aria-label="Telegram"><img src="img/icons/telegram.svg" width="20" height="20" alt=""></a></li>
+            <li><a class="social__link" href="viber://add?number=380676392016" aria-label="Viber"><img src="img/icons/viber.svg" width="20" height="20" alt=""></a></li>
+            <li><a class="social__link" href="https://wa.me/380932993890" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="img/icons/whatsapp.svg" width="20" height="20" alt=""></a></li>
+            <li><a class="social__link" href="tel:+380676392016" aria-label="Подзвонити"><img src="img/icons/phone.svg" width="20" height="20" alt=""></a></li>
+          </ul>
+          <p class="header__phones">
+            <a href="tel:0800357113">0-800-357-113</a>
+            <a href="tel:+380971493921">+38(097)-149-39-21</a>
+            <a href="tel:+380676392016">+38(067)-639-20-16</a>
+          </p>
+          <button class="btn header__callback" type="button" data-modal-open="callback">Зворотній дзвінок</button>
+        </div>
+      </div>
+    </div>
+    <div class="header__backdrop"></div>
+  </header>
+
+  <main>
+    <!-- Первый экран: общий блок внутренних страниц (css/components.css), отличия от «Код 95» — в css/chipcard.css -->
+    <section class="page-hero">
+      <div class="page-hero__inner container">
+        <h1 class="page-hero__title">Чіп-карта <span class="page-hero__subtitle">Картка водія для цифрового тахографа</span></h1>
+        <ul class="page-hero__features">
+          <li><span>Вартість: <strong>4250 грн.</strong> (з ПДВ)</span></li>
+          <li><span>Термін: від <strong>7</strong> до <strong>15</strong> робочих днів</span></li>
+          <li><span>Отримання чіп-карти<br>в Україні та Європі</span></li>
+          <li><span>Подача документів<br>онлайн за <strong>1 хвилину</strong></span></li>
+        </ul>
+        <button class="btn page-hero__button" type="button" data-modal-open="consultation">Отримати консультацію</button>
+      </div>
+      <span class="page-hero__scroll" aria-hidden="true"></span>
+    </section>
+
+    <!--
+      «Інструкція отримання ЧІП-КАРТИ»: общий бенто-блок (css/components.css).
+      До 980px всё столбиком; на компьютере список слева, справа картинки и «Важливо знати», плашка во всю ширину
+    -->
+    <section class="bento">
+      <div class="container">
+        <p class="section-label">Чіп-карта</p>
+        <h2 class="section-title">Інструкція отримання ЧІП-КАРТИ</h2>
+        <div class="bento__grid">
+          <div class="bento__card bento__list-card">
+            <p class="bento__eyebrow">Як отримати</p>
+            <h3 class="bento__card-title">Покрокова інструкція оформлення картки для цифрових тахографів</h3>
+            <ol class="bento__steps">
+              <li><span>Подати онлайн заявку або надіслати документи та фото в електронному вигляді через ел.пошту <a href="mailto:tacho@eurodrivers.com.ua">tacho@eurodrivers.com.ua</a></span></li>
+              <li><span>Отримайте підтвердження на оплату після перевірки документів протягом 3-х робочих годин</span></li>
+              <li><span>Отримайте рахунок та посилання на оплату</span></li>
+              <li><span>Отримайте посилання на відстеження статусу виготовлення.</span></li>
+              <li><span>Отримайте картку для цифрових тахографів.</span></li>
+            </ol>
+          </div>
+          <div class="bento__side">
+            <figure class="bento__card bento__image">
+              <img src="img/chipcard/chip-card-front.webp" width="640" height="410" alt="Картка водія — лицьова сторона" loading="lazy">
+              <figcaption>Картка водія — лицьова</figcaption>
+            </figure>
+            <figure class="bento__card bento__image">
+              <img src="img/chipcard/chip-card-back.webp" width="640" height="410" alt="Картка водія — зворотна сторона" loading="lazy">
+              <figcaption>Картка водія — зворотна</figcaption>
+            </figure>
+            <div class="bento__card bento__info">
+              <p class="bento__info-title">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 16v-4M12 8h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                Важливо знати
+              </p>
+              <ul class="bento__info-list">
+                <li>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>Якщо у вас вже є діюча чіп-карта, подати заяву на отримання ви можете не раніше ніж 180 днів до закінчення терміну дії.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 7h.01M7 12h10M7 17h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  <span>Якщо у Вас ID-картка — потрібно витяг з QR-кодом.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="bento__cta">
+          <div class="bento__cta-text">
+            <p class="bento__cta-title">Бажаєте отримати чіп-карту?</p>
+            <p class="bento__badge"><span>Акредитовано згідно<br>наказу МІУ №789</span></p>
+          </div>
+          <div class="bento__cta-buttons">
+            <button class="bento__button bento__button--primary" type="button" data-modal-open="consultation">
+              Отримати консультацію
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <!-- В оригинале ведёт на страницу заявки /form-chipcard, её в этапе 1 нет — открываем окно консультации -->
+            <button class="bento__button bento__button--outline" type="button" data-modal-open="consultation">Заповнити заявку 24/7</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- «В цифрах» — вид как на главной (на «Код 95» серый фон и шрифты крупнее); подпись «звернень за рекомендацією» — как в оригинале этой страницы -->
+    <section class="stats">
+      <div class="container">
+        <h2 class="stats__title"><span class="stats__brand">EuroDrivers</span> в цифрах</h2>
+        <ul class="stats__list">
+          <li><span class="stats__number">7 років</span> <span class="stats__caption">успішної роботи</span></li>
+          <li><span class="stats__number">6500+</span> <span class="stats__caption">задоволених клієнтів</span></li>
+          <li><span class="stats__number">80%</span> <span class="stats__caption">звернень за рекомендацією</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Блок консультации «в рамке», как на «Код 95»: на телефоне всё столбиком, картинка телефона внизу; с 640px картинка слева, форма справа -->
+    <section class="consult consult--framed">
+      <div class="consult__panel">
+        <img class="consult__arc consult__arc--yellow" src="img/common/arc-yellow.svg" width="94" height="94" alt="" loading="lazy">
+        <img class="consult__arc consult__arc--gray" src="img/common/arc-gray.svg" width="200" height="200" alt="" loading="lazy">
+
+        <h2 class="consult__title">Отримати ЧІП-КАРТУ</h2>
+
+        <div class="consult__content">
+          <div class="consult__main">
+            <!-- «записуйтесь на курс у найближчому потоці» — как в оригинале (текст с «Код 95»), уточнить у владельца -->
+            <p class="consult__text">Ознайомтесь з основною інформацією про ЧІП-КАРТУ в Україні та записуйтесь на курс у найближчому потоці:</p>
+
+            <form class="consult__form" method="post" novalidate data-form>
+              <input type="hidden" name="form" value="consultation-chipcard">
+              <div class="form-trap" aria-hidden="true">
+                <label>Не заповнюйте це поле <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+              </div>
+              <div class="form-field">
+                <label class="visually-hidden" for="consult-name">Ім'я</label>
+                <input class="input" id="consult-name" type="text" name="name" placeholder="Ваше ім'я" autocomplete="name" maxlength="50" aria-describedby="consult-name-error">
+                <p class="form-error" id="consult-name-error" hidden></p>
+              </div>
+              <div class="form-field">
+                <label class="visually-hidden" for="consult-phone">Телефон</label>
+                <div class="phone-field">
+                  <span class="phone-field__prefix">+380</span>
+                  <input class="input" id="consult-phone" type="tel" name="phone" placeholder="(00) 000-00-00" autocomplete="tel-national" required inputmode="numeric" aria-describedby="consult-phone-error">
+                </div>
+                <p class="form-error" id="consult-phone-error" hidden></p>
+              </div>
+              <button class="btn consult__submit" type="submit">Надіслати</button>
+              <p class="form-success" tabindex="-1" hidden>Дякуємо! Чекайте на дзвінок від нашого менеджера протягом робочого дня!</p>
+            </form>
+
+            <div class="consult__messengers">
+              <p class="consult__hint">Або пишіть самостійно у месенджерах</p>
+              <img class="consult__arrow" src="img/common/arrow-curve.svg" width="30" height="15" alt="" loading="lazy">
+              <ul class="consult__icons">
+                <li><a href="viber://add?number=380676392016" aria-label="Viber"><img src="img/common/viber_4.svg" width="30" height="30" alt="" loading="lazy"></a></li>
+                <li><a href="https://t.me/eurodrivers" target="_blank" rel="noopener" aria-label="Telegram"><img src="img/common/telegram_4.svg" width="30" height="30" alt="" loading="lazy"></a></li>
+                <!-- В оригинале здесь другой номер WhatsApp, чем в шапке и подвале (380932993890) — уточнить у владельца -->
+                <li><a href="https://wa.me/380676392016" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="img/common/whatsapp_4.svg" width="30" height="30" alt="" loading="lazy"></a></li>
+              </ul>
+            </div>
+          </div>
+
+          <img class="consult__phone" src="img/common/phone-call.png" width="400" height="803" alt="Телефон із вхідним дзвінком від EuroDrivers" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- «Відгуки», как на «Код 95»: слайдер скриншотов; на планшете и компьютере текущий отзыв по центру, соседние выглядывают -->
+    <section class="reviews reviews--wide" data-slider>
+      <h2 class="reviews__title">Відгуки про нас</h2>
+      <div class="reviews__slider">
+        <ul class="reviews__list slider__track" data-slider-track aria-label="Відгуки клієнтів">
+          <li class="reviews__slide"><img src="img/common/review-1.webp" width="1536" height="1024" alt="Скриншот відгуку клієнта, 1 з 8" loading="lazy"></li>
+          <li class="reviews__slide"><img src="img/common/review-2.webp" width="1536" height="1024" alt="Скриншот відгуку клієнта, 2 з 8" loading="lazy"></li>
+          <li class="reviews__slide"><img src="img/common/review-3.webp" width="1536" height="1024" alt="Скриншот відгуку клієнта, 3 з 8" loading="lazy"></li>
+          <li class="reviews__slide"><img src="img/common/review-4.webp" width="1536" height="1024" alt="Скриншот відгуку клієнта, 4 з 8" loading="lazy"></li>
+          <li class="reviews__slide"><img src="img/common/review-5.webp" width="1536" height="1024" alt="Скриншот відгуку клієнта, 5 з 8" loading="lazy"></li>
+          <li class="reviews__slide"><img src="img/common/review-6.webp" width="1536" height="1024" alt="Скриншот відгуку клієнта, 6 з 8" loading="lazy"></li>
+          <li class="reviews__slide"><img src="img/common/review-7.webp" width="1536" height="1024" alt="Скриншот відгуку клієнта, 7 з 8" loading="lazy"></li>
+          <li class="reviews__slide"><img src="img/common/review-8.webp" width="1536" height="1024" alt="Скриншот відгуку клієнта, 8 з 8" loading="lazy"></li>
+        </ul>
+        <button class="slider__arrow reviews__arrow reviews__arrow--prev" type="button" aria-label="Попередній відгук" data-slider-prev>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="slider__arrow reviews__arrow reviews__arrow--next" type="button" aria-label="Наступний відгук" data-slider-next>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="slider__dots reviews__dots" data-slider-dots></div>
+    </section>
+
+    <!-- FAQ «Чип-карти» — свои вопросы, вид как на главной (components.css), отступы — в css/chipcard.css.
+         <details> работают без JS, с клавиатуры и в программах экранного чтения -->
+    <section class="faq">
+      <div class="container">
+        <h2 class="faq__title">Відповіді на поширені запитання</h2>
+        <div class="faq__list">
+          <details class="faq__item">
+            <summary class="faq__question">Які документи потрібні для оформлення чіп-карти?</summary>
+            <div class="faq__answer">
+              <p>Для подання заявки вам необхідно підготувати:</p>
+              <ul>
+                <li>Паспорт громадянина України (1, 2 сторінки та прописка) або ID-картку (обидві сторони) разом із витягом про місце реєстрації (бажано з QR-кодом).</li>
+                <li>Ідентифікаційний номер (РНОКПП).</li>
+                <li>Посвідчення водія з категоріями C1, C, D1 або D (обидві сторони).</li>
+                <li>Фотокартку на світлому фоні.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary class="faq__question">Скільки коштує виготовлення карти і які терміни?</summary>
+            <div class="faq__answer">
+              <p>Вартість виготовлення карти покоління G2 становить 4250 грн.<br>Термін виготовлення — від 7 до 15 робочих днів</p>
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary class="faq__question">Як подати заявку, якщо я за кордоном або в дорозі?</summary>
+            <div class="faq__answer">
+              <p>Ми максимально спростили процес: вам не потрібно нікуди їхати. Ви можете подати всі документи онлайн через Viber. Просто надішліть фото документів нашому менеджеру, і ми одразу розпочнемо процес оформлення.</p>
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary class="faq__question">Як я можу отримати готову карту в Європі?</summary>
+            <div class="faq__answer">
+              <p>Ми організовуємо доставку готових чіп-карт по всій території Європи за допомогою Нової Пошти. Це дозволяє отримати документ максимально швидко безпосередньо у країні вашого перебування (Польща, Німеччина, Чехія тощо).</p>
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary class="faq__question">Якого покоління карту я отримаю?</summary>
+            <div class="faq__answer">
+              <p>Наразі видаються виключно сучасні смарт-карти другого покоління (G2V2). Вони повністю відповідають новим вимогам ЄС 2025-2026 років, мають збільшений обсяг пам'яті (зберігають дані за останні 56 днів) та автоматично фіксують перетин кордонів.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Подвал: одинаковый на всех страницах (index.html, kod95ukr.html, chipcard.html, contacts.html; на contacts.html этот блок в <main>, с <h1>). Правишь в одной — повтори во всех -->
+  <footer class="footer">
+    <div class="container">
+      <h2 class="footer__title">Зв'яжіться з нами!</h2>
+
+      <!-- Порядок блоков — как на телефоне; на широких экранах их переставляет CSS-сетка -->
+      <div class="footer__grid">
+        <div class="footer__group footer__group--address">
+          <h3 class="footer__label">Наша адреса:</h3>
+          <ul class="footer__list">
+            <li>м. Тернопіль,<br>вул. Микулинецька, 3а</li>
+            <li>м. Дніпро,<br>вул. Європейська, 5, оф. 314</li>
+            <li>м. Київ, вул. Жилянська, 75</li>
+          </ul>
+        </div>
+
+        <div class="footer__group footer__group--messengers">
+          <h3 class="footer__label">Месенджери:</h3>
+          <ul class="footer__icons footer__icons--round">
+            <li><a href="https://t.me/eurodrivers" target="_blank" rel="noopener" aria-label="Telegram"><img src="img/common/telegram_4.svg" width="30" height="30" alt="" loading="lazy"></a></li>
+            <li><a href="viber://add?number=380676392016" aria-label="Viber"><img src="img/common/viber_4.svg" width="30" height="30" alt="" loading="lazy"></a></li>
+            <li><a href="https://wa.me/380932993890" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="img/common/whatsapp_4.svg" width="30" height="30" alt="" loading="lazy"></a></li>
+          </ul>
+        </div>
+
+        <div class="footer__group footer__group--email">
+          <h3 class="footer__label">E-mail:</h3>
+          <p class="footer__text"><a href="mailto:info@eurodrivers.com.ua">info@eurodrivers.com.ua</a></p>
+        </div>
+
+        <div class="footer__group footer__group--schedule">
+          <h3 class="footer__label">Графік роботи:</h3>
+          <p class="footer__text">Пн-Пт 09:00-18:00</p>
+        </div>
+
+        <div class="footer__group footer__group--social">
+          <h3 class="footer__label">Соціальні мережі:</h3>
+          <ul class="footer__icons">
+            <li><a href="https://www.facebook.com/eurodrivers.com.ua/" target="_blank" rel="noopener" aria-label="Facebook"><img src="img/common/facebook_3.svg" width="30" height="30" alt="" loading="lazy"></a></li>
+            <li><a href="https://www.instagram.com/euro.drivers/" target="_blank" rel="noopener" aria-label="Instagram"><img src="img/common/instagram-sketched.svg" width="30" height="30" alt="" loading="lazy"></a></li>
+          </ul>
+        </div>
+
+        <div class="footer__group footer__group--phones">
+          <h3 class="footer__label">Телефони:</h3>
+          <ul class="footer__phones">
+            <li><img src="img/common/phone_1.svg" width="20" height="20" alt="" loading="lazy"><a href="tel:0800357113">0-800-357-113</a></li>
+            <li><img src="img/common/kyivstar.png" width="20" height="19" alt="" loading="lazy"><a href="tel:+380676392016">+38(067)-639-20-16</a></li>
+            <li><img src="img/common/kyivstar.png" width="20" height="19" alt="" loading="lazy"><a href="tel:+380971493921">+38(097)-149-39-21</a></li>
+          </ul>
+        </div>
+
+        <form class="footer__form" method="post" novalidate data-form>
+          <h3 class="footer__label">Передзвонити вам?</h3>
+          <input type="hidden" name="form" value="contacts">
+          <div class="form-trap" aria-hidden="true">
+            <label>Не заповнюйте це поле <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+          </div>
+          <div class="footer__form-row">
+            <label class="visually-hidden" for="contacts-phone">Телефон</label>
+            <div class="phone-field">
+              <span class="phone-field__prefix">+380</span>
+              <input class="input" id="contacts-phone" type="tel" name="phone" placeholder="(00) 000-00-00" autocomplete="tel-national" required inputmode="numeric" aria-describedby="contacts-phone-error">
+            </div>
+            <button class="btn footer__submit" type="submit">Замовити дзвінок</button>
+          </div>
+          <p class="form-error" id="contacts-phone-error" hidden></p>
+          <p class="form-success" tabindex="-1" hidden>Дякуємо! Чекайте на дзвінок від нашого менеджера протягом робочого дня!</p>
+        </form>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" type="button" aria-label="Нагору">
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <!-- Модальные окна: одинаковые на всех страницах, как шапка. Открываются кнопкой с data-modal-open="<имя>" -->
+  <dialog class="modal" id="modal-callback" aria-labelledby="modal-callback-title">
+    <button class="modal__close" type="button" aria-label="Закрити вікно" data-modal-close></button>
+    <div class="modal__window">
+      <img class="modal__img" src="img/common/team.webp" width="1024" height="1024" alt="" loading="lazy">
+      <div class="modal__body">
+        <h2 class="modal__title" id="modal-callback-title">Ми зателефонуємо вам</h2>
+        <form class="modal__form" method="post" novalidate data-form>
+          <input type="hidden" name="form" value="callback">
+          <div class="form-trap" aria-hidden="true">
+            <label>Не заповнюйте це поле <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+          </div>
+          <div class="form-field">
+            <label class="visually-hidden" for="callback-name">Ім'я</label>
+            <input class="input" id="callback-name" type="text" name="name" placeholder="Ім'я" autocomplete="name" maxlength="50" aria-describedby="callback-name-error">
+            <p class="form-error" id="callback-name-error" hidden></p>
+          </div>
+          <div class="form-field">
+            <label class="visually-hidden" for="callback-phone">Телефон</label>
+            <div class="phone-field">
+              <span class="phone-field__prefix">+380</span>
+              <input class="input" id="callback-phone" type="tel" name="phone" placeholder="(00) 000-00-00" autocomplete="tel-national" required inputmode="numeric" aria-describedby="callback-phone-error">
+            </div>
+            <p class="form-error" id="callback-phone-error" hidden></p>
+          </div>
+          <button class="btn modal__submit" type="submit">Відправити</button>
+          <p class="modal__note">Натискаючи кнопку ви погоджуєтесь з політикою конфіденційності</p>
+          <p class="form-success" tabindex="-1" hidden>Дякуємо! Чекайте на дзвінок від нашого менеджера протягом робочого дня!</p>
+        </form>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="modal" id="modal-consultation" aria-labelledby="modal-consultation-title">
+    <button class="modal__close" type="button" aria-label="Закрити вікно" data-modal-close></button>
+    <div class="modal__window">
+      <img class="modal__img" src="img/common/team.webp" width="1024" height="1024" alt="" loading="lazy">
+      <div class="modal__body">
+        <h2 class="modal__title" id="modal-consultation-title">Отримати консультацію</h2>
+        <form class="modal__form" method="post" novalidate data-form>
+          <input type="hidden" name="form" value="consultation">
+          <div class="form-trap" aria-hidden="true">
+            <label>Не заповнюйте це поле <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+          </div>
+          <div class="form-field">
+            <label class="visually-hidden" for="consultation-name">Ім'я</label>
+            <input class="input" id="consultation-name" type="text" name="name" placeholder="Ім'я" autocomplete="name" maxlength="50" aria-describedby="consultation-name-error">
+            <p class="form-error" id="consultation-name-error" hidden></p>
+          </div>
+          <div class="form-field">
+            <label class="visually-hidden" for="consultation-phone">Телефон</label>
+            <div class="phone-field">
+              <span class="phone-field__prefix">+380</span>
+              <input class="input" id="consultation-phone" type="tel" name="phone" placeholder="(00) 000-00-00" autocomplete="tel-national" required inputmode="numeric" aria-describedby="consultation-phone-error">
+            </div>
+            <p class="form-error" id="consultation-phone-error" hidden></p>
+          </div>
+          <button class="btn modal__submit" type="submit">Відправити</button>
+          <p class="modal__note">Натискаючи кнопку ви погоджуєтесь з політикою конфіденційності</p>
+          <p class="form-success" tabindex="-1" hidden>Дякуємо! Чекайте на дзвінок від нашого менеджера протягом робочого дня!</p>
+        </form>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>

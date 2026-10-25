@@ -1,0 +1,140 @@
+/*
+  Секции страницы «Чип-карта».
+  Mobile-first: база — телефон, @media (min-width: 640px) — планшет, (min-width: 980px) — компьютер.
+
+  Общие блоки описаны в components.css, здесь — только то, что на этой странице другое.
+  Правила этого файла подключаются позже components.css и при равной силе селектора побеждают на всех ширинах,
+  поэтому свойство, заданное здесь без @media, повторяем в @media там, где components.css меняет его для шире экранов.
+*/
+
+/* ===== Первый экран: отличия от «Код 95» ===== */
+
+/*
+  Абзаца под заголовком нет, но на планшете и компьютере преимущества, кнопка и стрелка стоят там же, где на «Код 95»:
+  место абзаца занимает отступ под заголовком. Название и подзаголовок белые, а не светло-серые
+*/
+.page-hero__inner {
+  padding-top: 137px;
+}
+
+.page-hero__title {
+  margin-bottom: 36px;
+  font-size: 68px;
+  color: var(--color-text-on-dark);
+}
+
+/* Как в оригинале, подзаголовок шире полей страницы (там 360px); 17px вместо 18px — Manrope шире Circe, так он в одну строку */
+.page-hero__subtitle {
+  margin: 0 -10px;
+  font-size: 17px;
+}
+
+.page-hero__features {
+  margin-bottom: 55px;
+}
+
+@media (min-width: 640px) {
+  .page-hero__inner {
+    padding-top: 100px;
+  }
+
+  .page-hero__title {
+    margin-bottom: 76px;
+    font-size: 69px;
+  }
+
+  .page-hero__subtitle {
+    margin: -10px auto 0;
+    font-size: 20px;
+  }
+
+  .page-hero__features {
+    margin-bottom: 30px;
+  }
+}
+
+@media (min-width: 980px) {
+  .page-hero__inner {
+    min-height: 660px;
+    padding-block: 80px 149px;
+  }
+
+  .page-hero__title {
+    margin-bottom: 90px;
+    font-size: 100px;
+  }
+
+  .page-hero__subtitle {
+    margin-top: -15px;
+    font-size: 28px;
+  }
+
+  /* Преимущества здесь в две строки, а не в три, как на «Код 95»: отступ больше, чтобы кнопка стояла на том же месте */
+  .page-hero__features {
+    margin-bottom: 66px;
+  }
+
+  .page-hero__scroll {
+    bottom: 5px;
+  }
+}
+
+/* ===== Консультация «в рамке»: отличие от «Код 95» ===== */
+
+/*
+  «Отримати ЧІП-КАРТУ» на телефоне 25px (в оригинале 26px, но Manrope шире Circe — так в одну строку),
+  отступ под ним больше, чтобы текст и форма стояли там же, где на «Код 95».
+  Селектор той же силы, что у варианта в components.css, — поэтому размеры повторяем для шире экранов
+*/
+.consult--framed .consult__title {
+  margin-bottom: 39px;
+  font-size: 25px;
+}
+
+/* ===== Отзывы: вид — вариант .reviews--wide (components.css), здесь только отступы секции ===== */
+
+.reviews {
+  padding-block: 75px 0;
+}
+
+/* ===== FAQ: заголовок как на главной, вопросы как на «Код 95», отступы свои ===== */
+
+.faq {
+  padding-block: 45px 90px;
+}
+
+.faq__title {
+  margin-bottom: 58px;
+}
+
+@media (min-width: 640px) {
+  .consult--framed .consult__title {
+    margin-bottom: 67px;
+    font-size: 34px;
+  }
+
+  .faq {
+    padding-top: 49px;
+  }
+
+  .faq__title {
+    margin-bottom: 93px;
+    font-size: 34px;
+  }
+}
+
+@media (min-width: 980px) {
+  .consult--framed .consult__title {
+    margin-bottom: 78px;
+    font-size: 48px;
+  }
+
+  .faq {
+    padding-block: 68px 90px;
+  }
+
+  .faq__title {
+    margin-bottom: 65px;
+    font-size: 48px;
+  }
+}
