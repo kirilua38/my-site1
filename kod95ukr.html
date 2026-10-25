@@ -19,6 +19,7 @@
   <script src="js/menu.js" defer></script>
   <script src="js/modal.js" defer></script>
   <script src="js/to-top.js" defer></script>
+  <script src="js/slider.js" defer></script>
   <script src="js/forms.js" defer></script>
 </head>
 <body>
@@ -196,7 +197,19 @@
       </div>
     </section>
 
-    <!-- Сюда встанут: «В цифрах» и галерея (шаг 25) — в порядке оригинала -->
+    <!-- «В цифрах» — как на главной, но на сером фоне (css/kod95.css) -->
+    <section class="stats">
+      <div class="container">
+        <h2 class="stats__title"><span class="stats__brand">EuroDrivers</span> в&nbsp;цифрах</h2>
+        <ul class="stats__list">
+          <li><span class="stats__number">7 років</span> <span class="stats__caption">успішної роботи</span></li>
+          <li><span class="stats__number">6500+</span> <span class="stats__caption">задоволених клієнтів</span></li>
+          <li><span class="stats__number">80%</span> <span class="stats__caption">за рекомендацією</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Сюда встанет мобильная галерея (пачка 25б) — в порядке оригинала -->
 
     <!-- «Тарифи»: три курса; до 980px карточки столбиком, на компьютере в ряд -->
     <section class="tariffs">
@@ -239,7 +252,82 @@
       </div>
     </section>
 
-    <!-- Сюда встанут: блок консультации, отзывы и FAQ (шаг 25) — в порядке оригинала -->
+    <!-- Блок консультации: до 980px всё столбиком, картинка телефона внизу; на компьютере картинка слева, форма справа -->
+    <section class="consult">
+      <div class="consult__panel">
+        <img class="consult__arc consult__arc--yellow" src="img/common/arc-yellow.svg" width="94" height="94" alt="" loading="lazy">
+        <img class="consult__arc consult__arc--gray" src="img/common/arc-gray.svg" width="200" height="200" alt="" loading="lazy">
+
+        <h2 class="consult__title">Отримати КОД 95</h2>
+
+        <div class="consult__content">
+          <div class="consult__main">
+            <p class="consult__text">Ознайомтесь з основною інформацією про код 95 в Україні та записуйтесь на курс у найближчому потоці:</p>
+
+            <form class="consult__form" method="post" novalidate data-form>
+              <input type="hidden" name="form" value="consultation-kod95">
+              <div class="form-trap" aria-hidden="true">
+                <label>Не заповнюйте це поле <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+              </div>
+              <div class="form-field">
+                <label class="visually-hidden" for="consult-name">Ім'я</label>
+                <input class="input" id="consult-name" type="text" name="name" placeholder="Ваше ім'я" autocomplete="name" maxlength="50" aria-describedby="consult-name-error">
+                <p class="form-error" id="consult-name-error" hidden></p>
+              </div>
+              <div class="form-field">
+                <label class="visually-hidden" for="consult-phone">Телефон</label>
+                <div class="phone-field">
+                  <span class="phone-field__prefix">+380</span>
+                  <input class="input" id="consult-phone" type="tel" name="phone" placeholder="(00) 000-00-00" autocomplete="tel-national" required inputmode="numeric" aria-describedby="consult-phone-error">
+                </div>
+                <p class="form-error" id="consult-phone-error" hidden></p>
+              </div>
+              <button class="btn consult__submit" type="submit">Надіслати</button>
+              <p class="form-success" tabindex="-1" hidden>Дякуємо! Чекайте на дзвінок від нашого менеджера протягом робочого дня!</p>
+            </form>
+
+            <div class="consult__messengers">
+              <p class="consult__hint">Або пишіть самостійно у месенджерах</p>
+              <img class="consult__arrow" src="img/common/arrow-curve.svg" width="30" height="15" alt="" loading="lazy">
+              <ul class="consult__icons">
+                <li><a href="viber://add?number=380676392016" aria-label="Viber"><img src="img/common/viber_4.svg" width="30" height="30" alt="" loading="lazy"></a></li>
+                <li><a href="https://t.me/eurodrivers" target="_blank" rel="noopener" aria-label="Telegram"><img src="img/common/telegram_4.svg" width="30" height="30" alt="" loading="lazy"></a></li>
+                <!-- В оригинале здесь другой номер WhatsApp, чем в шапке и подвале (380932993890) — уточнить у владельца -->
+                <li><a href="https://wa.me/380676392016" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="img/common/whatsapp_4.svg" width="30" height="30" alt="" loading="lazy"></a></li>
+              </ul>
+            </div>
+          </div>
+
+          <img class="consult__phone" src="img/common/phone-call.png" width="400" height="803" alt="Телефон із вхідним дзвінком від Eurodrivers" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- «Відгуки»: слайдер скриншотов; на планшете и компьютере текущий отзыв по центру, соседние выглядывают -->
+    <section class="reviews" data-slider>
+      <h2 class="reviews__title">Відгуки про нас</h2>
+      <div class="reviews__slider">
+        <ul class="reviews__list slider__track" data-slider-track aria-label="Відгуки клієнтів">
+          <li class="reviews__slide"><img src="img/common/review-1.webp" width="1536" height="1024" alt="Скриншот відгуку клієнта, 1 з 8" loading="lazy"></li>
+          <li class="reviews__slide"><img src="img/common/review-2.webp" width="1536" height="1024" alt="Скриншот відгуку клієнта, 2 з 8" loading="lazy"></li>
+          <li class="reviews__slide"><img src="img/common/review-3.webp" width="1536" height="1024" alt="Скриншот відгуку клієнта, 3 з 8" loading="lazy"></li>
+          <li class="reviews__slide"><img src="img/common/review-4.webp" width="1536" height="1024" alt="Скриншот відгуку клієнта, 4 з 8" loading="lazy"></li>
+          <li class="reviews__slide"><img src="img/common/review-5.webp" width="1536" height="1024" alt="Скриншот відгуку клієнта, 5 з 8" loading="lazy"></li>
+          <li class="reviews__slide"><img src="img/common/review-6.webp" width="1536" height="1024" alt="Скриншот відгуку клієнта, 6 з 8" loading="lazy"></li>
+          <li class="reviews__slide"><img src="img/common/review-7.webp" width="1536" height="1024" alt="Скриншот відгуку клієнта, 7 з 8" loading="lazy"></li>
+          <li class="reviews__slide"><img src="img/common/review-8.webp" width="1536" height="1024" alt="Скриншот відгуку клієнта, 8 з 8" loading="lazy"></li>
+        </ul>
+        <button class="slider__arrow reviews__arrow reviews__arrow--prev" type="button" aria-label="Попередній відгук" data-slider-prev>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="slider__arrow reviews__arrow reviews__arrow--next" type="button" aria-label="Наступний відгук" data-slider-next>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="slider__dots reviews__dots" data-slider-dots></div>
+    </section>
+
+    <!-- Сюда встанет свой FAQ «Код 95» (пачка 25б) -->
   </main>
 
   <!-- Подвал: одинаковый на всех страницах (index.html, kod95ukr.html, chipcard.html, contacts.html). Правишь в одной — повтори во всех -->
