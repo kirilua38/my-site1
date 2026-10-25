@@ -814,7 +814,7 @@ a.nav__link:not([href]) {
   mask: url("../img/icons/star.svg") left center / 18px 16px repeat-x;
 }
 
-/* ===== FAQ: вопросы-ответы на <details> (главная, «Код 95») ===== */
+/* ===== FAQ: вопросы-ответы на <details> (главная, «Код 95», «Чип-карта») ===== */
 
 /* interpolate-size разрешает плавно менять высоту до auto — нужно для анимации раскрытия */
 .faq {
@@ -950,8 +950,9 @@ a.nav__link:not([href]) {
     padding-block: 35px 80px;
   }
 
+  /* Поля по бокам не уже вынесенных за ленту миниатюр стрелок (33px) — иначе на 980–1140px страница прокручивается вбок */
   .gallery__inner {
-    width: min(1060px, 100% - 40px);
+    width: min(1060px, 100% - 80px);
     margin-inline: auto;
   }
 
@@ -1207,7 +1208,7 @@ a.nav__link:not([href]) {
   right: 13px;
 }
 
-/* ===== «В цифрах» (главная, «Код 95») ===== */
+/* ===== «В цифрах» (главная, «Код 95», «Чип-карта») ===== */
 
 .stats {
   padding-block: 50px 40px;
@@ -1268,7 +1269,7 @@ a.nav__link:not([href]) {
   }
 }
 
-/* ===== Блок консультации (главная, «Код 95») ===== */
+/* ===== Блок консультации (главная, «Код 95», «Чип-карта») ===== */
 
 /* Декоративные дуги выходят за края панели — обрезаем их по секции, чтобы не было прокрутки вбок */
 .consult {
@@ -1499,11 +1500,122 @@ a.nav__link:not([href]) {
   }
 }
 
-/* ===== «Відгуки» (главная, «Код 95») ===== */
+/*
+  Вариант «в рамке» («Код 95», «Чип-карта»): панель в синей рамке, ниже и просторнее, чем на главной.
+  Правила варианта стоят в файле после основных (а у вложенных элементов ещё и сильнее их — селектор из двух классов),
+  поэтому свойство, заданное здесь без @media, повторяем в @media там, где основные правила меняют его для шире экранов.
+  CSS страницы подключается позже: его правило .consult { padding-block } перебило бы вариант на всех ширинах
+*/
+.consult--framed {
+  padding-block: 87px 89px;
+}
 
-/* Телефон: один отзыв на всю ширину, стрелки по краям поверх картинки */
+.consult--framed .consult__panel {
+  width: min(320px, 100% - 36px);
+  padding: 46px 23px 53px;
+  border: 2px solid var(--color-primary);
+}
+
+.consult--framed .consult__arc--yellow {
+  top: -27px;
+  right: -28px;
+  width: 51px;
+}
+
+.consult--framed .consult__arc--gray {
+  bottom: -45px;
+  left: -45px;
+}
+
+/* В оригинале 32px, но Manrope шире Circe: на 30px заголовок остаётся в одну строку */
+.consult--framed .consult__title {
+  margin-bottom: 33px;
+  font-size: 30px;
+}
+
+.consult--framed .consult__text {
+  margin-bottom: 11px;
+}
+
+.consult--framed .consult__form {
+  margin-bottom: 24px;
+}
+
+.consult--framed .consult__phone {
+  margin-top: 44px;
+}
+
+@media (min-width: 640px) {
+  .consult--framed {
+    padding-block: 92px 138px;
+  }
+
+  .consult--framed .consult__panel {
+    width: min(600px, 100% - 36px);
+    padding: 71px 28px 90px;
+  }
+
+  .consult--framed .consult__arc--yellow {
+    top: -28px;
+    right: -29px;
+  }
+
+  .consult--framed .consult__arc--gray {
+    bottom: -45px;
+    left: -46px;
+  }
+
+  .consult--framed .consult__title {
+    margin-bottom: 67px;
+    font-size: 34px;
+  }
+
+  .consult--framed .consult__text {
+    margin-top: 15px;
+  }
+
+  .consult--framed .consult__phone {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 980px) {
+  .consult--framed .consult__panel {
+    width: min(920px, 100% - 36px);
+    padding: 77px 78px 54px;
+  }
+
+  .consult--framed .consult__arc--yellow {
+    top: -49px;
+    right: 51px;
+    width: 94px;
+  }
+
+  .consult--framed .consult__arc--gray {
+    bottom: -103px;
+    left: -2px;
+  }
+
+  .consult--framed .consult__title {
+    margin-bottom: 78px;
+    font-size: 48px;
+  }
+
+  .consult--framed .consult__text {
+    margin-top: 19px;
+  }
+
+  .consult--framed .consult__form {
+    margin-bottom: 43px;
+  }
+}
+
+/* ===== «Відгуки» (главная, «Код 95», «Чип-карта») ===== */
+
+/* Телефон: один отзыв на всю ширину, стрелки по краям поверх картинки. Фон серый, как в оригинале на всех страницах */
 .reviews {
   padding-block: 40px 30px;
+  background-color: var(--color-bg-light);
 }
 
 .reviews__title {
@@ -1601,6 +1713,53 @@ a.nav__link:not([href]) {
 
   .reviews__arrow--next {
     right: calc(50% - 450px);
+  }
+}
+
+/*
+  Вариант с широкими слайдами («Код 95», «Чип-карта»): заголовок «Відгуки про нас» мельче, чем на главной, слайды шире.
+  Отступы секции у страниц разные — они в CSS-файле страницы
+*/
+.reviews--wide .reviews__title {
+  margin-bottom: 46px;
+}
+
+.reviews--wide .reviews__dots {
+  margin-top: 26px;
+}
+
+@media (min-width: 640px) {
+  .reviews--wide .reviews__list {
+    padding-inline: calc(50% - 320px);
+  }
+
+  /* min(): на окне 640–655px с полосой прокрутки слайд не шире трека */
+  .reviews--wide .reviews__slide {
+    width: min(640px, 100%);
+  }
+}
+
+@media (min-width: 980px) {
+  .reviews--wide .reviews__title {
+    margin-bottom: 90px;
+    font-size: 42px;
+  }
+
+  .reviews--wide .reviews__list {
+    padding-inline: calc(50% - 430px);
+  }
+
+  .reviews--wide .reviews__slide {
+    width: 860px;
+  }
+
+  /* Стрелки в 30px от краёв центрального отзыва, но не ближе 20px к краю окна — иначе на 980–1016px страница прокручивается вбок */
+  .reviews--wide .reviews__arrow--prev {
+    left: max(20px, 50% - 500px);
+  }
+
+  .reviews--wide .reviews__arrow--next {
+    right: max(20px, 50% - 500px);
   }
 }
 
@@ -1948,8 +2107,8 @@ a.nav__link:not([href]) {
 .bento__image img {
   width: auto;
   max-height: 100%;
-  border-radius: 6px;
-  filter: drop-shadow(0 3px 12px color-mix(in srgb, var(--color-heading) 8%, transparent));
+  border-radius: var(--radius-small);
+  filter: drop-shadow(var(--shadow-image));
 }
 
 .bento__image figcaption {
@@ -1957,7 +2116,7 @@ a.nav__link:not([href]) {
   bottom: 6px;
   left: 6px;
   padding: 4px 10px;
-  border-radius: 6px;
+  border-radius: var(--radius-small);
   background-color: color-mix(in srgb, var(--color-bg) 75%, transparent);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
@@ -2082,7 +2241,8 @@ a.nav__link:not([href]) {
   line-height: 1.25;
 }
 
-/* Значок «Акредитовано»: рамка с тризубом — картинка-трафарет, цвет берётся из текста */
+/* Значок «Акредитовано»: рамка с тризубом — картинка-трафарет, цвет берётся из текста.
+   Текст обёрнут в <span>: иначе в flex-контейнере куски до и после <br> стали бы отдельными элементами строки */
 .bento__badge {
   display: inline-flex;
   align-items: center;

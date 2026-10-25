@@ -818,7 +818,8 @@ html:has(.chat__popup:popover-open) {
 
 /*
   ===== Общие секции главной: отличия на «Код 95» =====
-  «В цифрах», консультация и отзывы описаны в components.css, здесь — только то, что на этой странице другое.
+  «В цифрах», отзывы, галереи и FAQ описаны в components.css, здесь — только то, что на этой странице другое.
+  Консультация «в рамке» и вид отзывов — общие варианты блоков (.consult--framed, .reviews--wide) в components.css.
   Правила этого файла подключаются позже components.css и при равной силе селектора побеждают на всех ширинах,
   поэтому свойство, заданное здесь без @media, повторяем в @media там, где components.css меняет его для шире экранов.
 */
@@ -849,57 +850,9 @@ html:has(.chat__popup:popover-open) {
   line-height: 1.45;
 }
 
-/* Блок консультации: панель в синей рамке, ниже и просторнее, чем на главной */
-.consult {
-  padding-block: 87px 89px;
-}
-
-.consult__panel {
-  width: min(320px, 100% - 36px);
-  padding: 46px 23px 53px;
-  border: 2px solid var(--color-primary);
-}
-
-.consult__arc--yellow {
-  top: -27px;
-  right: -28px;
-  width: 51px;
-}
-
-.consult__arc--gray {
-  bottom: -45px;
-  left: -45px;
-}
-
-/* В оригинале 32px, но Manrope шире Circe: на 30px заголовок остаётся в одну строку */
-.consult__title {
-  margin-bottom: 33px;
-  font-size: 30px;
-}
-
-.consult__text {
-  margin-bottom: 11px;
-}
-
-.consult__form {
-  margin-bottom: 24px;
-}
-
-.consult__phone {
-  margin-top: 44px;
-}
-
-/* Отзывы: свои отступы, заголовок «Відгуки про нас» мельче, чем на главной */
+/* Отзывы: вид — вариант .reviews--wide (components.css), здесь только отступы секции */
 .reviews {
   padding-block: 30px 61px;
-}
-
-.reviews__title {
-  margin-bottom: 46px;
-}
-
-.reviews__dots {
-  margin-top: 26px;
 }
 
 /* Галереи: серый фон, как у «В цифрах» над ними; у мобильной свои отступы */
@@ -918,7 +871,7 @@ html:has(.chat__popup:popover-open) {
 }
 
 .faq__title {
-  margin-bottom: 42px;
+  margin-bottom: 80px;
 }
 
 @media (min-width: 640px) {
@@ -939,49 +892,8 @@ html:has(.chat__popup:popover-open) {
     margin-bottom: 17px;
   }
 
-  .consult {
-    padding-block: 92px 138px;
-  }
-
-  .consult__panel {
-    width: min(600px, 100% - 36px);
-    padding: 71px 28px 90px;
-  }
-
-  .consult__arc--yellow {
-    top: -28px;
-    right: -29px;
-  }
-
-  .consult__arc--gray {
-    bottom: -45px;
-    left: -46px;
-  }
-
-  .consult__title {
-    margin-bottom: 67px;
-    font-size: 34px;
-  }
-
-  .consult__text {
-    margin-top: 15px;
-  }
-
-  .consult__phone {
-    margin-top: 0;
-  }
-
   .reviews {
     padding-block: 60px 86px;
-  }
-
-  .reviews__list {
-    padding-inline: calc(50% - 320px);
-  }
-
-  /* min(): на окне 640–655px с полосой прокрутки слайд не шире трека */
-  .reviews__slide {
-    width: min(640px, 100%);
   }
 
   /* В оригинале на планшете между заголовком и вопросами почти 100px — так он и выглядит */
@@ -1001,57 +913,6 @@ html:has(.chat__popup:popover-open) {
 
   .stats__number {
     font-size: 40px;
-  }
-
-  .consult__panel {
-    width: min(920px, 100% - 36px);
-    padding: 77px 78px 54px;
-  }
-
-  .consult__arc--yellow {
-    top: -49px;
-    right: 51px;
-    width: 94px;
-  }
-
-  .consult__arc--gray {
-    bottom: -103px;
-    left: -2px;
-  }
-
-  .consult__title {
-    margin-bottom: 78px;
-    font-size: 48px;
-  }
-
-  .consult__text {
-    margin-top: 19px;
-  }
-
-  .consult__form {
-    margin-bottom: 43px;
-  }
-
-  .reviews__title {
-    margin-bottom: 90px;
-    font-size: 42px;
-  }
-
-  .reviews__list {
-    padding-inline: calc(50% - 430px);
-  }
-
-  .reviews__slide {
-    width: 860px;
-  }
-
-  /* Стрелки в 30px от краёв центрального отзыва */
-  .reviews__arrow--prev {
-    left: calc(50% - 500px);
-  }
-
-  .reviews__arrow--next {
-    right: calc(50% - 500px);
   }
 
   /* Заголовок FAQ на компьютере 42px, как в оригинале (на главной 48px) */

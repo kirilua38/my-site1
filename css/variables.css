@@ -47,6 +47,7 @@
   --font-alt: "DM Sans", Arial, sans-serif;
 
   /* Радиусы */
+  --radius-small: 6px;
   --radius-button: 8px;
   --radius-card: 15px;
   --radius-large: 28px;
@@ -58,6 +59,7 @@
   --shadow-raised: 0 15px 30px -10px rgba(0, 11, 48, 0.2);
   --shadow-float: 0 0 20px rgba(0, 0, 0, 0.3);
   --shadow-error: inset 0 0 0 2px var(--color-error);
+  --shadow-image: 0 3px 12px rgba(27, 33, 55, 0.08);
 
   /* Сетка */
   --container-width: 1200px;

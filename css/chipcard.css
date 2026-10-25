@@ -78,3 +78,63 @@
     bottom: 5px;
   }
 }
+
+/* ===== Консультация «в рамке»: отличие от «Код 95» ===== */
+
+/*
+  «Отримати ЧІП-КАРТУ» на телефоне 25px (в оригинале 26px, но Manrope шире Circe — так в одну строку),
+  отступ под ним больше, чтобы текст и форма стояли там же, где на «Код 95».
+  Селектор той же силы, что у варианта в components.css, — поэтому размеры повторяем для шире экранов
+*/
+.consult--framed .consult__title {
+  margin-bottom: 39px;
+  font-size: 25px;
+}
+
+/* ===== Отзывы: вид — вариант .reviews--wide (components.css), здесь только отступы секции ===== */
+
+.reviews {
+  padding-block: 75px 0;
+}
+
+/* ===== FAQ: заголовок как на главной, вопросы как на «Код 95», отступы свои ===== */
+
+.faq {
+  padding-block: 45px 90px;
+}
+
+.faq__title {
+  margin-bottom: 58px;
+}
+
+@media (min-width: 640px) {
+  .consult--framed .consult__title {
+    margin-bottom: 67px;
+    font-size: 34px;
+  }
+
+  .faq {
+    padding-top: 49px;
+  }
+
+  .faq__title {
+    margin-bottom: 93px;
+    font-size: 34px;
+  }
+}
+
+@media (min-width: 980px) {
+  .consult--framed .consult__title {
+    margin-bottom: 78px;
+    font-size: 48px;
+  }
+
+  .faq {
+    padding-block: 68px 90px;
+  }
+
+  .faq__title {
+    margin-bottom: 65px;
+    font-size: 48px;
+  }
+}
