@@ -5,142 +5,307 @@
 
 /* ===== «Як це працює» ===== */
 
-/* Телефон: вертикальная линия слева, номера шагов в кружках на ней, карточки справа */
+/*
+  Телефон и планшет: линия слева, номера шагов в кружках на ней, карточки справа.
+  Компьютер: линия посередине, карточки по очереди слева и справа от неё, со стрелкой к линии.
+  По углам секции — две полупрозрачные окружности-украшения
+*/
 .steps {
-  padding-block: 60px;
-  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding-block: 56px 72px;
+  background-color: var(--color-bg-light);
+}
+
+.steps::before,
+.steps::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.steps::before {
+  top: -80px;
+  right: -60px;
+  width: 300px;
+  height: 300px;
+  border: 48px solid color-mix(in srgb, var(--color-primary) 3%, transparent);
+}
+
+.steps::after {
+  bottom: -40px;
+  left: -40px;
+  width: 190px;
+  height: 190px;
+  border: 32px solid color-mix(in srgb, var(--color-star) 6%, transparent);
+}
+
+/* Содержимое — поверх окружностей */
+.steps .container {
+  position: relative;
+  z-index: 1;
+}
+
+.steps .section-title {
+  margin-bottom: 14px;
 }
 
 .steps__lead {
   max-width: 480px;
-  margin: -20px auto 40px;
+  margin: 0 auto 56px;
   font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
   color: var(--color-text-muted);
 }
 
 .steps__list {
   position: relative;
-  display: grid;
-  gap: 32px;
-  margin: 0 0 40px;
-  padding: 0 0 0 56px;
+  margin: 0;
+  padding: 0;
   list-style: none;
   counter-reset: step;
-  text-align: left;
 }
 
+/* Линия проходит через центры кружков: колонка кружка 44px, её середина — 22px */
 .steps__list::before {
   content: "";
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 19px;
+  top: 40px;
+  bottom: 40px;
+  left: 21px;
   width: 2px;
-  background-color: var(--color-bg-field);
+  border-radius: 2px;
+  background-color: var(--color-bg-accent);
 }
 
 .step {
-  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding-block: 16px;
   counter-increment: step;
 }
 
-/* Номер шага в синем кружке ровно на линии */
+/* Номер шага — белый кружок с синей обводкой посередине своей колонки, поверх линии */
 .step::before {
   content: counter(step);
-  position: absolute;
-  top: 0;
-  left: -56px;
+  position: relative;
+  z-index: 1;
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  margin-inline: 3px;
+  border: 2.5px solid var(--color-primary);
   border-radius: 50%;
-  background-image: var(--gradient-primary);
-  font-size: 18px;
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow-ring);
+  font-size: 15px;
   font-weight: 700;
-  color: var(--color-text-on-dark);
-}
-
-.step__card {
-  padding: 24px 22px;
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-card);
-  background-color: var(--color-bg-light);
-}
-
-.step__icon {
-  display: block;
-  width: 22px;
-  height: 22px;
-  margin-bottom: 14px;
   color: var(--color-primary);
 }
 
+.step__card {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  padding: 22px 20px;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-card);
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Значок шага — в голубом квадрате */
+.step__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 16px;
+  border-radius: var(--radius-button);
+  background-color: var(--color-bg-accent);
+  color: var(--color-primary);
+}
+
+.step__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
 .step__title {
-  margin-bottom: 8px;
-  font-size: 19px;
+  margin-bottom: 10px;
+  font-size: 17px;
   line-height: 1.35;
 }
 
 .step__text {
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: 14.5px;
+  line-height: 1.65;
   color: var(--color-text-muted);
 }
 
+/* Почта в тексте: синим, подчёркнута пунктиром */
 .step__text a {
+  border-bottom: 1px dashed color-mix(in srgb, var(--color-primary) 30%, transparent);
   font-weight: 600;
   color: var(--color-primary);
-}
-
-.step__messengers {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 18px;
-  margin: 12px 0 0;
-  padding: 0;
-  list-style: none;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.step__messengers a {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--color-heading);
   text-decoration: none;
 }
 
-.step__messengers img {
+.step__text a:hover,
+.step__text a:focus-visible {
+  border-bottom-style: solid;
+}
+
+/* Мессенджеры — плашки в цвет мессенджера: светлый фон, тёмный текст и значок */
+.step__messengers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step__messenger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 11px;
+  border-radius: var(--radius-button);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.step__messenger svg {
   width: 16px;
   height: 16px;
-  border-radius: 50%;
 }
 
-.steps__cta {
-  gap: 8px;
-  min-height: 56px;
-  padding-inline: 32px;
-  font-size: 16px;
+.step__messenger--viber {
+  background-color: color-mix(in srgb, var(--color-viber) 12%, var(--color-bg));
+  color: color-mix(in srgb, var(--color-viber) 70%, var(--color-heading));
+}
+
+.step__messenger--whatsapp {
+  background-color: color-mix(in srgb, var(--color-whatsapp) 12%, var(--color-bg));
+  color: color-mix(in srgb, var(--color-whatsapp) 80%, var(--color-heading));
+}
+
+.step__messenger--telegram {
+  background-color: color-mix(in srgb, var(--color-telegram) 12%, var(--color-bg));
+  color: color-mix(in srgb, var(--color-telegram) 85%, var(--color-heading));
+}
+
+/* «До 3 робочих годин» — тёплая плашка с часами */
+.step__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 6px 14px;
+  border-radius: var(--radius-button);
+  background-image: linear-gradient(135deg, color-mix(in srgb, var(--color-star) 8%, var(--color-bg)), color-mix(in srgb, var(--color-star) 18%, var(--color-bg)));
+  font-size: 13px;
   font-weight: 700;
+  color: color-mix(in srgb, var(--color-star) 80%, var(--color-heading));
 }
 
-/* Компьютер: линия посередине, карточки по очереди слева и справа от неё */
-@media (min-width: 980px) {
-  .steps {
-    padding-block: 89px 100px;
+.step__badge svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Кнопка — сплошная синяя, как в оригинале (не градиент общих кнопок); на телефоне во всю ширину */
+.steps__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 56px;
+  padding: 15px 28px;
+  border: 0;
+  border-radius: var(--radius-card);
+  background-color: var(--color-primary);
+  box-shadow: var(--shadow-button);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text-on-dark);
+  cursor: pointer;
+}
+
+.steps__cta svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Планшет: крупнее кружки, значки, отступы; колонка кружка 56px — линия на 28px */
+@media (min-width: 640px) {
+  .steps__list::before {
+    left: 27px;
   }
 
-  .steps__lead {
-    margin-bottom: 70px;
+  .step {
+    gap: 20px;
+  }
+
+  .step::before {
+    width: 44px;
+    height: 44px;
+    margin-inline: 6px;
+    border-width: 3px;
+    font-size: 17px;
+  }
+
+  .step__card {
+    padding: 32px 30px;
+  }
+
+  .step__icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .step__icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .step__title {
+    font-size: 19px;
+  }
+
+  .step__messenger {
+    padding: 7px 14px;
+    font-size: 13px;
+  }
+
+  .steps__cta {
+    width: fit-content;
+    margin-inline: auto;
+    padding: 17px 40px;
+    font-size: 16px;
+  }
+}
+
+/*
+  Компьютер: каждый шаг — три колонки «карточка | кружок | пусто», у чётных наоборот;
+  у левых карточек текст прижат к линии (вправо), у всех — стрелка-уголок к линии
+*/
+@media (min-width: 980px) {
+  .steps {
+    padding-block: 80px 96px;
   }
 
   .steps__list {
-    max-width: 1040px;
+    max-width: 1100px;
     margin-inline: auto;
-    padding-left: 0;
-    gap: 40px;
   }
 
   .steps__list::before {
@@ -148,30 +313,62 @@
     transform: translateX(-50%);
   }
 
-  /* Карточка занимает полширины минус место под кружок; кружок сдвигаем на линию */
   .step {
-    width: calc(50% - 60px);
+    display: grid;
+    grid-template-columns: 1fr 72px 1fr;
+    align-items: center;
+    gap: 0;
+    min-height: 200px;
+    padding-block: 0;
   }
 
   .step::before {
-    top: 24px;
+    grid-row: 1;
+    grid-column: 2;
+    justify-self: center;
+    width: 52px;
+    height: 52px;
+    margin-inline: 0;
+    font-size: 20px;
   }
 
-  .step:nth-child(odd) {
-    justify-self: start;
+  .step:nth-child(odd) .step__card {
+    grid-row: 1;
+    grid-column: 1;
+    text-align: right;
   }
 
-  .step:nth-child(odd)::before {
-    left: auto;
-    right: -80px;
+  .step:nth-child(even) .step__card {
+    grid-row: 1;
+    grid-column: 3;
   }
 
-  .step:nth-child(even) {
-    justify-self: end;
+  .step:nth-child(odd) .step__messengers {
+    justify-content: flex-end;
   }
 
-  .step:nth-child(even)::before {
-    left: -80px;
+  /* Стрелка к линии — квадратик, повёрнутый на 45°, с рамкой с двух внешних сторон */
+  .step__card::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--color-border-light);
+    background-color: var(--color-bg);
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  .step:nth-child(odd) .step__card::before {
+    right: -10px;
+    border-bottom: 0;
+    border-left: 0;
+  }
+
+  .step:nth-child(even) .step__card::before {
+    left: -10px;
+    border-top: 0;
+    border-right: 0;
   }
 }
 

@@ -60,6 +60,9 @@
   --shadow-float: 0 0 20px rgba(0, 0, 0, 0.3);
   --shadow-error: inset 0 0 0 2px var(--color-error);
   --shadow-image: 0 3px 12px rgba(27, 33, 55, 0.08);
+  --shadow-soft: 0 1px 3px rgba(0, 0, 0, 0.02), 0 8px 30px rgba(49, 97, 193, 0.05);
+  --shadow-ring: 0 4px 20px rgba(49, 97, 193, 0.1), 0 0 0 8px rgba(49, 97, 193, 0.04);
+  --shadow-button: 0 4px 16px rgba(49, 97, 193, 0.2);
 
   /* Сетка */
   --container-width: 1200px;
