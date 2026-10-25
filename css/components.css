@@ -15,6 +15,16 @@
   z-index: 10;
 }
 
+/* Страница без первого экрана с фото («Контакти»): на телефоне шапка стоит в потоке, подпись тёмная.
+   На компьютере шапка и так в потоке — правило ниже в @media (min-width: 980px) возвращает position: static */
+.header--solid {
+  position: relative;
+}
+
+.header--solid .header__logo {
+  color: var(--color-heading);
+}
+
 .header__inner {
   display: flex;
   align-items: center;

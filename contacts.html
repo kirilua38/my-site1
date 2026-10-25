@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Офіційний транспортний центр | Контакти</title>
+  <meta name="description" content="Бажаєте отримати нову роботу або підвищити кваліфікацію? У Eurodrivers збуваються мрії! Приєднуйтесь до команди висококваліфікованих спеціалістів!">
+  <link rel="icon" href="img/common/favicon-32x32.png" type="image/png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/contacts.css">
+  <script src="js/menu.js" defer></script>
+  <script src="js/modal.js" defer></script>
+  <script src="js/to-top.js" defer></script>
+  <script src="js/forms.js" defer></script>
+</head>
+<body>
+  <!-- Шапка: одинаковая на всех страницах (index.html, kod95ukr.html, chipcard.html, contacts.html; на contacts.html — с классом header--solid). Правишь в одной — повтори во всех -->
+  <!-- На этой странице нет первого экрана с фото: на телефоне шапка стоит в потоке, подпись тёмная (.header--solid) -->
+  <header class="header header--solid">
+    <div class="header__inner container">
+      <a class="header__logo" href="index.html">
+        <img class="header__logo-img" src="img/common/logo.png" width="156" height="150" alt="Eurodrivers — школа далекобійників нового покоління">
+        <!-- Подпись повторяет alt логотипа: прячем её от программ экранного чтения, чтобы текст не звучал дважды -->
+        <span class="header__tagline" aria-hidden="true">Eurodrivers — школа далекобійників нового покоління</span>
+      </a>
+
+      <button class="header__burger" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="header-panel">
+        <span class="header__burger-lines"></span>
+      </button>
+
+      <div class="header__panel" id="header-panel">
+        <button class="header__close" type="button" aria-label="Закрити меню"></button>
+        <img class="header__panel-logo" src="img/common/logo.png" width="156" height="150" alt="">
+
+        <nav class="nav" aria-label="Головне меню">
+          <ul class="nav__list">
+            <li><a class="nav__link" href="index.html">Головна</a></li>
+            <li><a class="nav__link">Курси</a></li>
+            <li class="nav__item-dropdown">
+              <button class="nav__link nav__toggle" type="button" aria-expanded="false" aria-controls="nav-docs">Документи водія</button>
+              <ul class="nav__sub" id="nav-docs">
+                <li><a class="nav__sublink" href="kod95ukr.html">КОД 95</a></li>
+                <li><a class="nav__sublink" href="chipcard.html">ЧІП-КАРТА</a></li>
+              </ul>
+            </li>
+            <li><a class="nav__link">Навчання та сертифікація</a></li>
+            <li><a class="nav__link">Працевлаштування</a></li>
+            <li><a class="nav__link" href="contacts.html" aria-current="page">Контакти</a></li>
+          </ul>
+        </nav>
+
+        <div class="header__contacts">
+          <ul class="social">
+            <li><a class="social__link" href="https://t.me/eurodrivers" target="_blank" rel="noopener" aria-label="Telegram"><img src="img/icons/telegram.svg" width="20" height="20" alt=""></a></li>
+            <li><a class="social__link" href="viber://add?number=380676392016" aria-label="Viber"><img src="img/icons/viber.svg" width="20" height="20" alt=""></a></li>
+            <li><a class="social__link" href="https://wa.me/380932993890" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="img/icons/whatsapp.svg" width="20" height="20" alt=""></a></li>
+            <li><a class="social__link" href="tel:+380676392016" aria-label="Подзвонити"><img src="img/icons/phone.svg" width="20" height="20" alt=""></a></li>
+          </ul>
+          <p class="header__phones">
+            <a href="tel:0800357113">0-800-357-113</a>
+            <a href="tel:+380971493921">+38(097)-149-39-21</a>
+            <a href="tel:+380676392016">+38(067)-639-20-16</a>
+          </p>
+          <button class="btn header__callback" type="button" data-modal-open="callback">Зворотній дзвінок</button>
+        </div>
+      </div>
+    </div>
+    <div class="header__backdrop"></div>
+  </header>
+
+  <main>
+    <!--
+      «Зв'яжіться з нами!» — тот же блок, что подвал на других страницах (классы .footer*, css/components.css).
+      Здесь он главное содержимое: стоит в <main> и заголовок — <h1>, отдельного подвала на странице нет, как в оригинале.
+      Правишь подвал — повтори здесь
+    -->
+    <section class="footer">
+      <div class="container">
+        <h1 class="footer__title">Зв'яжіться з нами!</h1>
+
+        <!-- Порядок блоков — как на телефоне; на широких экранах их переставляет CSS-сетка -->
+        <div class="footer__grid">
+          <div class="footer__group footer__group--address">
+            <h3 class="footer__label">Наша адреса:</h3>
+            <ul class="footer__list">
+              <li>м. Тернопіль,<br>вул. Микулинецька, 3а</li>
+              <li>м. Дніпро,<br>вул. Європейська, 5, оф. 314</li>
+              <li>м. Київ, вул. Жилянська, 75</li>
+            </ul>
+          </div>
+
+          <div class="footer__group footer__group--messengers">
+            <h3 class="footer__label">Месенджери:</h3>
+            <ul class="footer__icons footer__icons--round">
+              <li><a href="https://t.me/eurodrivers" target="_blank" rel="noopener" aria-label="Telegram"><img src="img/common/telegram_4.svg" width="30" height="30" alt="" loading="lazy"></a></li>
+              <li><a href="viber://add?number=380676392016" aria-label="Viber"><img src="img/common/viber_4.svg" width="30" height="30" alt="" loading="lazy"></a></li>
+              <li><a href="https://wa.me/380932993890" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="img/common/whatsapp_4.svg" width="30" height="30" alt="" loading="lazy"></a></li>
+            </ul>
+          </div>
+
+          <div class="footer__group footer__group--email">
+            <h3 class="footer__label">E-mail:</h3>
+            <p class="footer__text"><a href="mailto:info@eurodrivers.com.ua">info@eurodrivers.com.ua</a></p>
+          </div>
+
+          <div class="footer__group footer__group--schedule">
+            <h3 class="footer__label">Графік роботи:</h3>
+            <p class="footer__text">Пн-Пт 09:00-18:00</p>
+          </div>
+
+          <div class="footer__group footer__group--social">
+            <h3 class="footer__label">Соціальні мережі:</h3>
+            <ul class="footer__icons">
+              <li><a href="https://www.facebook.com/eurodrivers.com.ua/" target="_blank" rel="noopener" aria-label="Facebook"><img src="img/common/facebook_3.svg" width="30" height="30" alt="" loading="lazy"></a></li>
+              <li><a href="https://www.instagram.com/euro.drivers/" target="_blank" rel="noopener" aria-label="Instagram"><img src="img/common/instagram-sketched.svg" width="30" height="30" alt="" loading="lazy"></a></li>
+            </ul>
+          </div>
+
+          <div class="footer__group footer__group--phones">
+            <h3 class="footer__label">Телефони:</h3>
+            <ul class="footer__phones">
+              <li><img src="img/common/phone_1.svg" width="20" height="20" alt="" loading="lazy"><a href="tel:0800357113">0-800-357-113</a></li>
+              <li><img src="img/common/kyivstar.png" width="20" height="19" alt="" loading="lazy"><a href="tel:+380676392016">+38(067)-639-20-16</a></li>
+              <li><img src="img/common/kyivstar.png" width="20" height="19" alt="" loading="lazy"><a href="tel:+380971493921">+38(097)-149-39-21</a></li>
+            </ul>
+          </div>
+
+          <form class="footer__form" method="post" novalidate data-form>
+            <h3 class="footer__label">Передзвонити вам?</h3>
+            <input type="hidden" name="form" value="contacts">
+            <div class="form-trap" aria-hidden="true">
+              <label>Не заповнюйте це поле <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+            </div>
+            <div class="footer__form-row">
+              <label class="visually-hidden" for="contacts-phone">Телефон</label>
+              <div class="phone-field">
+                <span class="phone-field__prefix">+380</span>
+                <input class="input" id="contacts-phone" type="tel" name="phone" placeholder="(00) 000-00-00" autocomplete="tel-national" required inputmode="numeric" aria-describedby="contacts-phone-error">
+              </div>
+              <button class="btn footer__submit" type="submit">Замовити дзвінок</button>
+            </div>
+            <p class="form-error" id="contacts-phone-error" hidden></p>
+            <p class="form-success" tabindex="-1" hidden>Дякуємо! Чекайте на дзвінок від нашого менеджера протягом робочого дня!</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Сюда встанет карта с офисами (шаг 27б) -->
+  </main>
+
+  <button class="to-top" type="button" aria-label="Нагору">
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <!-- Модальное окно «Зворотній дзвінок» — как на всех страницах; окна консультации здесь нет: его нечем открыть. Открывается кнопкой с data-modal-open="<имя>" -->
+  <dialog class="modal" id="modal-callback" aria-labelledby="modal-callback-title">
+    <button class="modal__close" type="button" aria-label="Закрити вікно" data-modal-close></button>
+    <div class="modal__window">
+      <img class="modal__img" src="img/common/team.webp" width="1024" height="1024" alt="" loading="lazy">
+      <div class="modal__body">
+        <h2 class="modal__title" id="modal-callback-title">Ми зателефонуємо вам</h2>
+        <form class="modal__form" method="post" novalidate data-form>
+          <input type="hidden" name="form" value="callback">
+          <div class="form-trap" aria-hidden="true">
+            <label>Не заповнюйте це поле <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+          </div>
+          <div class="form-field">
+            <label class="visually-hidden" for="callback-name">Ім'я</label>
+            <input class="input" id="callback-name" type="text" name="name" placeholder="Ім'я" autocomplete="name" maxlength="50" aria-describedby="callback-name-error">
+            <p class="form-error" id="callback-name-error" hidden></p>
+          </div>
+          <div class="form-field">
+            <label class="visually-hidden" for="callback-phone">Телефон</label>
+            <div class="phone-field">
+              <span class="phone-field__prefix">+380</span>
+              <input class="input" id="callback-phone" type="tel" name="phone" placeholder="(00) 000-00-00" autocomplete="tel-national" required inputmode="numeric" aria-describedby="callback-phone-error">
+            </div>
+            <p class="form-error" id="callback-phone-error" hidden></p>
+          </div>
+          <button class="btn modal__submit" type="submit">Відправити</button>
+          <p class="modal__note">Натискаючи кнопку ви погоджуєтесь з політикою конфіденційності</p>
+          <p class="form-success" tabindex="-1" hidden>Дякуємо! Чекайте на дзвінок від нашого менеджера протягом робочого дня!</p>
+        </form>
+      </div>
+    </div>
+  </dialog>
+
+</body>
+</html>
