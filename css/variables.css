@@ -10,12 +10,14 @@
 
 :root {
   /* Цвета */
-  --color-primary: #254995;
-  --color-accent: #3f93ff;
+  --color-primary: #14532d;
+  --color-accent: #16a34a;
   --gradient-primary: linear-gradient(90deg, var(--color-accent) 0%, var(--color-primary) 100%);
   --gradient-primary-hover: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
-  --gradient-text: linear-gradient(0deg, var(--color-primary) 0%, var(--color-accent) 100%);
-  --gradient-hero: linear-gradient(rgba(0, 15, 46, 0.9), rgba(0, 0, 0, 0.85));
+  /* Светлый оттенок — только для текста на тёмном фоне первого экрана: основной там почти не виден */
+  --color-accent-light: #4ade80;
+  --gradient-text: linear-gradient(0deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
+  --gradient-hero: linear-gradient(rgba(5, 46, 22, 0.9), rgba(0, 0, 0, 0.85));
   --color-hero-bg: #000000;
   --color-heading: #242424;
   --color-text: #363636;
@@ -24,12 +26,12 @@
   --color-text-muted-on-dark: #d6d6d6;
   --color-bg: #ffffff;
   --color-bg-light: #f7f7f9;
-  --color-bg-field: #e8edf1;
-  --color-bg-accent: #efeff9;
-  --color-overlay: rgba(0, 15, 46, 0.9);
+  --color-bg-field: #e7efea;
+  --color-bg-accent: #eff8f2;
+  --color-overlay: rgba(5, 46, 22, 0.9);
   --color-backdrop: rgba(0, 0, 0, 0.4);
   --color-modal-backdrop: rgba(0, 0, 0, 0.6);
-  --color-border-light: rgba(49, 97, 193, 0.07);
+  --color-border-light: rgba(20, 83, 45, 0.07);
   --color-border: #e0e6ed;
   --color-dot: #cbd5e1;
   --color-star: #f0a830;
@@ -40,12 +42,11 @@
   --color-telegram: #1d98dc;
   --color-whatsapp: #27d061;
   --color-viber: #7360f2;
-  --color-chat-button: #0088cc;
+  /* Светлый, а не основной: основной сливается с тёмно-зелёным первым экраном, над которым висит кнопка */
+  --color-chat-button: var(--color-accent);
   /* Свой цвет у каждого направления в «Напрямки роботи» на главной: метка, подзаголовок, номер, точка слайдера */
   --color-direction-kod95: var(--color-primary);
-  --color-direction-jobs: #f59e0b;
   --color-direction-chipcard: #10b981;
-  --color-direction-training: #8b5cf6;
 
   /* Шрифты */
   --font-main: "Manrope", Arial, sans-serif;
@@ -61,13 +62,13 @@
   /* Тени */
   --shadow-dropdown: 0 8px 24px rgba(0, 0, 0, 0.12);
   --shadow-card: 0 1px 4px rgba(0, 0, 0, 0.03);
-  --shadow-raised: 0 15px 30px -10px rgba(0, 11, 48, 0.2);
+  --shadow-raised: 0 15px 30px -10px rgba(5, 46, 22, 0.2);
   --shadow-float: 0 0 20px rgba(0, 0, 0, 0.3);
   --shadow-error: inset 0 0 0 2px var(--color-error);
   --shadow-image: 0 3px 12px rgba(27, 33, 55, 0.08);
-  --shadow-soft: 0 1px 3px rgba(0, 0, 0, 0.02), 0 8px 30px rgba(49, 97, 193, 0.05);
-  --shadow-ring: 0 4px 20px rgba(49, 97, 193, 0.1), 0 0 0 8px rgba(49, 97, 193, 0.04);
-  --shadow-button: 0 4px 16px rgba(49, 97, 193, 0.2);
+  --shadow-soft: 0 1px 3px rgba(0, 0, 0, 0.02), 0 8px 30px rgba(20, 83, 45, 0.05);
+  --shadow-ring: 0 4px 20px rgba(20, 83, 45, 0.1), 0 0 0 8px rgba(20, 83, 45, 0.04);
+  --shadow-button: 0 4px 16px rgba(20, 83, 45, 0.2);
   /* Размеры теней без цвета — цвет подставляет сам блок (например, цвет карточки направления) */
   --shadow-hover-size: 0 28px 72px;
   --shadow-glow-size: 0 8px 24px;

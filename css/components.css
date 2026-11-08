@@ -189,8 +189,7 @@ html:has(dialog[open]) {
 
 /* Меню */
 
-.nav__list,
-.nav__sub {
+.nav__list {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -199,72 +198,19 @@ html:has(dialog[open]) {
 .nav__link {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
   padding: 7px 0;
-  border: 0;
-  background: none;
   /* В оригинале 20px, но Manrope шире Circe: на 18px пункты занимают ту же ширину и не переносятся */
   font-size: 18px;
   font-weight: 600;
   line-height: 1.5;
   color: var(--color-heading);
   text-decoration: none;
-  cursor: pointer;
 }
 
 .nav__link[aria-current="page"] {
   color: var(--color-primary);
   text-decoration: underline 2px;
   text-underline-offset: 6px;
-}
-
-/* Пункты без страницы (ссылка без href) не должны выглядеть кликабельными */
-a.nav__link:not([href]) {
-  cursor: default;
-}
-
-/* Стрелка у раскрывающегося пункта */
-.nav__toggle::after {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-right: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  transform: translateY(-2px) rotate(45deg);
-  transition: transform 0.2s;
-}
-
-.nav__toggle[aria-expanded="true"]::after {
-  transform: translateY(2px) rotate(-135deg);
-}
-
-.nav__sub {
-  display: none;
-  padding-bottom: 6px;
-}
-
-.nav__toggle[aria-expanded="true"] + .nav__sub {
-  display: block;
-}
-
-.nav__sublink {
-  display: block;
-  padding: 8px 0;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.2;
-  color: var(--color-text);
-  text-decoration: none;
-}
-
-.nav__sublink:hover,
-.nav__sublink[aria-current="page"] {
-  color: var(--color-primary);
-}
-
-/* Текущая страница во вложенном меню — подсвечиваем и сам пункт «Документи водія» */
-.nav__item-dropdown:has([aria-current="page"]) > .nav__toggle {
-  color: var(--color-primary);
 }
 
 /* Мессенджеры, телефоны и кнопка: в панели прижаты к низу */
@@ -372,28 +318,6 @@ a.nav__link:not([href]) {
     color: var(--color-primary);
   }
 
-  /* Выпадающий список: по нажатию, а с мышью — ещё и по наведению (правило ниже) */
-  .nav__item-dropdown {
-    position: relative;
-  }
-
-  .nav__sub {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    z-index: 5;
-    min-width: 180px;
-    padding: 10px 0;
-    border-radius: var(--radius-button);
-    background-color: var(--color-bg);
-    box-shadow: var(--shadow-dropdown);
-    transform: translateX(-50%);
-  }
-
-  .nav__sublink {
-    padding: 8px 20px;
-  }
-
   .header__contacts {
     grid-area: contacts;
     flex-direction: row;
@@ -423,13 +347,6 @@ a.nav__link:not([href]) {
   .social__link {
     width: 25px;
     height: 25px;
-  }
-}
-
-/* Наведением список открывается только там, где есть настоящая мышь: на планшете «наведение» залипает после касания */
-@media (min-width: 980px) and (hover: hover) {
-  .nav__item-dropdown:hover .nav__sub {
-    display: block;
   }
 }
 

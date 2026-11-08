@@ -339,7 +339,7 @@
 /*
   Телефон и планшет: карточки столбиком, фото сверху, без слайдера. Компьютер: слайдер, фото слева, текст справа.
   В оригинале этот блок на шрифте DM Sans. У каждой карточки свой цвет (--accent) — из переменных --color-direction-*.
-  Мелкий текст — более тёмным оттенком того же цвета (--accent-text): светлые оранжевый и зелёный на белом читаются плохо
+  Мелкий текст — более тёмным оттенком того же цвета (--accent-text): светлый зелёный на белом читается плохо
 */
 .directions {
   padding-block: 36px 48px;
@@ -406,19 +406,11 @@
   transition: transform 0.45s, border-color 0.45s, box-shadow 0.45s;
 }
 
-.direction-card--jobs {
-  --accent: var(--color-direction-jobs);
-}
-
 .direction-card--chipcard {
   --accent: var(--color-direction-chipcard);
 }
 
-.direction-card--training {
-  --accent: var(--color-direction-training);
-}
-
-/* Фото: у фотографии — на всю площадь с обрезкой краёв, у документов — целиком на светлом фоне, с тенью */
+/* Фото документов — целиком на светлом фоне, с тенью */
 .direction-card__media {
   position: relative;
   height: 225px;
@@ -433,16 +425,6 @@
   border-radius: var(--radius-small);
   object-fit: contain;
   filter: drop-shadow(var(--shadow-image));
-}
-
-.direction-card--photo .direction-card__media {
-  padding: 0;
-}
-
-.direction-card--photo .direction-card__img {
-  border-radius: 0;
-  object-fit: cover;
-  filter: none;
 }
 
 /* Номер — светлая полупрозрачная плашка в углу фото, цифры цветом карточки */
@@ -726,15 +708,7 @@
   }
 
   .directions__dots .slider__dot:nth-child(2)[aria-current="true"] {
-    background-color: var(--color-direction-jobs);
-  }
-
-  .directions__dots .slider__dot:nth-child(3)[aria-current="true"] {
     background-color: var(--color-direction-chipcard);
-  }
-
-  .directions__dots .slider__dot:nth-child(4)[aria-current="true"] {
-    background-color: var(--color-direction-training);
   }
 }
 
